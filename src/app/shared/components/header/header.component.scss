@@ -1,0 +1,113 @@
+.header{
+    background-color: white;
+    padding:1.5rem 1.3rem .75rem 1.3rem;
+    text-align: center;
+}
+#header-logo{
+    width:20%;
+}
+.headerIcon{
+    width:20px;
+    margin-right:20px;
+}
+.headerLink{
+    color:#a63da1;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+.red-dot{
+    width:10px;
+    height: 10px;
+    border-radius: 4px;
+    background-color: red;
+    position: absolute;
+    right: 12px;
+    top:0
+}
+::ng-deep .mat-menu-panel{
+    margin-top:20px;
+    max-width: 320px !important;
+    padding-right: 6px;
+    padding-left:6px;
+}
+.notf-image{
+    width: 30px;
+    margin-right: 4px;
+    border-radius: 25px;
+}
+.timeText{
+    text-align: right;
+    font-size: 12px;
+}
+::ng-deep .mat-menu-content{
+    padding-top: 0 !important;
+    padding-bottom: 0;
+}
+::ng-deep .mat-menu-item{
+    height: unset !important;
+}
+#notificationHead{
+    background-color:#953aa2;
+    color: white;
+    padding:5px 4px;
+    text-align: center;
+}
+#headerProfileImg{
+    display: inline-block;
+    width:40px;
+    height:40px;
+    background: transparent;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.text2{
+    font-style: italic;
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-weight: 300;
+    color: #5a5a5a;
+}
+#mobile-dealers-text{
+    color:white;
+    position: absolute;
+    left:48%;
+    top:-4px;
+    font-size: 14px;
+}
+#mobileMenu{
+    position: absolute;
+    left:20px;
+}
+#mobile-login-img{
+    position: absolute;
+    right:20px;
+    top: 30px;
+    width: 30px;
+}
+#mobile-logo{
+    width: 35px;
+}
+@media only screen and (min-device-width: 768px){
+    .header{
+        padding:.5rem 3rem;
+        text-align: left;
+    }
+    #mobile-logo{
+        width: 40px;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    
+ }
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+   
+ }
+/* XXX-Large devices (larger desktops, 1800px and up) */
+@media (min-width: 1800px) {
+    
+ }

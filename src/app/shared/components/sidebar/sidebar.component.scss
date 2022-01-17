@@ -1,0 +1,75 @@
+:host{
+    
+    .mat-icon{
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+  a{
+      color: white;
+      font-size: small;
+      opacity: .7;
+  }
+  .list-item-active {
+    opacity: 1;
+}
+
+}
+::ng-deep mat-drawer{
+    width: 240px !important;
+    background: black !important;
+}
+.mat-list-base{
+    height: 90vh;
+    padding-bottom: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#profile-pic{
+    width:50px;
+    height: 50px;
+    margin:10px auto;
+    border-radius: 25px;
+}
+#date{
+    color: #8c37a3;
+    font-weight: 500;
+}
+.footer-link{
+    color: #8c37a3 !important;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+#userName{
+    font-weight: bold !important;
+}
+.emailText{
+    font-size: 10px;
+    color:#ebebeb;
+}
+#profile-wrapper{
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:2px solid white;
+    border-radius: 27px;
+    padding:4px;
+}
+
+.list-item-active {
+    opacity: 1;
+    position: relative;
+    padding-left:20px !important;
+}
+.list-item-active:before {
+    content:"\A";
+    border-style: solid;
+    border-width: 8px 0px 8px 15px;
+    border-color: transparent transparent transparent white;
+    position: absolute;
+    left: -1px;
+    top:15px;
+}

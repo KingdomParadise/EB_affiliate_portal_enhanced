@@ -1,0 +1,131 @@
+<div class="page-container">
+    <div class="row">
+        <div class="col-md-12 p-0 mb-2">
+            <h1 class="page-heading">Manage Wallet</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 p-0">
+            <div class="card custom-tab" [ngClass]="{'activeTab': activeTab == 0}" (click)="onTabClick(0)">
+                <div class="d-flex flex-column">
+                    <h4 class="text-sm-center text-md-left">Your Wallet</h4>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <span class="tab-amount">{{apiData?.walletPoint || 0}}</span>
+                        <img src="assets/images/wallet-up.png" alt="wallet-up">
+                    </div>
+                </div>
+            </div>
+            <div class="card custom-tab" [ngClass]="{'activeTab': activeTab == 1}" (click)="onTabClick(1)">
+                <div class="d-flex flex-column mb-2">
+                    <h4 class="text-sm-center text-md-left">Pending</h4>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <span class="tab-amount">{{apiData?.walletPendingPoint || 0}}</span>
+                        <img src="assets/images/wallet-up.png" alt="wallet-up">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 p-0 px-md-3">
+            <div id="yourWallet" class="shadow p-4 bg-white" *ngIf="activeTab == 0">
+                <div class="d-flex justify-content-between">
+                    <h2>Your Points</h2>
+                    <div>
+                        <div ngbDropdown [autoClose]="false"  #myDrop="ngbDropdown">
+                            <button class="btn btn-sort" id="gfg" ngbDropdownToggle>Select:</button>
+                            <div ngbDropdownMenu="gfg">
+                                <div class="d-flex">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Start date</mat-label>
+                                        <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" class="border-0">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>End date</mat-label>
+                                        <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" class="border-0" (dateChange)="getAffiliateWalletData('range')">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('days', 7)" >7 days</button>
+                                <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('days', 14)">14 days</button>
+                                <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('month')">Month</button>
+                                <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('year')">Year</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-column" *ngFor="let trans of apiData?.authorizedTransaction">
+                    <p class="text-uppercase text-muted mb-3">{{trans.createTs | date :'short'}}</p>
+                    <div class="pointDiv">
+                        <div class="d-flex justify-content-between">
+                            <p>{{trans.remark}}</p>
+                            <span>{{trans.pointsProvided}}</span>
+
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div id="pending" *ngIf="activeTab == 1">
+                <div class='shadow p-4 bg-white'>
+                    <div class="d-flex justify-content-between">
+                        <h2>Authorized Points</h2>
+                        <div>
+                            <div ngbDropdown [autoClose]="false" #myDrop="ngbDropdown">
+                                <button class="btn btn-sort" id="gfg" ngbDropdownToggle>Select:</button>
+                                <div ngbDropdownMenu="gfg">
+                                    <div class='d-flex'>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Start date</mat-label>
+                                            <input matInput [matDatepicker]="picker" class="border-0">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>End date</mat-label>
+                                            <input matInput [matDatepicker]="picker2" class="border-0" (dateChange)="getAffiliateWalletData('range')">
+                                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker2></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('days',7)">7 days</button>
+                                    <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('days', 14)">14 days</button>
+                                    <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('month')">Month</button>
+                                    <button ngbDropdownItem class="btn btn-default" (click)="getAffiliateWalletData('year')">Year</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-column" *ngFor="let trans of apiData?.authorizedTransaction">
+                        <p class="text-uppercase text-muted mb-3">{{trans.createTs | date :'short'}}</p>
+                        <div class="pointDiv">
+                            <div class="d-flex justify-content-between">
+                                <p>{{trans.remark}}</p>
+                                <span>{{trans.pointsProvided}}</span>
+
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <div class='shadow p-4'>
+                    <div class="d-flex justify-content-between">
+                        <h2>Pending History</h2>
+                    </div>
+                    <div class="flex flex-column" *ngFor="let trans of apiData?.pendingTransaction">
+                        <p class="text-uppercase text-muted mb-3">{{trans.createTs | date :'short'}}</p>
+                        <div class="pointDiv">
+                            <div class="d-flex justify-content-between">
+                                <p>{{trans.remark}}</p>
+                                <span>{{trans.pointsProvided}}</span>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

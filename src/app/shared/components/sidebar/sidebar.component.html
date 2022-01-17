@@ -1,0 +1,67 @@
+<mat-nav-list>
+    <!-- <img style="height: 70px; padding-left: 20px; padding-bottom: 10px;" src="/assets/logo.png"> -->
+    <div>
+        <div class="d-none d-md-flex justify-content-end">
+            <button class="me-2" mat-icon-button style="color: rgb(55, 10, 160);" (click)="toggleSideBar()">
+                <mat-icon style="color:white">drag_handle</mat-icon>
+            </button>
+        </div>
+        <div class="d-flex ps-3 mt-2 text-light">
+            <div id="profile-wrapper">
+                <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="profile-pic" class="img-fluid" id="profile-pic">
+            </div>
+            <div class="ms-2 d-flex flex-column justify-content-center">
+                <h3 *ngIf="!isPartialClose" class="my-0" id="userName">{{userData.firstName}} {{userData.lastName}}</h3>
+                <p *ngIf="!isPartialClose" class="emailText"><i>{{userData.email}}</i></p>
+            </div>
+        </div>
+        <div class="px-3 text-light" *ngIf="!isPartialClose">
+            <hr style="color:#d8d8d8" />
+        </div>
+        <p class="ps-3" *ngIf="!isPartialClose" id="date">{{date1 | date: 'medium'}}</p>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+            <mat-icon>home</mat-icon>
+            <span *ngIf="!isPartialClose">Home</span>
+        </a>
+        <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/">
+            <mat-icon>local_offer</mat-icon>
+            <span *ngIf="!isPartialClose">Promotions</span>
+        </a> -->
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/wallet">
+            <mat-icon>account_balance_wallet</mat-icon>
+            <span *ngIf="!isPartialClose">Wallet</span>
+        </a>
+
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/settings">
+            <mat-icon>settings</mat-icon>
+            <span *ngIf="!isPartialClose">Settings</span>
+        </a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/training">
+            <mat-icon>school</mat-icon>
+            <span *ngIf="!isPartialClose">Training</span>
+        </a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/refer">
+            <mat-icon>school</mat-icon>
+            <span *ngIf="!isPartialClose">Refer</span>
+        </a>
+        <a mat-list-item (click)="logout()" class="d-block d-md-none">
+            <mat-icon >logout</mat-icon>
+            <span *ngIf="!isPartialClose" class="me-3">Log Out</span>
+        </a>
+        <a mat-list-item (click)="openContactUs()" class="d-md-none">
+            <span *ngIf="!isPartialClose" class="me-3 footer-link">Contact Us</span>
+        </a>
+        <a mat-list-item (click)="openContactUs()" class="d-md-none">
+            <span *ngIf="!isPartialClose" class="me-3 footer-link">Terms and Condition</span>
+        </a>
+    </div>
+    <div>
+        <a mat-list-item (click)="logout()" class="d-none d-md-block">
+
+            <span *ngIf="!isPartialClose" class="me-3">Log Out</span>
+            <mat-icon >logout</mat-icon>
+        </a>
+    </div>
+
+
+</mat-nav-list>

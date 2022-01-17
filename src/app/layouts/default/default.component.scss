@@ -1,0 +1,21 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+mat-drawer{
+    width:200px;
+    background: #523291;
+    color: black;
+    display: inline-flex;
+    background-image: url('/assets/images/sidebar-bg.png') !important;
+    background-size: cover !important;
+    
+}
+
+mat-drawer-container{
+    height: 100%;
+ background: whitesmoke;
+ color: black;
+}
+

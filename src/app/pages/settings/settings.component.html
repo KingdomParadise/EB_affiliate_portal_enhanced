@@ -1,0 +1,83 @@
+<div class="page-container">
+    <ngx-spinner></ngx-spinner>
+    <div class="row">
+        <div class="col-md-12 p-0 mb-2">
+            <h1 class="page-heading">Settings</h1>
+        </div>
+        <div class="col-md-4 p-0 pe-md-3 pe-lg-3">
+            <div class="d-flex flex-md-column">
+                <div class="bg-white flex-grow-1 px-4 py-2 pt-md-4 pb-md-5 text-center mb-3 me-2 shadow">
+                    <h4 class="text-uppercase text-muted">User Photo</h4>
+                    <div class="position-relative m-auto settingImage mb-3"
+                        [ngStyle]="{'background-image': 'url(' + selectedUserImgPath + ')'}">
+                        <input #userLogo type="file" id="companyLogoUpload" [disabled]="!isEditable" (change)="onFileChanged($event,'user')"
+                            style="display:none" accept="image/*" />
+                        <div class="camera-icon">
+                            <img src="assets/images/camera.png" alt="camera"  (click)="isEditable ? userLogo.click(): false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 bg-white px-2 px-md-5 py-3 shadow">
+            <form [formGroup]="profileForm" class="m-0 p-0" style="width:97%">
+                <div class="form-group mt-3">
+                    <div class="col">
+                        <label>First Name</label>
+                        <input type="text" matInput class="form-control" formControlName="firstName" [disabled]="!isEditable"
+                            placeholder="First Name">
+                    </div>
+                    <div class="col">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastName" placeholder="Last name" [disabled]="!isEditable">
+                    </div>
+                </div>
+                <div class="form-group d-flex flex-column flex-md-row">
+                    <div class="col me-md-2">
+                        <label for="">Personal Email</label>
+                        <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2"
+                            placeholder="User Email" formControlName="email" readonly>
+                    </div>
+                    <div class="col ms-md-2">
+                        <label for="">Personal Phone</label>
+                        <input matInput type="number" class="form-control" id="personalPhone" placeholder="User Phone" [disabled]="!isEditable"
+                            formControlName="phone">
+                    </div>
+                </div>
+                <div class="form-group mt-md-3">
+                    <label for="">Interest</label>
+                    <ng-select [items]="interests" bindLabel="industryName" placeholder="Interest Area" [disabled]="isEditable"
+                        [multiple]="true" formControlName="intrestAreaList" bindValue="industryId">
+                    </ng-select>
+                </div>
+                <div class="form-group mt-md-3">
+                    <label for="">Company</label>
+                    <ng-select [items]="companies" bindLabel="companyName" placeholder="Company Name" [disabled]="isEditable"
+                        [multiple]="true" formControlName="companyList" bindValue="companyId">
+                    </ng-select>
+                </div>
+
+                <div class="form-group d-flex my-5">
+                    <div class="flex-grow-1 text-center">
+                        <button class="btn btn-password w-75 mx-auto" (click)="openChangePasswordDialog()" [disabled]="!isEditable">Change
+                            Password</button>
+                    </div>
+                </div>
+                <div *ngIf="alertMsg.message"
+                    class="alert fade show d-flex justify-content-between align-items-center mt-2 p-2"
+                    [ngClass]="(alertMsg.type == 'danger')?'alert-danger': 'alert-success'" role="alert">
+                    <span>{{alertMsg.message}}</span>
+                    <button type="button" class="btn btn-default close" (click)="close()" data-dismiss="alert"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-8 text-center mt-3">
+            <button class="btn btn-secondary me-3" (click)="enableEdit()">Edit</button>
+            <button class="btn btn-dark btn-save" (click)="updateChanges()">Save Changes</button>
+        </div>
+    </div>
+</div>

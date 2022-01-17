@@ -1,0 +1,58 @@
+<div class="page-container">
+    <ngx-spinner></ngx-spinner>
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <h1 class="page-heading font-bold">Earn {{referalReward}} Points from your friend's referrals</h1>
+        </div>
+        <div class="col-md-12 p-0">
+
+        </div>
+        <div class="col-md-12 p-0">
+            <div class="card card1">
+                <h2>Share your unique referral code</h2>
+                <!-- <p>
+                    Please share your referral code with your friends and contact list. If anyone is going to join with
+                    your referral code then you both will be receiving {{referalReward}} points
+                </p> -->
+                <h2>
+                  Did you know referring family and friends to Brandfilliates can also earn you 10 points Each?
+                </h2>
+                <div class="d-flex justify-content-center align-item-center">
+                    <div class="code1">
+                        {{referalCode}}
+                    </div>
+                    <button class="btn btn-dark rounded-0" (click)="copyCode()">Copy</button>
+                </div>
+                <p *ngIf='showCopyState'>Code Copied</p>
+            </div>
+        </div>
+        <h4 class="text-center mt-3">Or Invite by Email</h4>
+        <div class="col-md-12 p-0">
+            <div class="card py-4 py-md-5 px-3 px-md-5">
+                <form [formGroup]="referForm">
+                    <div class="form-group mb-4">
+                        <input type="text" matInput class="form-control" id="" formControlName="email"
+                            placeholder="Enter Email Addresses (comma separated)">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="reason" id="reason" formControlName="description" rows="6" class="w-100 p-2"
+                            placeholder="Message"></textarea>
+                    </div>
+                    <div *ngIf="alertMsg.message"
+                        class="alert fade show d-flex justify-content-between align-items-center mt-2 p-2"
+                        [ngClass]="(alertMsg.type == 'danger')?'alert-danger': 'alert-success'" role="alert">
+                        <span>{{alertMsg.message}}</span>
+                        <button type="button" class="btn btn-default close" (click)="close()" data-dismiss="alert"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn app-btn" (click)="sendInvitation()" [disabled]="!referForm.valid">Send
+                            Invitation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

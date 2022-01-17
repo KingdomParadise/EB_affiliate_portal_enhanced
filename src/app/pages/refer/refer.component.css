@@ -1,0 +1,72 @@
+.page-container{
+    padding:1.5rem;
+}
+.page-heading{
+    font-weight: 500;
+}
+.bg-white{
+    background-color: white;
+}
+.card1{
+    border-top:12px solid #a43da1;
+    border-radius: 0;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    text-align: center;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.code1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    font-weight: bold;
+}
+.app-btn{
+    background-color: #a63da1;
+    color:white;
+    text-transform: uppercase;
+    padding-right: 4rem;
+    padding-left: 4rem;
+}
+input{
+    margin:0 auto;
+    border:none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    border-radius: 0;
+    color: black;
+    text-align: left;
+    font-size: 12px;
+}
+input:focus{
+    background-color: transparent;
+    border:none;
+    box-shadow: none;
+    border-bottom: 1px solid gray;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+input::placeholder {
+    color: #040404;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: left;
+    font-size: 12px;
+}
+textarea::placeholder {
+    color: #040404;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: left;
+    font-size: 12px;
+}
+@media only screen and (min-device-width: 768px){
+    .page-container{
+        padding: 1.5rem 4rem;
+    }
+}

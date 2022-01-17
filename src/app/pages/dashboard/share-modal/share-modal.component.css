@@ -1,0 +1,22 @@
+.app-btn{
+    background-color: #8c37a3;
+    color:white;
+    text-transform: uppercase;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+label{
+    opacity: .6;
+    text-transform: uppercase;
+}
+#fb-icon{
+    bottom: 1px;
+    width: 20px;
+    position: relative;
+}
+@media only screen and (min-device-width: 768px){
+    .app-btn{
+        padding-right: 4rem;
+        padding-left: 4rem;
+    }
+}

@@ -1,0 +1,215 @@
+button:focus{
+    outline:none;
+    border:0;
+    box-shadow: none;
+}
+.main-color{
+    color: #a63da1;
+}
+.header{
+    background-color: #f3f2f2;
+    padding:1.5rem 1.3rem .75rem 1.3rem;
+    text-align: center;
+}
+#header-logo{
+    width:50%;
+}
+#mobile-dealers-text{
+    color:white;
+    position: absolute;
+    left:48%;
+    top:8px;
+}
+#mobile-logo{
+    width: 40px;
+}
+#center-logo{
+    width:120px;
+}
+.btn{
+    border-radius: 0;
+    text-transform: uppercase;
+}
+.btn-reg{
+    font-weight: 600;
+    font-size: 16px;
+}
+.btn-login{
+    background-color: #a63da1;
+    padding:.2rem 3rem;
+    outline: none;
+    border:0;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.btn-back{
+    font-size: 18px;
+    background-color: #c1c1c1;
+    text-transform: uppercase;
+    margin-right: 8px;
+    color:white;
+    padding: 0.375rem 2rem;
+}
+.stepperImage{
+    width:50%;
+}
+.bold{
+    font-weight: 600;
+}
+.form-group{
+    margin-bottom: 1rem;
+}
+input{
+    margin:0 auto;
+    border:none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    border-radius: 0;
+    color: black;
+    text-align: center;
+    font-size: 12px;
+}
+
+input:focus{
+    background-color: transparent;
+    border:none;
+    box-shadow: none;
+    border-bottom: 1px solid gray;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+input::placeholder {
+    color: #040404;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    font-size: 12px;
+}
+#otpBox{
+    width:90%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    padding: 1rem 0;
+}
+#center-logo{
+    width:100px;
+    margin:18px auto;
+}
+#footer{
+    width: 100%;
+    background-color: black;
+    padding:1rem;
+    position: fixed;
+    bottom:0
+}
+.text2{
+    font-style: italic;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-left: 10px;
+    
+}
+.uploadIcon{
+    width:80%;
+}
+.ng-dirty.ng-invalid {
+    border-color: red;
+}
+.ng-touched.ng-invalid {
+    border-color: red !important;
+}
+#mobile-login-img{
+    position: absolute;
+    right:20px;
+    top: 30px;
+    width: 30px;
+}
+@media only screen and (min-device-width: 768px){
+    .header{
+        padding:.5rem 5rem;
+        text-align: left;
+    }
+    #footer{
+        width: 100%;
+        padding:.5rem 5rem;
+        position: absolute;
+        bottom:0;
+    }
+    .form-group{
+        margin-bottom: 18px;
+    }
+    .btn-back{
+        padding:.25rem 3rem;
+    }
+    .uploadIcon{
+        width:100%;
+    }
+    #otpBox{
+        width:30%;
+        margin: 0 auto;
+        padding-bottom: 40px;
+        padding: 2rem 0;
+    }
+    #profileBox{
+        width: 80%;
+        text-align: center;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .form-group{
+        margin-bottom: 1rem;
+    }
+    .btn-back{
+        margin-right: 6px;
+    }
+ }
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .form-group{
+        margin-bottom: 2rem;
+    }
+    .btn-back{
+        margin-right: 6px;
+        padding: 0.375rem 3rem;
+    }
+ }
+/* XXX-Large devices (larger desktops, 1800px and up) */
+@media (min-width: 1800px) {
+    .form-group{
+        margin-bottom: 3rem;
+    }
+    input{
+        font-size: 18px;
+    }
+    input::placeholder {
+        font-size: 18px;
+    }
+    .btn-back{
+        margin-right: 8px;
+        padding: 0.375rem 5rem;
+    }
+    #center-logo{
+        width:100px;
+        margin-top:30px;
+        margin-bottom: 50px;
+    }
+ }
+
+ /* for iphoneX */
+ @media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) { 
+        #center-logo{
+            width:50%;
+            margin-top:30px;
+            margin-bottom: 50px;
+        }
+    }
+
+
+

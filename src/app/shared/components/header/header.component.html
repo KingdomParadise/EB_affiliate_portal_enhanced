@@ -1,0 +1,70 @@
+<mat-toolbar style="background-color: white; color: black; width: 100%; padding: 0px;height: 10vh;border-bottom: 1px solid #e6e6e6;">
+    <mat-toolbar-row style="width: 100%;margin:auto;">
+        <div class="row w-100 d-none d-md-block">
+            <div class="col-md-12 p-0">
+                <div class="header d-none d-md-flex flex-column flex-md-row justify-content-between align-item-center">
+                    <div class="d-flex my-auto">
+                        <div class="my-auto d-none d-md-block">
+                            <img src="assets/images/HorizontalBA.png" alt="logo" id="header-logo"> <span
+                                class="text2">Affiliates</span>
+                        </div>
+                        <button class="me-2 d-block d-md-none" mat-icon-button style="color: rgb(55, 10, 160);" (click)="toggleSideBar()">
+                            <mat-icon>menu</mat-icon>
+                        </button>
+                    </div>
+
+                    <div class="my-auto d-none d-md-flex">
+                        <button class="btn btn-link headerLink my-auto" (click)="goToTraining()">Contact Us</button>
+                        <button class="btn btn-link headerLink" (click)="goToTraining()">Support</button>
+
+                        <div class="my-auto">
+                            <a href="https://www.facebook.com/" target="_blank">
+                                <img src="assets/images/fb-dark.png" alt="fb" class="headerIcon">
+                            </a>
+                            <a href="https://www.linkedin.com/" target="_blank">
+                                <img src="assets/images/linkedIn-dark.png" alt="linkedIn" class="headerIcon">
+                            </a>
+                            <a style="position: relative;" [matMenuTriggerFor]="adminActions"
+                                (menuClosed)="menuClosed()" (menuOpened)="menuOpened()">
+                                <img src="assets/images/Bell.png" alt="linkedIn" class="headerIcon">
+                                <div class="red-dot" *ngIf="isNewNotification">
+
+                                </div>
+                            </a>
+
+                            <mat-menu #adminActions="matMenu" xPosition="before" class="p-0">
+                                <div id="notificationHead">
+                                    <h3 class="mb-0">Notifications</h3>
+                                </div>
+                                <div *ngFor="let notification of notificationList" class="px-2 py-2">
+                                    <div class='d-flex'>
+                                        <img [src]="notification.fromUserImage" alt="user Image" class="notf-image">
+                                        <p class="mb-0">{{notification.message}}</p>
+                                    </div>
+                                    <p class="timeText">{{notification.createTs | date: 'short'}}</p>
+                                    <hr />
+                                </div>
+                            </mat-menu>
+                        </div>
+
+                        <div id="headerProfileImg">
+                            <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt=""
+                                style="width:50px;height:50px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex d-md-none justify-content-center my-3 w-100" id="header-mobile">
+            <div class="d-flex flex-row d-md-none text-center mt-2">
+                <button id="mobileMenu" mat-icon-button style="color: rgb(55, 10, 160);" (click)="toggleSideBar()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <div>
+                    <img src="assets/images/main-logo-mobile.png" alt="main-logo" id="mobile-logo">
+
+                </div>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
