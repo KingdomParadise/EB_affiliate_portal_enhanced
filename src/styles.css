@@ -22,3 +22,6 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield !important;
 }
+.form-control{
+  padding-left:0 !important
+}

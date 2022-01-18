@@ -1,4 +1,301 @@
-<div class="container-fluid">
+<div class="container-fluid bg-color">
+  <div class="row main-content">
+    <div class="col-md-6 ps-4">
+      <div class="row mt-3">
+        <div class="my-auto d-none d-md-block">
+          <img src="assets/images/HorizontalBA.png" alt="logo" id="header-logo">
+          <div class=" d-inline-block ms-5">
+            <button class="btn btn-link aff-btn">For Affiliates</button>
+            <button class="btn btn-link deal-btn">For Dealers</button>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:20%">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-8">
+          <h1 class="main-text">
+            <p class="mb-0">BRANDFILIATE</p>
+            <p class="mb-0">where <span class="main-color">Affiliates</span></p>
+            <i>engage</i> and <i>earn</i>
+          </h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nam aliquet nibh et lacus scelerisque, sed scelerisque tellus rutrum. Nunc in iaculis elit. </p>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end">
+      <div id="profileBox" class="px-3">
+        <mat-stepper [linear]="isLinear" #stepper linear labelPosition="bottom"
+          class="pb-5 pb-md-0 {{ 'last-edited-step-' + stepper.selectedIndex }}"
+          (selectionChange)="onStepChange($event)">
+
+          <mat-step [stepControl]="regForm1">
+            <form [formGroup]="regForm1" class="mt-3 mt-md-1">
+              <ng-template matStepLabel>Login Details</ng-template>
+              <div>
+                <h1 class="main-color font-weight-bold welcomeText">Sign Up</h1>
+                <p class="mb-2">Existing User? <span class="main-color">Login Here</span></p>
+              </div>
+              <div class="form-group mt-md-3">
+                <label>E-mail</label>
+                <input type="text" matInput class="form-control" id="exampleFormControlInput1" formControlName="email">
+              </div>
+              <div class="form-group position-relative">
+                <label>Password</label>
+                <input [type]="hide ? 'password' : 'text'" matInput class="form-control" id="exampleFormControlInput1"
+                  formControlName="password">
+                <mat-icon style="position: absolute;right: 4px;top:20px" matSuffix (click)="hide = !hide">
+                  {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </div>
+              <div class="form-group position-relative">
+                <label>Confirm Password</label>
+                <input [type]="hide ? 'password' : 'text'" matInput class="form-control" id="exampleFormControlInput1"
+                  formControlName="cnfPassword">
+                <mat-icon style="position: absolute;right: 4px;top:20px" matSuffix (click)="hide = !hide">
+                  {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </div>
+
+
+              <div class="form-group mt-3">
+                <p class="mb-0">Password must have the following: </p>
+                <ul>
+                  <li>
+                    length of 8 or more character
+                  </li>
+                  <li>
+                    one lowercase letter
+                  </li>
+                  <li>
+                    one uppercase letter
+                  </li>
+                  <li>
+                    one numerical
+                  </li>
+                  <li>one special character</li>
+                </ul>
+              </div>
+              <div class="d-flex mt-4 text-right">
+                <button mat-button matStepperNext class="btn btn-outline-dark mb-5 mb-md-0 ms-auto"
+                  [disabled]="(!regForm1.valid)">Next</button>
+              </div>
+              <div class="position-relative">
+                <hr />
+                <div id="or">OR</div>
+              </div>
+              <div class="d-grid">
+                <button mat-button class="btn btn-social" (click)="logInWithGoogle()">
+                  Continue with Google
+                  <!-- <img src="assets/images/google-icon.png" alt="fb" style="width:20px;margin-left:4px"> -->
+                </button>
+              </div>
+              <div class="d-grid">
+                <button mat-button class="btn btn-social" (click)="logInWithFb()">
+                  Continue with facebook
+                  <!-- <img src="assets/images/fb-color.png" alt="fb" style="width:20px;margin-left:4px"> -->
+                </button>
+              </div>
+              <div>
+                <p class="text-center mt-1">Are you a dealer? <a href="#">Register as a dealer</a></p>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="regForm2" [editable]="isEditable" disabled [completed]="isCompleted2">
+            <form [formGroup]="regForm2" class="mb-5 mb-md-0">
+              <ng-template matStepLabel>Account Information</ng-template>
+              <div>
+                <h1 class="main-color font-weight-bold welcomeText">Personal Info</h1>
+              </div>
+              <div class="form-group d-flex flex-column flex-md-row">
+                <div class="col me-md-2">
+                  <label>First Name</label>
+                  <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city"
+                     onkeypress="return /[a-z]/i.test(event.key)"
+                    formControlName="firstName">
+                </div>
+                <div class="col ms-md-2">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" id="companyPhone"
+                    onkeypress="return /[a-z]/i.test(event.key)" formControlName="lastName">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col">
+                    <label for="country">Country</label>
+                    <ng-select [items]="countries"
+                        bindLabel="countryName"
+                        formControlName="countryId"
+                        (change)="onCountrySelect($event)"
+                        bindValue="countryId">
+                    </ng-select>
+                </div>
+                <div class="col">
+                  <label for="state">Region</label>
+                  <ng-select [items]="states" bindLabel="stateName"
+                      formControlName="stateId"
+                      bindValue="stateId">
+                  </ng-select>
+              </div>
+              <div class="form-group d-flex flex-column flex-md-row mt-3">
+                <div class="col me-md-2">
+                  <label>Phone</label>
+                  <input matInput type="number" class="form-control" id="personalPhone"
+                  formControlName="phone">
+                </div>
+                <div class="col ms-md-2">
+                  <label>Referal Code (optional)</label>
+                  <input matInput type="text" class="form-control"
+                  formControlName="referalCode">
+                </div>
+              </div>
+
+            </div>
+              <!-- <div class="form-group mt-md-3">
+                <ng-select [items]="companies" bindLabel="companyName" placeholder="Company Name" [multiple]="true"
+                  formControlName="companyList" bindValue="companyId">
+                </ng-select>
+              </div>
+              <div class="form-group mt-md-3">
+                <ng-select [items]="interests" bindLabel="industryName" placeholder="Interest Area" [multiple]="true"
+                  formControlName="intrestAreaList" bindValue="industryId">
+                </ng-select>
+              </div> -->
+              <!-- <div class="form-group mt-md-3">
+                <textarea name="reason" formControlName="platformjoinReason" id="reason" rows="6" class="w-100 p-2 mt-1"
+                  placeholder="Why Did You Join This Platform?"></textarea>
+              </div> -->
+              <div *ngIf="alertMsg.message"
+                class="alert fade show d-flex justify-content-between align-items-center mt-2 p-2"
+                [ngClass]="(alertMsg.type == 'danger')?'alert-danger': 'alert-success'" role="alert">
+                <span>{{alertMsg.message}}</span>
+                <button type="button" class="btn btn-default close" (click)="close()" data-dismiss="alert"
+                  aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="d-flex mt-5 justify-content-between">
+                <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
+                <button mat-button class="btn btn-outline-dark" matStepperNext [disabled]="!regForm2.valid"
+                  >Next</button>
+                <!-- <button mat-button class="btn btn-default btn-back px-3" (click)="submit()">Skip</button> -->
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="regForm3" [editable]="isEditable" [completed]="isCompleted3">
+            <form [formGroup]="regForm3" class="mt-md-1">
+              <ng-template matStepLabel>Company Affiliation <br/>and Interests</ng-template>
+              <div>
+                <h1 class="main-color font-weight-bold welcomeText">Affiliation</h1>
+              </div>
+              <div class="form-group d-flex flex-column">
+                <div class="col me-md-2">
+                  <label>Companies</label>
+                  <p style="font-size: 10px;">Add one or more companies to affiliate with</p>
+                  <ng-select [items]="companies" bindLabel="companyName" placeholder="Company Name" [multiple]="true"
+                    formControlName="companyList" bindValue="companyId">
+                  </ng-select>
+                </div>
+                <div>
+                  <hr/>
+                </div>
+
+                <div class="col ms-md-2">
+                  <label>Interests</label>
+                  <ng-select [items]="interests" bindLabel="industryName" placeholder="Interest Area" [multiple]="true"
+                    formControlName="intrestAreaList" bindValue="industryId">
+                </ng-select>
+                </div>
+              </div>
+              <div class="d-flex mt-5 justify-content-between">
+                <div>
+                  <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
+                </div>
+
+                <div class='d-flex align-items-center'>
+                  <button class="btn btn-link me-2 my-auto" style="text-decoration: none;"><i>Skip</i></button>
+                  <button mat-button matStepperNext class="btn btn-dark"
+                  [disabled]="!regForm3.valid">Next</button>
+                </div>
+
+              </div>
+              <div *ngIf="alertMsg.message"
+                class="alert fade show d-flex justify-content-between align-items-center mt-2 p-2"
+                [ngClass]="(alertMsg.type == 'danger')?'alert-danger': 'alert-success'" role="alert">
+                <span>{{alertMsg.message}}</span>
+                <button type="button" class="btn btn-default close" (click)="close()" data-dismiss="alert"
+                  aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Account verification</ng-template>
+            <div>
+              <div *ngIf="verificationState ==1">
+                <h1 class="main-color font-weight-bold welcomeText">One Time Code Verification</h1>
+                <p>An e-mail with a one time code will be sent after you agree to the following terms and conditions:</p>
+              </div>
+              <div>
+                <mat-checkbox class="example-margin" [(ngModel)]="agreed">
+                  I have agreed and read the <a href="#">Terms and Conditions</a>
+                </mat-checkbox>
+              </div>
+              <div class="d-flex mt-5 justify-content-between">
+                <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
+                  <button mat-button class="btn btn-outline-dark" (click)="verifyOtp1()"
+                  >Send</button>
+
+              </div>
+            </div>
+            <div *ngIf="verificationState ==2">
+              <div>
+                <h1 class="main-color font-weight-bold welcomeText">Verification Code</h1>
+                <p>Enter the one time code verification sent to the provided e-mail address:</p>
+              </div>
+              <div>
+                <input id="partitioned" type="text" maxlength="4" />
+              </div>
+              <div>
+                <p>
+                  Didn’t receive a code?
+                 <a href="#">Resend here</a>
+                </p>
+              </div>
+              <div class="d-flex mt-5 justify-content-between">
+                <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
+                  <button mat-button matStepperNext class="btn btn-dark flex-grow-1 mt-4"
+                  >Send</button>
+
+              </div>
+            </div>
+          </mat-step>
+        </mat-stepper>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="footer">
+      <div style="width:200px;margin-left: auto;">
+        <h2 class="mb-1 mt-2">Contact Us</h2>
+        <p class="mb-0">
+          <a href="brandfiliate.com">brandfiliate.com</a>
+        </p>
+        <p class="mb-0">support.brandfiliate@info.com</p>
+        <p>+1 777-777-7777</p>
+        <div class="mb-0 d-flex justify-content-end">
+          <img src="assets/images/fb.png" alt="fb" class="me-2">
+          <img src="assets/images/linkedin.png" alt="linked">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container-fluid">
   <section>
     <div class="row">
       <div class="col-md-12 p-0">
@@ -28,16 +325,10 @@
     </div>
 
     <div class="row mt-md-4 mt-xl-4 mt-xxl-5 page-margin">
-      <!-- <div class="col-md-6 ps-0 d-none d-md-block text-center">
-                <img [src]="currentStepperImage" alt="main image"
-                    [ngStyle]="{'width': (stepper.selectedIndex ==1 || stepper.selectedIndex ==2) ? '54%' : '50%'}"
-                    class="img-fluid stepperImage">
-            </div> -->
       <div class="col-md-6 ps-0 d-none d-md-block text-center">
         <div class="bg-div" [ngStyle]="{'background-image': 'url(' + currentStepperImage + ')'}">
 
         </div>
-        <!-- <img [src]="currentStepperImage" alt="main image" [ngStyle]="{'width': (stepper.selectedIndex ==1 || stepper.selectedIndex ==2) ? '54%' : '50%'}" class="img-fluid stepperImage"> -->
       </div>
       <div class="col-md-6">
         <mat-stepper [linear]="isLinear" #stepper linear
@@ -149,7 +440,6 @@
                 <input type="number" class="form-control" id="otpNumber" formControlName="otpNumber">
               </div>
               <div class="d-flex mt-5">
-                <!-- <button mat-button matStepperPrevious class="btn btn-default btn-back">Back</button> -->
                 <button mat-button (click)="verifyOtp()" class="btn btn-dark flex-grow-1 mt-4"
                   [disabled]="!regForm3.valid">SUBMIT</button>
               </div>
@@ -186,4 +476,4 @@
       </div>
     </div>
   </section>
-</div>
+</div> -->

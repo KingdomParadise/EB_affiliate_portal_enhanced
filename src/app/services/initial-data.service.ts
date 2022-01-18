@@ -31,6 +31,20 @@ export class InitialDataService {
         catchError(this.handleError)
       )
   }
+  getCountries(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/dealer/getCountryCode')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+  getStates(id: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/dealer/getStates/countryId/' + id)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
   checkUsernameExist(username: string) {
     return this.http.get<any>(this.apiUrl + '/affiliate/checkUsernameExist/userName/' + username)
       .pipe(

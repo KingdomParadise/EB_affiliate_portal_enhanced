@@ -5,6 +5,8 @@ import { AffiliateLoginComponent } from './pages/affiliate-login/affiliate-login
 
 import { AffiliateRegistrationComponent } from './pages/affiliate-registration/affiliate-registration.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
+import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
 import { ReferComponent } from './pages/refer/refer.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { TrainingComponent } from './pages/training/training.component';
@@ -21,6 +23,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: AffiliateLoginComponent,
+  },
+  {
+    path: 'enter-email',
+    component: EnterEmailComponent,
+  },
+  {
+    path: 'enter-phone',
+    component: EnterPhoneComponent,
   },
   {
     path: 'verify',

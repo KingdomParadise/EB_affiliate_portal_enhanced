@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import {} from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 @Component({
   selector: 'app-affiliate-registration',
   templateUrl: './affiliate-registration.component.html',
@@ -22,6 +23,8 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
   interests = [];
   isLinear = true;
   hide = true;
+  countries = [];
+  states = [];
   currentStepperImage= 'assets/images/form1.png';
   stepperImages = [
     {
@@ -40,17 +43,22 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     message: ''
   };
   usernameValid = 0;
+  agreed: boolean = false;
+  verificationState: number = 1;
   @ViewChild(MatHorizontalStepper) stepper: MatHorizontalStepper;
   constructor(
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
     private router: Router,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private authService: SocialAuthService
   ) { }
 
   ngOnInit(): void {
-
+    this.dataService.getCountries().subscribe(data => {
+      this.countries = data.response.countryList;
+    });
     this.dataService.getCompanyList().subscribe(data => {
       this.companies = data.response.companyList;
     });
@@ -58,17 +66,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
       this.interests = data.response.intrestList;
     });
     this.regForm1 = this._formBuilder.group({
-      userName: [null, Validators.required],
-      firstName: ['', Validators.required],
-      lastName: [null, Validators.required],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-        ],
-      ],
+      email: [null, Validators.required],
       password: [
         '',
         [
@@ -76,18 +74,58 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
           Validators.pattern(
             '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
           ),
-        ]
+        ],
       ],
+      cnfPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+          ),
+        ],
+      ],
+    });
+    this.regForm2 = this._formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      countryId: [null, Validators.required],
+      stateId: [null, Validators.required],
       phone: ['', Validators.required],
       referalCode: [''],
     });
-    this.regForm2 = this._formBuilder.group({
+    // this.regForm1 = this._formBuilder.group({
+    //   userName: [null, Validators.required],
+    //   firstName: ['', Validators.required],
+    //   lastName: [null, Validators.required],
+    //   email: [
+    //     '',
+    //     [
+    //       Validators.required,
+    //       Validators.email,
+    //       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+    //     ],
+    //   ],
+    //   password: [
+    //     '',
+    //     [
+    //       Validators.required,
+    //       Validators.pattern(
+    //         '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+    //       ),
+    //     ]
+    //   ],
+    //   phone: ['', Validators.required],
+    //   referalCode: [''],
+    // });
+    // this.regForm2 = this._formBuilder.group({
+    //   companyList: [''],
+    //   intrestAreaList: [''],
+    //   platformjoinReason: ['']
+    // });
+    this.regForm3 = this._formBuilder.group({
       companyList: [''],
       intrestAreaList: [''],
-      platformjoinReason: ['']
-    });
-    this.regForm3 = this._formBuilder.group({
-      otpNumber: [1111, Validators.required]
     });
     // if (history.state.affiliateId) {
     //   this.isLinear = false;
@@ -117,6 +155,13 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.stepper._getIndicatorType = () => 'none';
 
+  }
+  onCountrySelect(country:any){
+    if(country){
+      this.dataService.getStates(country.countryId).subscribe(data =>{
+        this.states = data.response.stateList;
+      })
+    }
   }
   onUsernameEnter(eve:any){
     let username = eve.target.value;
@@ -182,5 +227,14 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
         }
       });
     }
+  }
+  verifyOtp1(){
+    this.verificationState =2;
+  }
+  logInWithFb() {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+  logInWithGoogle() {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 }

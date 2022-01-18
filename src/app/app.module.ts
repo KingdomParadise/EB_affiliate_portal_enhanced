@@ -19,6 +19,7 @@ import { NgbAlertModule, NgbDropdown, NgbDropdownModule } from '@ng-bootstrap/ng
 import { TokenInterceptor } from './services/tokenInterceptor';
 import { AgmCoreModule } from '@agm/core';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -46,6 +47,8 @@ import { ChangePasswordModalComponent } from './pages/settings/change-password-m
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
+import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     SettingsComponent,
     ChangePasswordModalComponent,
     WalletComponent,
+    EnterEmailComponent,
+    EnterPhoneComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatPaginatorModule,
     MatCheckboxModule,
     MatIconModule,
+    MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatMenuModule,
     NgbAlertModule,

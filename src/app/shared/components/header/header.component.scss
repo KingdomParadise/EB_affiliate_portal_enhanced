@@ -1,5 +1,5 @@
 .header{
-    background-color: white;
+    background-color: #c4c4c4;
     padding:1.5rem 1.3rem .75rem 1.3rem;
     text-align: center;
 }
@@ -14,6 +14,7 @@
     color:#a63da1;
     text-transform: uppercase;
     margin-right: 10px;
+    text-decoration: none;
 }
 .red-dot{
     width:10px;
@@ -45,6 +46,9 @@
 }
 ::ng-deep .mat-menu-item{
     height: unset !important;
+}
+.mat-toolbar-row, .mat-toolbar-single-row{
+  padding:0
 }
 #notificationHead{
     background-color:#953aa2;
@@ -99,15 +103,15 @@
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
-    
+@media (min-width: 1200px) {
+
  }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
-   
+
  }
 /* XXX-Large devices (larger desktops, 1800px and up) */
 @media (min-width: 1800px) {
-    
+
  }
