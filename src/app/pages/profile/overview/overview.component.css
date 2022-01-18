@@ -6,3 +6,7 @@
   outline: none;
   box-shadow: none;
 }
+.point{
+  font-size: 32px;
+  font-weight: 500;
+}
