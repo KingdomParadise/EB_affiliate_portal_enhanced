@@ -16,14 +16,18 @@
                     <div class="my-auto d-none d-md-flex">
                         <!-- <button class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</button>
                         <button class="btn btn-link headerLink" (click)="goToTraining()">Support</button> -->
-                        <button class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</button>
+                        <a class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</a>
                         <div class="d-flex align-items-center btn btn-link headerLink" (click)="goToTraining()">
                           <div id="headerProfileImg">
-                            <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="" style="width:50px;height:50px;margin-right: 4px;">
+                            <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="" style="width:50px;height:50px;margin-right: 6px;">
                           </div>
-                          User
+                          <a class="headerLink" routerLinkActive="router-active1" routerLink="/profile">User</a>
                         </div>
-                        <button class="btn btn-link headerLink" (click)="goToTraining()">Wallet</button>
+                        <button class="btn btn-link headerLink" (click)="goToTraining()">
+                          <div id="" class="d-inline-block">
+                            <img src="assets/images/wallet-light.png" alt="" style="width:30px;height:30px;margin-right: 2px;">
+                          </div>
+                          Wallet</button>
                         <button class="btn btn-link headerLink" (click)="goToTraining()">Logout</button>
                         <div class="my-auto">
                           <!-- <a href="https://www.facebook.com/" target="_blank">
@@ -64,12 +68,12 @@
             </div>
             <div class="col-md-12 p-0" style="background-color: #d2d2d2;">
               <div class="d-flex justify-content-between px-5 mx-4">
-                <a class="headerLink" href="">Overview</a>
-                <a href="">Outreach</a>
-                <a href="">Company Affiliations</a>
-                <a href="">Notifications</a>
-                <a href="">Points</a>
-                <a href="">Settings</a>
+                <a class="headerLink2" routerLinkActive="router-active" routerLink="/dashboard">Overview</a>
+                <a class="headerLink2" routerLinkActive="router-active" routerLink="/dashboard/outreach">Outreach</a>
+                <a class="headerLink2" routerLinkActive="router-active" routerLink="/dashboard/affiliations">Company Affiliations</a>
+                <a class="headerLink2" href="">Notifications</a>
+                <a class="headerLink2" href="">Points</a>
+                <a class="headerLink2" href="">Settings</a>
               </div>
             </div>
         </div>

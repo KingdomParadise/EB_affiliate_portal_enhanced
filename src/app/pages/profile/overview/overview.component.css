@@ -1,0 +1,8 @@
+.btn-link{
+  text-decoration: none;
+  color: #555555;
+}
+.btn-link:focus{
+  outline: none;
+  box-shadow: none;
+}

@@ -49,6 +49,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
 import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { OverviewComponent } from './pages/profile/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
     WalletComponent,
     EnterEmailComponent,
     EnterPhoneComponent,
+    ProfileComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,

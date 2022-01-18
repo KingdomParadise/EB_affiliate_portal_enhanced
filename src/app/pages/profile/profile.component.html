@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 p-0 bg-header top-strip">
+
+    </div>
+
+  </div>
+</div>
+<div class="container" style="margin-top:-50px">
+  <div class="row">
+    <div class="col-md-12 profile-header">
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+          <div id="headerProfileImg">
+            <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="">
+          </div>
+          <div class="ms-2">
+            <h2>{{userData.firstName}} {{userData.lastName}}</h2>
+            <h4 class="mb-0">USA, California</h4>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end pt-5 mt-2">
+          <div class='d-flex flex-column justify-content-center align-items-center'>
+            <span class="point mb-2">6</span>
+            <span>Active Links</span>
+          </div>
+          <div class='d-flex flex-column justify-content-center align-items-center ms-3'>
+            <span class="point mb-2">5000</span>
+            <span>Points</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

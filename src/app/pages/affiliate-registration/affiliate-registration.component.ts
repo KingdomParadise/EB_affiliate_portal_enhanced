@@ -183,7 +183,8 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     this.alertMsg.message = ''
   }
   submit(){
-    let formObj = {...this.regForm1.value,...this.regForm2.value};
+    delete this.regForm1.value.cnfPassword;
+    let formObj = {...this.regForm1.value,...this.regForm2.value, ...this.regForm3.value};
     if (this.regForm2.valid && this.regForm1.valid) {
       if(history.state.affiliateId){
         formObj.affiliateId = history.state.affiliateId

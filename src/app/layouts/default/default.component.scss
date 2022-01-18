@@ -10,7 +10,7 @@ mat-drawer{
     display: inline-flex;
     background-image: url('/assets/images/sidebar-bg.png') !important;
     background-size: cover !important;
-    
+
 }
 
 mat-drawer-container{
@@ -18,4 +18,10 @@ mat-drawer-container{
  background: whitesmoke;
  color: black;
 }
-
+#footer{
+  width: 100%;
+  background-color: #9e9e9e;
+  padding-right: 210px;
+  color: white;
+  padding-bottom: 4px;
+}

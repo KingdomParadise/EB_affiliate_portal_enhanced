@@ -39,7 +39,7 @@
               <ng-template matStepLabel>Login Details</ng-template>
               <div>
                 <h1 class="main-color font-weight-bold welcomeText">Sign Up</h1>
-                <p class="mb-2">Existing User? <span class="main-color">Login Here</span></p>
+                <p class="mb-2">Existing User? <a class="main-color text-decoration-none" routerLink="/login">Login Here</a></p>
               </div>
               <div class="form-group mt-md-3">
                 <label>E-mail</label>
@@ -217,8 +217,8 @@
 
                 <div class='d-flex align-items-center'>
                   <button class="btn btn-link me-2 my-auto" style="text-decoration: none;"><i>Skip</i></button>
-                  <button mat-button matStepperNext class="btn btn-dark"
-                  [disabled]="!regForm3.valid">Next</button>
+                  <button mat-button class="btn btn-dark"
+                  [disabled]="!regForm3.valid" (click)="submit()">Next</button>
                 </div>
 
               </div>
@@ -236,7 +236,7 @@
           <mat-step>
             <ng-template matStepLabel>Account verification</ng-template>
             <div>
-              <div *ngIf="verificationState ==1">
+              <div *ngIf="verificationState === 1">
                 <h1 class="main-color font-weight-bold welcomeText">One Time Code Verification</h1>
                 <p>An e-mail with a one time code will be sent after you agree to the following terms and conditions:</p>
               </div>
@@ -252,7 +252,7 @@
 
               </div>
             </div>
-            <div *ngIf="verificationState ==2">
+            <div *ngIf="verificationState === 2">
               <div>
                 <h1 class="main-color font-weight-bold welcomeText">Verification Code</h1>
                 <p>Enter the one time code verification sent to the provided e-mail address:</p>
