@@ -51,6 +51,7 @@ import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
 import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OverviewComponent } from './pages/profile/overview/overview.component';
+import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { OverviewComponent } from './pages/profile/overview/overview.component';
     EnterPhoneComponent,
     ProfileComponent,
     OverviewComponent,
+    OutreachComponent,
   ],
   imports: [
     BrowserModule,

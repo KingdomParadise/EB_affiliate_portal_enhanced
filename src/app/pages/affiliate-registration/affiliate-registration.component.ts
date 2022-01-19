@@ -217,7 +217,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
           localStorage.setItem('referalCode', res.response.referalCode);
           localStorage.setItem('referalReward', res.response.referalReward);
           localStorage.setItem('userData', JSON.stringify(res.response));
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/profile/overview');
         }
         else if (res.responseCode == -1) {
           this.alertMsg.type = 'danger';

@@ -1,11 +1,14 @@
 .bg-header{
   background-color: #C4C4C4;
+  background-image: url('/assets/image/BACKGROUNDS/top-header.png');
+  background-position: center;
+  background-size: cover;
 }
 .top-strip{
   height: 80px;
 }
 .profile-header{
-  height: 100px;
+  height: 120px;
 }
 #headerProfileImg img{
   width: 100px;
@@ -17,3 +20,6 @@
   font-weight: bold;
 }
 
+.main-color{
+  color: #a63da1;
+}

@@ -65,7 +65,7 @@ export class AffiliateLoginComponent implements OnInit {
               localStorage.setItem('referalCode', res.response.referalCode);
               localStorage.setItem('referalReward', res.response.referalReward);
               localStorage.setItem('userData', JSON.stringify(res.response));
-              this.router.navigateByUrl('/dashboard', { state: { affiliateId: res.response.affiliateId } });
+              this.router.navigateByUrl('/profile/overview', { state: { affiliateId: res.response.affiliateId } });
             }
           }
 
@@ -100,7 +100,7 @@ export class AffiliateLoginComponent implements OnInit {
             localStorage.setItem('referalCode', res.response.referalCode);
             localStorage.setItem('referalReward', res.response.referalReward);
             localStorage.setItem('userData', JSON.stringify(res.response));
-            this.router.navigateByUrl('/dashboard', { state: { affiliateId: res.response.affiliateId } });
+            this.router.navigateByUrl('/profile/overview', { state: { affiliateId: res.response.affiliateId } });
           }
         } else {
           this.alertMsg.type = 'danger';

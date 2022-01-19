@@ -10,3 +10,39 @@
   font-size: 32px;
   font-weight: 500;
 }
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: none;
+  border-radius: 0;
+}
+.badge{
+  background-color: #a63da1;
+  color: white;
+  border-radius: 6px;
+  display: inline-flex;
+  padding: 4px 10px;
+  position: relative;
+  bottom:2px;
+  margin-left: 3px;
+}
+.redDot{
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: red;
+}
+#pointsTable td{
+  vertical-align: middle;
+}
+
+#pointsTable img{
+  width:60px;
+}
+#pointsTable tr{
+  border-bottom: 1px solid #c2c2c2;
+  padding:4px 8px;
+}
+.btn-app{
+  background-color:#a63da1;
+  color:white
+}

@@ -15,8 +15,11 @@
             <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="">
           </div>
           <div class="ms-2">
-            <h2>{{userData.firstName}} {{userData.lastName}}</h2>
-            <h4 class="mb-0">USA, California</h4>
+            <h1 class="mb-2" style="font-size: 32px;">{{userData.firstName}} {{userData.lastName}}</h1>
+            <h3 class="mb-0 text-muted">USA, California</h3>
+            <p style="font-size: 10px;" class="mb-0">
+              Content creator, blogger, and photographer.
+            </p>
           </div>
         </div>
         <div class="col-md-6 d-flex justify-content-end pt-5 mt-2">
@@ -25,7 +28,7 @@
             <span>Active Links</span>
           </div>
           <div class='d-flex flex-column justify-content-center align-items-center ms-3'>
-            <span class="point mb-2">5000</span>
+            <span class="point mb-2 main-color">5000</span>
             <span>Points</span>
           </div>
         </div>

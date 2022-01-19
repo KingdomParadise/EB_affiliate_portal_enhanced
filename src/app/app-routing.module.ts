@@ -7,6 +7,7 @@ import { AffiliateRegistrationComponent } from './pages/affiliate-registration/a
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
 import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
+import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 import { OverviewComponent } from './pages/profile/overview/overview.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ReferComponent } from './pages/refer/refer.component';
@@ -43,13 +44,18 @@ const routes: Routes = [
     component: DefaultComponent,
     children: [
       {
-        path: 'dashboard',
+        path: 'profile',
         component: ProfileComponent,
         canActivate: [AuthGuard],
         children: [
           {
-            path: '',
+            path: 'overview',
             component: OverviewComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'outreach',
+            component: OutreachComponent,
             canActivate: [AuthGuard]
           }
         ]

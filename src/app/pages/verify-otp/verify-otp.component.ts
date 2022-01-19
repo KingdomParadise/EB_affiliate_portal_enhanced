@@ -35,7 +35,7 @@ export class VerifyOtpComponent implements OnInit {
       this.dataService.validateOtp(this.otpForm.value).subscribe(res => {
         if (res.responseCode == 0) {
           localStorage.setItem('affiliateId', res.response.affiliateId);
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/profile/overview');
         } else if (res.responseCode == -1) {
           this.alertMsg.type = 'danger';
           this.alertMsg.message = res.errorMsg

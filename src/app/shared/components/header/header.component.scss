@@ -1,5 +1,5 @@
 .header{
-    background-color: #c4c4c4;
+    background-color: white;
     padding:1.5rem 1.3rem .75rem 1.3rem;
     text-align: center;
 }
@@ -17,7 +17,7 @@
     text-decoration: none;
 }
 .router-active{
-  color:#a63da1;
+  color:white !important;
 }
 .router-active1{
   border-bottom: 1px solid #a63da1;
@@ -25,12 +25,12 @@
 
 .headerLink2{
   text-decoration: none;
-  color: #5a5a5a;
+  color: #DDB4D9;
   font-weight: 500;
   font-size: 16px;
 }
 .headerLink2:hover{
-  color:#a63da1;
+  color:white;
   text-decoration: none;
 }
 .red-dot{
