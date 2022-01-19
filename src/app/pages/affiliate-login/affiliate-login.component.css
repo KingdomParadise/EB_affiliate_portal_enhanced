@@ -25,9 +25,11 @@ button:focus{
   font-weight: 600;
 }
 .btn-social{
-  background-color: #C4C4C4;
+  background-color: #ffffff;
   font-weight: 600;
   margin-bottom:8px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  font-size: 14px;
 }
 .header{
     background-color: #f3f2f2;
@@ -127,7 +129,7 @@ input::placeholder {
 #footer{
     width: 100%;
     height: 24vh;
-    background-color: #9e9e9e;
+    background-color: #4a4a4e;
     padding-right: 210px;
     color: white;
 }
@@ -154,16 +156,21 @@ input::placeholder {
 .aff-btn{
   text-decoration: none;
   color:#a63da1;
+  font-weight: 500;
 }
 .deal-btn{
   text-decoration: none;
   color:#333333;
+  font-weight: 500;
 }
 .bg-color{
   background-color: #c4c4c4;
 }
 .main-content{
-  height: 76vh;
+  /* height: 90vh; */
+  background-image: url('/assets/image/BACKGROUNDS/SignIn-BG.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .main-text{

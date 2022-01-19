@@ -80,7 +80,7 @@
                 </ul>
               </div>
               <div class="d-flex mt-4 text-right">
-                <button mat-button matStepperNext class="btn btn-outline-dark mb-5 mb-md-0 ms-auto"
+                <button mat-button matStepperNext class="btn btn-app mb-5 mb-md-0 ms-auto"
                   [disabled]="(!regForm1.valid)">Next</button>
               </div>
               <div class="position-relative">
@@ -88,13 +88,15 @@
                 <div id="or">OR</div>
               </div>
               <div class="d-grid">
-                <button mat-button class="btn btn-social" (click)="logInWithGoogle()">
+                <button mat-button class="btn btn-social position-relative" (click)="logInWithGoogle()">
+                  <img src="assets/image/GoogleLogo.svg" alt="fb" style="position:absolute;left:2px;width:20px;margin-left:4px">
                   Continue with Google
                   <!-- <img src="assets/images/google-icon.png" alt="fb" style="width:20px;margin-left:4px"> -->
                 </button>
               </div>
               <div class="d-grid">
-                <button mat-button class="btn btn-social" (click)="logInWithFb()">
+                <button mat-button class="btn btn-social position-relative" (click)="logInWithFb()">
+                  <img src="assets/image/facebook.svg" alt="fb" style="position:absolute;left:2px;width:20px;margin-left:4px">
                   Continue with facebook
                   <!-- <img src="assets/images/fb-color.png" alt="fb" style="width:20px;margin-left:4px"> -->
                 </button>
@@ -179,7 +181,7 @@
               </div>
               <div class="d-flex mt-5 justify-content-between">
                 <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
-                <button mat-button class="btn btn-outline-dark" matStepperNext [disabled]="!regForm2.valid"
+                <button mat-button class="btn btn-app" matStepperNext [disabled]="!regForm2.valid"
                   >Next</button>
                 <!-- <button mat-button class="btn btn-default btn-back px-3" (click)="submit()">Skip</button> -->
               </div>
@@ -217,7 +219,7 @@
 
                 <div class='d-flex align-items-center'>
                   <button class="btn btn-link me-2 my-auto" style="text-decoration: none;"><i>Skip</i></button>
-                  <button mat-button class="btn btn-dark"
+                  <button mat-button class="btn btn-app"
                   [disabled]="!regForm3.valid" (click)="submit()">Next</button>
                 </div>
 
@@ -247,7 +249,7 @@
               </div>
               <div class="d-flex mt-5 justify-content-between">
                 <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
-                  <button mat-button class="btn btn-outline-dark" (click)="verifyOtp1()"
+                  <button mat-button class="btn btn-app" (click)="verifyOtp1()"
                   >Send</button>
 
               </div>
@@ -262,7 +264,7 @@
               </div>
               <div>
                 <p>
-                  Didn’t receive a code?
+                  Didn't receive a code?
                  <a href="#">Resend here</a>
                 </p>
               </div>
