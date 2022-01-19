@@ -39,7 +39,8 @@
               <ng-template matStepLabel>Login Details</ng-template>
               <div>
                 <h1 class="main-color font-weight-bold welcomeText">Sign Up</h1>
-                <p class="mb-2">Existing User? <a class="main-color text-decoration-none" routerLink="/login">Login Here</a></p>
+                <p class="mb-2">Existing User? <a class="main-color text-decoration-none" routerLink="/login">Login
+                    Here</a></p>
               </div>
               <div class="form-group mt-md-3">
                 <label>E-mail</label>
@@ -89,14 +90,16 @@
               </div>
               <div class="d-grid">
                 <button mat-button class="btn btn-social position-relative" (click)="logInWithGoogle()">
-                  <img src="assets/image/GoogleLogo.svg" alt="fb" style="position:absolute;left:2px;width:20px;margin-left:4px">
+                  <img src="assets/image/GoogleLogo.svg" alt="fb"
+                    style="position:absolute;left:2px;width:20px;margin-left:4px">
                   Continue with Google
                   <!-- <img src="assets/images/google-icon.png" alt="fb" style="width:20px;margin-left:4px"> -->
                 </button>
               </div>
               <div class="d-grid">
                 <button mat-button class="btn btn-social position-relative" (click)="logInWithFb()">
-                  <img src="assets/image/facebook.svg" alt="fb" style="position:absolute;left:2px;width:20px;margin-left:4px">
+                  <img src="assets/image/facebook.svg" alt="fb"
+                    style="position:absolute;left:2px;width:20px;margin-left:4px">
                   Continue with facebook
                   <!-- <img src="assets/images/fb-color.png" alt="fb" style="width:20px;margin-left:4px"> -->
                 </button>
@@ -116,46 +119,38 @@
                 <div class="col me-md-2">
                   <label>First Name</label>
                   <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city"
-                     onkeypress="return /[a-z]/i.test(event.key)"
-                    formControlName="firstName">
+                    onkeypress="return /[a-z]/i.test(event.key)" formControlName="firstName">
                 </div>
                 <div class="col ms-md-2">
                   <label>Last Name</label>
-                  <input type="text" class="form-control" id="companyPhone"
-                    onkeypress="return /[a-z]/i.test(event.key)" formControlName="lastName">
+                  <input type="text" class="form-control" id="companyPhone" onkeypress="return /[a-z]/i.test(event.key)"
+                    formControlName="lastName">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col">
-                    <label for="country">Country</label>
-                    <ng-select [items]="countries"
-                        bindLabel="countryName"
-                        formControlName="countryId"
-                        (change)="onCountrySelect($event)"
-                        bindValue="countryId">
-                    </ng-select>
+                  <label for="country">Country</label>
+                  <ng-select [items]="countries" bindLabel="countryName" formControlName="countryId"
+                    (change)="onCountrySelect($event)" bindValue="countryId">
+                  </ng-select>
                 </div>
                 <div class="col">
                   <label for="state">Region</label>
-                  <ng-select [items]="states" bindLabel="stateName"
-                      formControlName="stateId"
-                      bindValue="stateId">
+                  <ng-select [items]="states" bindLabel="stateName" formControlName="stateId" bindValue="stateId">
                   </ng-select>
-              </div>
-              <div class="form-group d-flex flex-column flex-md-row mt-3">
-                <div class="col me-md-2">
-                  <label>Phone</label>
-                  <input matInput type="number" class="form-control" id="personalPhone"
-                  formControlName="phone">
                 </div>
-                <div class="col ms-md-2">
-                  <label>Referal Code (optional)</label>
-                  <input matInput type="text" class="form-control"
-                  formControlName="referalCode">
+                <div class="form-group d-flex flex-column flex-md-row mt-3">
+                  <div class="col me-md-2">
+                    <label>Phone</label>
+                    <input matInput type="number" class="form-control" id="personalPhone" formControlName="phone">
+                  </div>
+                  <div class="col ms-md-2">
+                    <label>Referal Code (optional)</label>
+                    <input matInput type="text" class="form-control" formControlName="referalCode">
+                  </div>
                 </div>
-              </div>
 
-            </div>
+              </div>
               <!-- <div class="form-group mt-md-3">
                 <ng-select [items]="companies" bindLabel="companyName" placeholder="Company Name" [multiple]="true"
                   formControlName="companyList" bindValue="companyId">
@@ -181,15 +176,14 @@
               </div>
               <div class="d-flex mt-5 justify-content-between">
                 <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
-                <button mat-button class="btn btn-app" matStepperNext [disabled]="!regForm2.valid"
-                  >Next</button>
+                <button mat-button class="btn btn-app" matStepperNext [disabled]="!regForm2.valid">Next</button>
                 <!-- <button mat-button class="btn btn-default btn-back px-3" (click)="submit()">Skip</button> -->
               </div>
             </form>
           </mat-step>
           <mat-step [stepControl]="regForm3" [editable]="isEditable" [completed]="isCompleted3">
             <form [formGroup]="regForm3" class="mt-md-1">
-              <ng-template matStepLabel>Company Affiliation <br/>and Interests</ng-template>
+              <ng-template matStepLabel>Company Affiliation <br />and Interests</ng-template>
               <div>
                 <h1 class="main-color font-weight-bold welcomeText">Affiliation</h1>
               </div>
@@ -202,14 +196,14 @@
                   </ng-select>
                 </div>
                 <div>
-                  <hr/>
+                  <hr />
                 </div>
 
                 <div class="col ms-md-2">
                   <label>Interests</label>
                   <ng-select [items]="interests" bindLabel="industryName" placeholder="Interest Area" [multiple]="true"
                     formControlName="intrestAreaList" bindValue="industryId">
-                </ng-select>
+                  </ng-select>
                 </div>
               </div>
               <div class="d-flex mt-5 justify-content-between">
@@ -219,8 +213,7 @@
 
                 <div class='d-flex align-items-center'>
                   <button class="btn btn-link me-2 my-auto" style="text-decoration: none;"><i>Skip</i></button>
-                  <button mat-button class="btn btn-app"
-                  [disabled]="!regForm3.valid" (click)="submit()">Next</button>
+                  <button mat-button class="btn btn-app" [disabled]="!regForm3.valid" (click)="submit()">Next</button>
                 </div>
 
               </div>
@@ -240,7 +233,8 @@
             <div>
               <div *ngIf="verificationState === 1">
                 <h1 class="main-color font-weight-bold welcomeText">One Time Code Verification</h1>
-                <p>An e-mail with a one time code will be sent after you agree to the following terms and conditions:</p>
+                <p>An e-mail with a one time code will be sent after you agree to the following terms and conditions:
+                </p>
               </div>
               <div>
                 <mat-checkbox class="example-margin" [(ngModel)]="agreed">
@@ -249,8 +243,7 @@
               </div>
               <div class="d-flex mt-5 justify-content-between">
                 <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
-                  <button mat-button class="btn btn-app" (click)="verifyOtp1()"
-                  >Send</button>
+                <button mat-button class="btn btn-app" (click)="verifyOtp1()">Send</button>
 
               </div>
             </div>
@@ -265,13 +258,12 @@
               <div>
                 <p>
                   Didn't receive a code?
-                 <a href="#">Resend here</a>
+                  <a href="#">Resend here</a>
                 </p>
               </div>
               <div class="d-flex mt-5 justify-content-between">
                 <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
-                  <button mat-button matStepperNext class="btn btn-dark flex-grow-1 mt-4"
-                  >Send</button>
+                <button mat-button matStepperNext class="btn btn-dark flex-grow-1 mt-4">Send</button>
 
               </div>
             </div>
