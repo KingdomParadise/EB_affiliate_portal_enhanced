@@ -40,6 +40,7 @@ export class AffiliateLoginComponent implements OnInit {
     });
 
     this.authService.authState.subscribe((user) => {
+      console.log(user);
       let req;
       if (user.provider == 'FACEBOOK') {
         req = {
