@@ -15,6 +15,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
   regForm1: FormGroup;
   regForm3: FormGroup;
   regForm2: FormGroup;
+  regForm4: FormGroup;
   isCompleted1:boolean = true;
   isCompleted2:boolean = false;
   isCompleted3:boolean = true;
@@ -45,6 +46,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
   usernameValid = 0;
   agreed: boolean = false;
   verificationState: number = 1;
+  affiliateId:any;
   @ViewChild(MatHorizontalStepper) stepper: MatHorizontalStepper;
   constructor(
     private _formBuilder: FormBuilder,
@@ -127,6 +129,9 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
       companyList: [''],
       intrestAreaList: [''],
     });
+    this.regForm4 = this._formBuilder.group({
+      otpNumber: [1111, Validators.required]
+    });
     // if (history.state.affiliateId) {
     //   this.isLinear = false;
     //   setTimeout(() => {
@@ -148,6 +153,51 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     //   mapTypeId: google.maps.MapTypeId.ROADMAP
     // };
     // this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+    this.authService.authState.subscribe((user) => {
+      console.log(user);
+      let req;
+      if (user.provider == 'FACEBOOK') {
+        req = {
+          loginType: 'facebook',
+          socialLoginId: user.id
+        }
+      } else if (user.provider == 'GOOGLE') {
+        req = {
+          loginType: 'google',
+          socialLoginId: user.id
+        }
+      }
+      this.dataService.login(req).subscribe(res => {
+        if (res.responseCode == 0) {
+          localStorage.setItem('affiliateId', res.response.affiliateId);
+          this.affiliateId = res.response.affiliateId;
+          if(res.response.firstTimeLogin == 1){
+            this.stepper.next();
+            //this.router.navigateByUrl('/', {state: { affiliateId: res.response.affiliateId, page:'login' }});
+          }else if(res.response.firstTimeLogin == 0){
+            if (res.response.phoneVerified == 0) {
+              this.router.navigateByUrl('/verify', { state: { affiliateId: res.response.affiliateId } });
+            } else {
+              localStorage.setItem('token', res.response.token);
+              localStorage.setItem('referalCode', res.response.referalCode);
+              localStorage.setItem('referalReward', res.response.referalReward);
+              localStorage.setItem('userData', JSON.stringify(res.response));
+              this.router.navigateByUrl('/profile/overview', { state: { affiliateId: res.response.affiliateId } });
+            }
+          }
+
+          this.alertMsg.type = 'success';
+          this.alertMsg.message = res.successMsg;
+        }
+        else if (res.responseCode == -1) {
+          this.alertMsg.type = 'danger';
+          this.alertMsg.message = res.errorMsg;
+        } else {
+          this.alertMsg.type = 'danger';
+          this.alertMsg.message = 'Server error'
+        }
+      })
+    });
   }
   get f1() {
     return this.regForm1.controls;
@@ -186,15 +236,16 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     delete this.regForm1.value.cnfPassword;
     let formObj = {...this.regForm1.value,...this.regForm2.value, ...this.regForm3.value};
     if (this.regForm2.valid && this.regForm1.valid) {
-      if(history.state.affiliateId){
+      if(this.affiliateId){
         formObj.affiliateId = history.state.affiliateId
       }
       this.dataService.register(formObj).subscribe(res => {
         if (res.responseCode == 0) {
           this.alertMsg.type = 'success';
           // this.alertMsg.message = res.successMsg;
-          this.stepper.next();
+          //this.stepper.next();
           localStorage.setItem('affiliateId', res.response.affiliateId);
+          this.verificationState =2;
         }
         else if (res.responseCode == -1) {
           this.alertMsg.type = 'danger';
@@ -207,9 +258,9 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     }
   }
   verifyOtp(){
-    if (this.regForm3.valid) {
-      this.regForm3.value.affiliateId = localStorage.getItem('affiliateId');
-      this.dataService.validateOtp(this.regForm3.value).subscribe(res => {
+    if (this.regForm4.valid) {
+      this.regForm4.value.affiliateId = localStorage.getItem('affiliateId');
+      this.dataService.validateOtp(this.regForm4.value).subscribe(res => {
         if (res.responseCode == 0) {
           this.alertMsg.type = 'success';
           this.alertMsg.message = res.successMsg;

@@ -57,7 +57,7 @@
           <div class="d-flex">
             <div class="card p-3 d-flex flex-row flex-wrap w-100 justify-content-between">
 
-              <div *ngFor="let company of apiData.affiliatedCompanies">
+              <div *ngFor="let company of apiData?.affiliatedCompanies">
                 <div class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + company.companyLogoUrl + ')'}">
                 </div>
               </div>
@@ -107,7 +107,7 @@
                 </div>
 
                 <p>
-                  {{apiData.notifications}}
+                  {{apiData?.notifications}}
                 </p>
               </div>
 
@@ -126,7 +126,7 @@
             </h2>
             <div>
               <p class="point text-center">
-                {{apiData.points}}
+                {{apiData?.points}}
               </p>
 
             </div>

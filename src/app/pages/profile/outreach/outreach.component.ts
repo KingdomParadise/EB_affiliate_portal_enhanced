@@ -21,6 +21,13 @@ export class OutreachComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let req = {
+      engagementPeriod: 'lastMonth'
+    }
+    this.dataService.getOutReach(req).subscribe( res =>{
+
+    })
+    this.getInitialData();
   }
 
   getInitialData(){
