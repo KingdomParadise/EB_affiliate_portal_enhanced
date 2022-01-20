@@ -17,18 +17,23 @@
                         <!-- <button class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</button>
                         <button class="btn btn-link headerLink" (click)="goToTraining()">Support</button> -->
                         <a class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</a>
-                        <div class="d-flex align-items-center btn btn-link headerLink" (click)="goToTraining()">
+                        <div class="d-flex align-items-center btn btn-link headerLink">
                           <div id="headerProfileImg">
                             <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="" style="width:50px;height:50px;margin-right: 6px;">
                           </div>
-                          <a class="headerLink" routerLinkActive="router-active1" routerLink="/profile">User</a>
+                          <a class="headerLink ms-2" routerLinkActive="router-active1" routerLink="/profile/overview">{{userData.firstName}}</a>
                         </div>
                         <button class="btn btn-link headerLink" (click)="goToTraining()">
-                          <div id="" class="d-inline-block">
-                            <img src="assets/image/SVG/Wallet.svg" alt="" style="width:30px;height:30px;margin-right: 2px;">
+                          <div class="d-inline-block">
+                            <img src="assets/image/SVG/Wallet.svg" alt="" style="width:20px;height:20px;margin-right: 2px;">
                           </div>
-                          Wallet</button>
-                        <button class="btn btn-link headerLink" (click)="goToTraining()">Logout</button>
+                          {{userData.totalPoints}}</button>
+                        <button class="btn btn-link headerLink" (click)="logout()">
+                          Logout
+                          <div class="d-inline-block">
+                            <img src="assets/image/SVG/LogOut.svg" alt="" style="width:20px;height:20px;margin-left: 4px;">
+                          </div>
+                        </button>
                         <div class="my-auto">
                           <!-- <a href="https://www.facebook.com/" target="_blank">
                             <img src="assets/images/fb-dark.png" alt="fb" class="headerIcon">

@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
       this.userPhotoUrl = this.userData.userImage;
     })
   }
-  
+
   getNotifications(){
     if(localStorage.getItem('userData')){
       this.dataService.getAffiliateNotification().subscribe(res => {
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
     this.isExpanded = !this.isExpanded
   }
   openContactUs(){
-    
+
   }
   goToTraining(){
     this.router.navigate(['/training',{page:'conatct'}])
@@ -60,6 +60,10 @@ export class HeaderComponent implements OnInit {
   menuClosed(){
     this.dataService.marAffiliateNotificationRead().subscribe(res => {
     });
+  }
+  logout(){
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 }
 

@@ -1,11 +1,20 @@
 <div>
   <div style="margin-left:106px">
-    @nancyfancypancy
-    <img src="assets/image/SVG/facebook.png" alt="" style="width: 22px;margin-right: 4px;">
-    <img src="assets/image/SVG/Instagram.png" alt="" style="width: 22px;margin-right: 4px">
-    <img src="assets/image/SVG/TikTok-Icon-logo.png" alt="" style="width: 22px;margin-right: 4px">
-    <img src="assets/image/SVG/Twitter_bird_logo_2012.png" alt="" style="width: 22px;margin-right: 4px">
-    <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 22px;">
+    {{userData.referalCode}}
+    <a href="http://facebook.com/" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
+        style="width: 22px;margin-right: 6px;margin-left:8px"></a>
+    <a href="http://www.instagram.com" target="_blank"><img src="assets/image/SVG/Instagram.png" alt=""
+        style="width: 22px;margin-right: 8px"></a>
+    <a href="http://www.tiktok.com" target="_blank">
+      <img src="assets/image/SVG/TikTok-Icon-logo.png" alt="" style="width: 22px;margin-right: 8px">
+    </a>
+    <a href="http://www.twitter.com" target="_blank">
+      <img src="assets/image/SVG/Twitter_bird_logo_2012.png" alt="" style="width: 22px;margin-right: 8px">
+    </a>
+    <a href="http://www.linkedin.com" target="_blank">
+      <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 22px;">
+    </a>
+
   </div>
   <div>
     <hr />
@@ -17,21 +26,21 @@
           <h2>Outreach</h2>
           <div class="row">
             <div class="col-md-4">
-              <div class="card p-3" style="background-color: #7031A5;color:white">
-                <h4>100</h4>
+              <div class="card px-3 py-4" style="background-color: #7031A5;color:white">
+                <h4 class="point">{{apiData?.totalEngagement}}</h4>
                 <p>Total Engagement</p>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card p-3">
-                <h4>100</h4>
-                <p>Total Engagement</p>
+              <div class="card px-3 py-4">
+                <h4 class="point">{{apiData?.bannersShared}}</h4>
+                <p>Total Banners Shared</p>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card p-3">
-                <h4>100</h4>
-                <p>Total Engagement</p>
+              <div class="card px-3 py-4">
+                <h4 class="point">{{apiData?.campaignsShared}}</h4>
+                <p>Total Compaign Shared</p>
               </div>
             </div>
 
@@ -46,19 +55,13 @@
         <div>
           <h2>Affiliated Companies</h2>
           <div class="d-flex">
-            <div class="card p-3 d-flex flex-row w-100 justify-content-between">
-              <div>
-                <img src="assets/image/comapny1.png" alt="comapany">
+            <div class="card p-3 d-flex flex-row flex-wrap w-100 justify-content-between">
+
+              <div *ngFor="let company of apiData.affiliatedCompanies">
+                <div class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + company.companyLogoUrl + ')'}">
+                </div>
               </div>
-              <div>
-                <img src="assets/image/comapny1.png" alt="comapany">
-              </div>
-              <div>
-                <img src="assets/image/comapny1.png" alt="comapany">
-              </div>
-              <div>
-                <img src="assets/image/comapny1.png" alt="comapany">
-              </div>
+
             </div>
           </div>
           <div class="row">
@@ -73,40 +76,16 @@
           <div class="card px-3">
             <table class="table table-borderless" id="pointsTable">
               <tbody>
-                <tr>
+                <tr *ngFor="let links of apiData?.activeUniqueLinks">
                   <td scope="col">
-                    <p>Mercedes Benz - 50% All Winter Tires:</p>
+                    <p>{{links.campaignName}}</p>
                   </td>
                   <td scope="col">
-
-                    <p>bit.ly/nancyfancy</p>
+                    <p>{{links.shortUrlLink}}</p>
                   </td>
                   <td scope="col">
-                    <button class="btn btn-light">Copy</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="col">
-                    <p>Mercedes Benz - 50% All Winter Tires:</p>
-                  </td>
-                  <td scope="col">
-
-                    <p>bit.ly/nancyfancy</p>
-                  </td>
-                  <td scope="col">
-                    <button class="btn btn-light">Copy</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="col">
-                    <p>Mercedes Benz - 50% All Winter Tires:</p>
-                  </td>
-                  <td scope="col">
-
-                    <p>bit.ly/nancyfancy</p>
-                  </td>
-                  <td scope="col">
-                    <button class="btn btn-light">Copy</button>
+                    <p *ngIf='showCopyState'>Copied</p>
+                    <button class="btn btn-light" (click)="copyUrl(links.shortUrlLink)">Copy</button>
                   </td>
                 </tr>
               </tbody>
@@ -128,8 +107,7 @@
                 </div>
 
                 <p>
-                  Mercedes has accepted your affiliation request,
-                  start exploring Mercedes’ campaigns, banners, and points redemption now!
+                  {{apiData.notifications}}
                 </p>
               </div>
 
@@ -141,14 +119,14 @@
             </div>
           </div>
         </div>
-        <div>
-          <div class="card p-3 mt-3" style="background-color: #A43DA1;color:white">
+        <div class="pt-1">
+          <div class="card p-3 mt-5" style="background-color: #A43DA1;color:white">
             <h2>
               Points Balance
             </h2>
             <div>
               <p class="point text-center">
-                5,0000.00
+                {{apiData.points}}
               </p>
 
             </div>
@@ -163,38 +141,17 @@
           <div class="card px-3">
             <table class="table table-borderless" id="pointsTable">
               <tbody>
-                <tr>
+                <tr *ngFor="let point of apiData?.pointsHistory">
                   <td scope="col">
-                    <img src="assets/image/comapny1.png" alt="">
+                    <div class="pointImage" [ngStyle]="{'background-image': 'url(' + point.companyLogoUrl + ')'}">
+                    </div>
                   </td>
                   <td scope="col">
-                    <h3 class="mb-0">Mercedes Benz</h3>
-                    <p>Campaign: 50% All Winter Tires</p>
-                    <p>Jan 06 2022</p>
+                    <h3 class="mb-0">{{point.companyName}}</h3>
+                    <p>{{point.remark}}</p>
+                    <p>{{point.createTs | date: 'mediumDate'}}</p>
                   </td>
-                  <td scope="col">+10.00</td>
-                </tr>
-                <tr>
-                  <td scope="col">
-                    <img src="assets/image/comapny1.png" alt="">
-                  </td>
-                  <td scope="col">
-                    <h3 class="mb-0">Mercedes Benz</h3>
-                    <p>Campaign: 50% All Winter Tires</p>
-                    <p>Jan 06 2022</p>
-                  </td>
-                  <td scope="col">+10.00</td>
-                </tr>
-                <tr>
-                  <td scope="col">
-                    <img src="assets/image/comapny1.png" alt="">
-                  </td>
-                  <td scope="col">
-                    <h3 class="mb-0">Mercedes Benz</h3>
-                    <p>Campaign: 50% All Winter Tires</p>
-                    <p>Jan 06 2022</p>
-                  </td>
-                  <td scope="col">+10.00</td>
+                  <td scope="col" class="main-color" style="font-weight: 600;font-size: 16px;">+{{(point.pointsProvided).toFixed(2)}}</td>
                 </tr>
               </tbody>
             </table>
