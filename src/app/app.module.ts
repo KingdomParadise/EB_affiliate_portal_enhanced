@@ -22,6 +22,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -92,6 +94,7 @@ import { CompanyAffiliationsComponent } from './pages/profile/company-affiliatio
     MatTableModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    MatSelectModule,
     MatIconModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,

@@ -1,67 +1,82 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 
-let single:any[]  = [];
-let single2:any[]  = [];
+let multi: any[] = [
+  {
+    name: 'Shared',
+    series: [],
+  },
+];
+
 @Component({
   selector: 'app-outreach',
   templateUrl: './outreach.component.html',
-  styleUrls: ['./outreach.component.css']
+  styleUrls: ['./outreach.component.css'],
+  providers: [DatePipe],
 })
 export class OutreachComponent implements OnInit {
   apiData: any;
-  single: any[];
-  single2: any[];
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  yAxisLabel = 'Population';
+  multi: any[];
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Dates';
+  yAxisLabel: string = 'Count';
+  lineChartData: any[] = [];
+  dateTypes = [
+    {
+      name: 'Last 7 Days',
+      value: '7',
+    },
+    {
+      name: 'Last Month',
+      value: 'month',
+    },
+
+    {
+      name: 'All Time',
+      value: 'all',
+    },
+    {
+      name: 'Today',
+      value: 'today',
+    },
+    {
+      name: 'This Yesr',
+      value: 'year',
+    },
+  ];
+
+  selectedDateRange = this.dateTypes[0].value;
   constructor(
     private dataService: InitialDataService,
-  ) { }
+    private datePipe: DatePipe
+  ) {}
 
   ngOnInit(): void {
     let req = {
-      engagementPeriod: 'lastMonth'
-    }
-    this.dataService.getOutReach(req).subscribe( res =>{
-
-    })
-    this.getInitialData();
-  }
-
-  getInitialData(){
-    let req = {
-      bannerPage: 0,
-      bannerSize: 10,
-      campaignPage: 0,
-      campaignSize: 10,
-      bannerSortBy: "owner",
-      campaignSortBy: ""
-    }
-    this.dataService.getDashboardData(req).subscribe(res => {
+      engagementPeriod: 'lastMonth',
+    };
+    this.dataService.getOutReach(req).subscribe((res) => {
       this.apiData = res.response;
-      this.single = res.response.bannerEngagement;
-      let arr = [];
-      for(let i = 0; i< this.apiData.bannerEngagement.length; i++){
+
+      for (let i = 0; i < this.apiData.bannerEngagement.length; i++) {
         let obj = {
-          name: this.apiData.bannerEngagement[i].date,
-          value: this.apiData.bannerEngagement[i].count
-        }
-        arr.push(obj);
+          name: this.datePipe.transform(
+            this.apiData.contentShared[i].createTs,
+            'shortDate'
+          ),
+          value: this.apiData.contentShared[i].count,
+        };
+        this.lineChartData.push(obj);
       }
-      single = arr;
-      Object.assign(this, {single})
-      let arr2 = []
-      for(let i = 0; i< this.apiData.campaignEngagement.length; i++){
-        let obj = {
-          name: this.apiData.campaignEngagement[i].date,
-          value: this.apiData.campaignEngagement[i].count
-        }
-        arr2.push(obj);
-      }
-      single2 = arr2;
-      Object.assign(this, {single2})
-    })
+      //console.log(this.lineChartData);
+      multi[0]['series'] = this.lineChartData;
+
+      Object.assign(this, { multi });
+    });
   }
 }

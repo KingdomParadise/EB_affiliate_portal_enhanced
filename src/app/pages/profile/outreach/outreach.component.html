@@ -43,26 +43,58 @@
         <div class="col-md-7 mt-3 mt-md-0">
           <mat-tab-group>
             <mat-tab label="Total Engagement">
+              <ng-template matTabContent>
+                <div class='p-3'>
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div>
+                        <button class="btn btn-light me-3">All Shares</button>
+                        <button class='btn btn-light me-3'>Active Shares</button>
+                        <button class='btn btn-light me-3'>Past Shares</button>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="ms-auto">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2">
+                          <mat-option *ngFor="let type of dateTypes" [value]="type.value">
+                            {{type.name}}
+                          </mat-option>
+                        </mat-select>
+                      </div>
+                    </div>
 
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-8">
+
+                    </div>
+                  </div>
+                </div>
+
+              </ng-template>
             </mat-tab>
             <mat-tab label="Banner Engagement">
               <ng-template matTabContent>
                 <div class="pt-2">
-                  <div #containerRef>
-                    <ngx-charts-bar-vertical [view]="[containerRef.offsetWidth, containerRef.offsetHeight]"
-                      [yAxis]="showYAxis" [results]="single" [gradient]="gradient" [yAxisLabel]="yAxisLabel">
-                    </ngx-charts-bar-vertical>
+                  <div>
+                    <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis"
+                      [yAxis]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="multi">
+                    </ngx-charts-line-chart>
                   </div>
                 </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Campaign Engagement">
               <ng-template matTabContent>
-                <div class="pt-2">
-                  <div #containerRef1>
-                    <ngx-charts-bar-vertical [view]="[containerRef1.offsetWidth, containerRef1.offsetHeight]"
-                      [results]="single2" [yAxis]="true">
-                    </ngx-charts-bar-vertical>
+                <div class="card">
+                  <div class="pt-2">
+                    <div>
+
+                    </div>
                   </div>
                 </div>
               </ng-template>
