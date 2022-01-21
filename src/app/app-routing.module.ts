@@ -66,8 +66,8 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'training',
-        component: TrainingComponent,
+        path: 'dashboard',
+        component: DashboardComponent,
         canActivate: [AuthGuard]
       },
       {

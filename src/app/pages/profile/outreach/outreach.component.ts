@@ -18,6 +18,7 @@ let multi: any[] = [
 })
 export class OutreachComponent implements OnInit {
   apiData: any;
+  userData:any;
   multi: any[];
   xAxis: boolean = true;
   yAxis: boolean = true;
@@ -57,6 +58,7 @@ export class OutreachComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     let req = {
       engagementPeriod: 'lastMonth',
     };

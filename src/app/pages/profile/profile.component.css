@@ -23,3 +23,18 @@
 .main-color{
   color: #a63da1;
 }
+
+.router-active{
+  color:white !important;
+}
+
+.headerLink2{
+  text-decoration: none;
+  color: #DDB4D9;
+  font-weight: 500;
+  font-size: 16px;
+}
+.headerLink2:hover{
+  color:white;
+  text-decoration: none;
+}

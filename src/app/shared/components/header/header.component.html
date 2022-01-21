@@ -1,4 +1,4 @@
-<mat-toolbar style="background-color: white; color: black; width: 100%; padding: 0px;height: 15vh;">
+<mat-toolbar style="background-color: white; color: black; width: 100%; padding: 0px;height: 10vh;">
     <mat-toolbar-row style="width: 100%;margin:auto;">
         <div class="row w-100 d-none d-md-block g-0">
             <div class="col-md-12 p-0">
@@ -16,7 +16,7 @@
                     <div class="my-auto d-none d-md-flex">
                         <!-- <button class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</button>
                         <button class="btn btn-link headerLink" (click)="goToTraining()">Support</button> -->
-                        <a class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</a>
+                        <a class="btn-link headerLink my-auto" routerLinkActive="router-active1" routerLink="/dashboard">Dashboard</a>
                         <div class="d-flex align-items-center btn btn-link headerLink">
                           <div id="headerProfileImg">
                             <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="" style="width:50px;height:50px;margin-right: 6px;">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 p-0" style="background-color: #7031A5;">
+            <!-- <div class="col-md-12 p-0" style="background-color: #7031A5;">
               <div class="d-flex justify-content-between mx-4" style="padding:6px 120px">
                 <a class="headerLink2" routerLinkActive="router-active" routerLink="/profile/overview">Overview</a>
                 <a class="headerLink2" routerLinkActive="router-active" routerLink="/profile/outreach">Outreach</a>
@@ -80,7 +80,7 @@
                 <a class="headerLink2" href="">Points</a>
                 <a class="headerLink2" href="">Settings</a>
               </div>
-            </div>
+            </div> -->
         </div>
         <div class="d-flex d-md-none justify-content-center my-3 w-100" id="header-mobile">
             <div class="d-flex flex-row d-md-none text-center mt-2">
