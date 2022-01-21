@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatHorizontalStepper } from '@angular/material/stepper';
+import { MatHorizontalStepper, MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import {} from 'googlemaps';
@@ -16,7 +16,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
   regForm3: FormGroup;
   regForm2: FormGroup;
   regForm4: FormGroup;
-  isCompleted1:boolean = true;
+  isCompleted1:boolean = false;
   isCompleted2:boolean = false;
   isCompleted3:boolean = true;
   isEditable = true;
@@ -47,7 +47,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
   agreed: boolean = false;
   verificationState: number = 1;
   affiliateId:any;
-  @ViewChild(MatHorizontalStepper) stepper: MatHorizontalStepper;
+  @ViewChild('stepper') stepper: MatStepper;
   constructor(
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
@@ -57,7 +57,9 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     private authService: SocialAuthService
   ) { }
 
+
   ngOnInit(): void {
+
     this.dataService.getCountries().subscribe(data => {
       this.countries = data.response.countryList;
     });
@@ -284,9 +286,11 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     this.verificationState =2;
   }
   logInWithFb() {
+    this.isCompleted1 = true;
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
   logInWithGoogle() {
+    this.isCompleted1 = true;
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 }

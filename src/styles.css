@@ -25,3 +25,17 @@ input[type=number] {
 .form-control{
   padding-left:0 !important
 }
+
+.main-color{
+  color: #a63da1;
+}
+.btn-app{
+  background-color:#a63da1;
+  color:white;
+  opacity: .9;
+}
+.btn-app:hover{
+  background-color:#a63da1;
+  color:white;
+  opacity: 1;
+}

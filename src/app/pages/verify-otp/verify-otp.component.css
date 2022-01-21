@@ -178,6 +178,22 @@ background-size: cover;
 font-size: 52px;
 line-height: 1.1;
 }
+#partitioned {
+  padding-left: 15px;
+  letter-spacing: 42px;
+  border: 0;
+  background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 50px 1px;
+  background-repeat: repeat-x;
+  background-position-x: 35px;
+  width: 220px;
+  outline: 0;
+}
+#partitioned:focus{
+  outline: 0;
+  box-shadow: none;
+}
 @media only screen and (min-device-width: 768px){
   .header{
       padding:.5rem 5rem;
@@ -250,4 +266,25 @@ line-height: 1.1;
   .mb-5{
       margin-bottom:2rem !important;
   }
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 2px solid red
+}
+.inputs input {
+  width: 50px;
+  height: 50px;
+  border:1px solid gray;
+  text-align: center;
+  padding:0;
+  font-size: 18px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0
 }

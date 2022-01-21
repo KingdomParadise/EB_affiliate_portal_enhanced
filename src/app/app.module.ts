@@ -55,6 +55,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { OverviewComponent } from './pages/profile/overview/overview.component';
 import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 import { CompanyAffiliationsComponent } from './pages/profile/company-affiliations/company-affiliations.component';
+import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explore-dealers.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { CompanyAffiliationsComponent } from './pages/profile/company-affiliatio
     OverviewComponent,
     OutreachComponent,
     CompanyAffiliationsComponent,
+    ExploreDealersComponent,
   ],
   imports: [
     BrowserModule,
