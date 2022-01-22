@@ -5,6 +5,7 @@ import { AffiliateLoginComponent } from './pages/affiliate-login/affiliate-login
 
 import { AffiliateRegistrationComponent } from './pages/affiliate-registration/affiliate-registration.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explore-dealers.component';
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
 import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
 import { OutreachComponent } from './pages/profile/outreach/outreach.component';
@@ -68,7 +69,19 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        children: [
+          {
+            path: '',
+            component: ExploreDealersComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'explore-dealers',
+            component: ExploreDealersComponent,
+            canActivate: [AuthGuard]
+          }
+        ]
       },
       {
         path: 'refer',

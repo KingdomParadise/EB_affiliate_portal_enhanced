@@ -1,1 +1,142 @@
-<p>explore-dealers works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" id="dealerBg">
+      <div class="container">
+        <h1>
+          Explore 2022's <br />
+          <span style="font-size: 28px;font-weight: 500;">Top Dealers</span>
+        </h1>
+        <p>
+          From frequent banners and campaigns to insider perks,<br/>
+          find a Dealer that you can help grow and benefit you!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <input type="text" placeholder="Search.." name="search" class="searchInput">
+      </div>
+      <div class="col-md-4">
+        <mat-select [(value)]="selectedFilter" name="date" class="mt-2" id="filter">
+          <mat-option *ngFor="let filter of filterType" [value]="filter.value">
+            {{filter.name}}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div>
+      <div class="row mb-3">
+        <div class="col-md-12 d-flex align-items-center">
+          <img src="assets/image/comapny1.png" alt="" style="width:70px">
+          <span class="dealerName mx-3">Mercedes Benz</span>
+          <mat-icon class="my-auto">add_circle_outline</mat-icon>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="assets/image/mercedes1.png" alt="mercedes">
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <h2>50% Winter sales</h2>
+                <p class="mb-0 text-muted">By mercedes</p>
+              </div>
+              <div>
+                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
+                <p style="text-align: right;">10,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="assets/image/mercedes1.png" alt="mercedes">
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <h2>50% Winter sales</h2>
+                <p class="mb-0 text-muted">By mercedes</p>
+              </div>
+              <div>
+                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
+                <p style="text-align: right;">10,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="assets/image/mercedes1.png" alt="mercedes">
+            <div class="d-flex flex-column mt-2">
+              <div class="d-flex justify-content-between align-items-center">
+                <h2>50% Winter sales</h2>
+                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0 text-muted">By mercedes</p>
+                <p style="text-align: right;">10,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3">
+      <div class="row mb-3">
+        <div class="col-md-12 d-flex align-items-center">
+          <img src="assets/image/comapny1.png" alt="" style="width:70px">
+          <span class="dealerName mx-3">Mercedes Benz</span>
+          <mat-icon class="my-auto">add_circle_outline</mat-icon>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="assets/image/mercedes1.png" alt="mercedes">
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <h2 class='mb-0'>50% Winter sales</h2>
+                <p class="mb-0 text-muted">By mercedes</p>
+              </div>
+              <div>
+                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
+                <p style="text-align: right;">10,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="assets/image/mercedes1.png" alt="mercedes">
+            <div class="d-flex justify-content-between mt-2">
+              <div>
+                <h2 class='mb-0'>50% Winter sales</h2>
+                <p class="mb-0 text-muted">By mercedes</p>
+              </div>
+              <div>
+                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
+                <p style="text-align: right;">10,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0">
+            <img src="assets/image/mercedes1.png" alt="mercedes">
+            <div class="d-flex flex-column mt-2">
+              <div class="d-flex justify-content-between align-items-center">
+                <h2 class='mb-0'>50% Winter sales</h2>
+                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0 text-muted">By mercedes</p>
+                <p style="text-align: right;">10,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
