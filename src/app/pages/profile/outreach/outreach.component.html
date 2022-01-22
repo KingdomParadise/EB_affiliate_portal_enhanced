@@ -23,7 +23,7 @@
       <div class="col-md-8 pe-4">
         <div>
           <h2>Outreach</h2>
-          <div class="row">
+          <div class="row mb-3">
             <div class="col-md-4">
               <div class="card px-3 py-4" style="background-color: #7031A5;color:white">
                 <h4 class="point">{{apiData?.totalEngagement}}</h4>
@@ -48,7 +48,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="col-md-7 mt-3 mt-md-0">
+        <div class="col-md-12 mt-3 mt-md-0">
           <mat-tab-group>
             <mat-tab label="Total Engagement">
               <ng-template matTabContent>
@@ -70,12 +70,21 @@
                         </mat-select>
                       </div>
                     </div>
-
-
                   </div>
                   <div class="row">
-                    <div class="col-md-4">
-
+                    <div class="col-md-3 d-flex flex-column pt-3">
+                      <div class="card card1 d-flex justify-content-center" style="background-color: #A43DA1;color:white">
+                        <h1>{{apiData?.allEngagement.linksShared}}</h1>
+                        <p>Links Shared</p>
+                      </div>
+                      <div class="card card1 d-flex justify-content-center">
+                        <h1>0</h1>
+                        <p>Leads Procured</p>
+                      </div>
+                      <div class="card card1 d-flex justify-content-center">
+                        <h1>{{apiData?.allEngagement.activeClicks}}</h1>
+                        <p>Active Clicks</p>
+                      </div>
                     </div>
                     <div class="col-md-8">
 

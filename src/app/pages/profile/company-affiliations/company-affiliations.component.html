@@ -1,1 +1,74 @@
-<p>company-affiliations works!</p>
+<div>
+  <div style="margin-left:106px">
+    {{userData.referalCode}}
+    <a href="http://facebook.com/" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
+        style="width: 22px;margin-right: 6px;margin-left:8px"></a>
+    <a href="http://www.instagram.com" target="_blank"><img src="assets/image/SVG/Instagram.png" alt=""
+        style="width: 22px;margin-right: 8px"></a>
+    <a href="http://www.tiktok.com" target="_blank">
+      <img src="assets/image/SVG/TikTok-Icon-logo.png" alt="" style="width: 22px;margin-right: 8px">
+    </a>
+    <a href="http://www.twitter.com" target="_blank">
+      <img src="assets/image/SVG/Twitter_bird_logo_2012.png" alt="" style="width: 22px;margin-right: 8px">
+    </a>
+    <a href="http://www.linkedin.com" target="_blank">
+      <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 22px;">
+    </a>
+  </div>
+  <div>
+    <hr />
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Company Affiliations</h2>
+      <mat-tab-group>
+        <mat-tab label="All">
+          <ng-template matTabContent>
+            <div *ngFor="let industry of apiData?.companyAffiliation" class="px-2">
+              <h2>{{industry.industryName}}</h2>
+              <div class="d-flex" style="overflow-x: scroll;">
+                <div *ngFor="let dealer of industry.dealerList" class="d-flex" style="min-width: 140px;">
+                  <div>
+                    <img [src]="dealer.companyLogoUrl" alt="" width="60px">
+                    <p>{{dealer.companyName}}</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </ng-template>
+        </mat-tab>
+        <mat-tab [label]="industry.industryName" *ngFor="let industry of apiData?.companyAffiliation">
+          <ng-template matTabContent>
+           B
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="col-md-8">
+      <h2>Shared Links</h2>
+      <mat-tab-group>
+        <mat-tab label="All">
+          <ng-template matTabContent>
+            c
+
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Active">
+          <ng-template matTabContent>
+            c
+
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Inactive">
+          <ng-template matTabContent>
+            c
+
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

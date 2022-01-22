@@ -55,3 +55,10 @@
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   color: #1b1b1b;
 }
+.card1{
+  border:1px solid #A43DA1;
+  height: 120px;
+  text-align: center;
+  margin-bottom:16px;
+  width: 200px;
+}

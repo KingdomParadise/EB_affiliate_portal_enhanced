@@ -151,6 +151,13 @@ export class InitialDataService {
         catchError(this.handleError)
       )
   }
+  getCompanyAffiliations(){
+    return this.http.post<any>(this.apiUrl + '/affiliate/getCompanyAffiliations', {})
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

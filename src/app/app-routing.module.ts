@@ -8,6 +8,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explore-dealers.component';
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
 import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
+import { CompanyAffiliationsComponent } from './pages/profile/company-affiliations/company-affiliations.component';
 import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 import { OverviewComponent } from './pages/profile/overview/overview.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -62,6 +63,11 @@ const routes: Routes = [
           {
             path: 'outreach',
             component: OutreachComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'affiliations',
+            component: CompanyAffiliationsComponent,
             canActivate: [AuthGuard]
           }
         ]

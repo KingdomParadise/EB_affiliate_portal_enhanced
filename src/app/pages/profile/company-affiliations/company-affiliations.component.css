@@ -1,0 +1,36 @@
+.btn-link{
+  text-decoration: none;
+  color: #555555;
+}
+.btn-link:focus{
+  outline: none;
+  box-shadow: none;
+}
+.point{
+  font-size: 32px;
+  font-weight: 500;
+}
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: none;
+  border-radius: 0;
+}
+.btn-app{
+  background-color:#a63da1;
+  color:white
+}
+::ng-deep .mat-tab-body-wrapper{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.btn-light{
+  border-radius: 0;
+  background: #FFFFFF;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  color: #1b1b1b;
+}
+
+::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
+  min-width: 0!important;
+  padding: 3px 8px!important;
+  margin-right: 16px!important;
+ }
