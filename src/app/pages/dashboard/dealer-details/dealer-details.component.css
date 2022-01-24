@@ -1,0 +1,28 @@
+#dealerBg{
+  background-image: url('/assets/image/BACKGROUNDS/explore-dealers.png');
+  background-position: center;
+  background-size: cover;
+  padding:40px;
+}
+.searchInput{
+  width: 95%;
+  padding:8px 8px;
+  position: relative;
+  bottom:20px;
+  border: 2px solid #d1d1d1;
+  box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.1);
+}
+
+#filter{
+  border: 1px solid #cccccc;
+  margin-top:0 !important;
+  padding:6px;
+  position: relative;
+  bottom:16px;
+  background:white;
+}
+.dealerName{
+  font-weight: bold;
+  color: #a63da1;
+  font-size: 18px;
+}

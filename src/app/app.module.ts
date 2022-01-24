@@ -56,6 +56,7 @@ import { OverviewComponent } from './pages/profile/overview/overview.component';
 import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 import { CompanyAffiliationsComponent } from './pages/profile/company-affiliations/company-affiliations.component';
 import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explore-dealers.component';
+import { DealerDetailsComponent } from './pages/dashboard/dealer-details/dealer-details.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explo
     OutreachComponent,
     CompanyAffiliationsComponent,
     ExploreDealersComponent,
+    DealerDetailsComponent,
   ],
   imports: [
     BrowserModule,
