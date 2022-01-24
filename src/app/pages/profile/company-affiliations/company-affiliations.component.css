@@ -34,3 +34,19 @@
   padding: 3px 8px!important;
   margin-right: 16px!important;
  }
+ .comapanyLogo{
+  width: 90px;
+  height: 90px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 45px;
+  border:1px solid #e2e2e2;
+  margin:auto
+}
+.comapnyName{
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  margin-top:6px;
+  margin-bottom: 12px;
+}

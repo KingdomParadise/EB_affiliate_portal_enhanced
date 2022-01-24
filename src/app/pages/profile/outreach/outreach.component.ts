@@ -3,13 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 
-let multi: any[] = [
+let totalEngagementGraph: any[] = [
   {
-    name: 'Shared',
+    name: 'Total Engagement',
     series: [],
   },
 ];
-
+let totalLeadsGraph: any[] = [
+  {
+    name: 'Total Leads',
+    series: [],
+  },
+];
 @Component({
   selector: 'app-outreach',
   templateUrl: './outreach.component.html',
@@ -18,8 +23,9 @@ let multi: any[] = [
 })
 export class OutreachComponent implements OnInit {
   apiData: any;
-  userData:any;
-  multi: any[];
+  userData: any;
+  totalEngagementGraph: any[];
+  totalLeadsGraph: any[];
   xAxis: boolean = true;
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
@@ -27,14 +33,15 @@ export class OutreachComponent implements OnInit {
   xAxisLabel: string = 'Dates';
   yAxisLabel: string = 'Count';
   lineChartData: any[] = [];
+  lineChartData1:any[] = [];
   dateTypes = [
     {
       name: 'Last 7 Days',
-      value: '7',
+      value: 'last7Days',
     },
     {
       name: 'Last Month',
-      value: 'month',
+      value: 'lastMonth',
     },
 
     {
@@ -46,12 +53,13 @@ export class OutreachComponent implements OnInit {
       value: 'today',
     },
     {
-      name: 'This Yesr',
-      value: 'year',
+      name: 'This Year',
+      value: 'thisYear',
     },
   ];
 
-  selectedDateRange = this.dateTypes[0].value;
+  selectedDateRange = this.dateTypes[2].value;
+  campaignEngagementGraph: any[] = [];
   constructor(
     private dataService: InitialDataService,
     private datePipe: DatePipe
@@ -60,25 +68,56 @@ export class OutreachComponent implements OnInit {
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     let req = {
-      engagementPeriod: 'lastMonth',
+      engagementPeriod: 'allTime',
     };
     this.dataService.getOutReach(req).subscribe((res) => {
       this.apiData = res.response;
 
-      for (let i = 0; i < this.apiData.bannerEngagement.length; i++) {
+      for (let i = 0; i < this.apiData.allEngagement.graphData.length; i++) {
         let obj = {
           name: this.datePipe.transform(
-            this.apiData.contentShared[i].createTs,
-            'shortDate'
+            this.apiData.allEngagement.graphData[i].date,
+            'mediumDate'
           ),
-          value: this.apiData.contentShared[i].count,
+          value: this.apiData.allEngagement.graphData[i].count,
         };
         this.lineChartData.push(obj);
       }
-      //console.log(this.lineChartData);
-      multi[0]['series'] = this.lineChartData;
+      totalEngagementGraph[0]['series'] = this.lineChartData;
+      Object.assign(this, { totalEngagementGraph });
 
-      Object.assign(this, { multi });
+      //banner engagement donut graph
+      if (this.apiData?.campaignEngagement.graphData.length > 0) {
+        let arr = [
+          {
+            name: this.apiData?.campaignEngagement.graphData[0].graphName,
+            value: this.apiData?.campaignEngagement.graphData[0].count,
+          },
+          {
+            name: this.apiData?.campaignEngagement.graphData[1].graphName,
+            value: this.apiData?.campaignEngagement.graphData[1].count,
+          },
+          {
+            name: this.apiData?.campaignEngagement.graphData[2].graphName,
+            value: this.apiData?.campaignEngagement.graphData[2].count,
+          },
+        ];
+        this.campaignEngagementGraph = [...this.campaignEngagementGraph, ...arr];
+      }
+
+      //leads chart
+      for (let i = 0; i < this.apiData.leadEngagement.graphData.length; i++) {
+        let obj = {
+          name: this.datePipe.transform(
+            this.apiData.leadEngagement.graphData[i].date,
+            'mediumDate'
+          ),
+          value: this.apiData.leadEngagement.graphData[i].count,
+        };
+        this.lineChartData1.push(obj);
+      }
+      totalLeadsGraph[0]['series'] = this.lineChartData1;
+      Object.assign(this, { totalLeadsGraph });
     });
   }
 }

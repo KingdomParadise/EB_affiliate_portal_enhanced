@@ -26,19 +26,19 @@
           <div class="row mb-3">
             <div class="col-md-4">
               <div class="card px-3 py-4" style="background-color: #7031A5;color:white">
-                <h4 class="point">{{apiData?.totalEngagement}}</h4>
+                <h4 class="point">{{apiData?.totalEngagement || 0}}</h4>
                 <p>Total Engagement</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card px-3 py-4">
-                <h4 class="point">{{apiData?.bannersShared}}</h4>
+                <h4 class="point">{{apiData?.bannersShared || 0}} </h4>
                 <p>Total Banners Shared</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card px-3 py-4">
-                <h4 class="point">{{apiData?.campaignsShared}}</h4>
+                <h4 class="point">{{apiData?.campaignsShared || 0}}</h4>
                 <p>Total Compaign Shared</p>
               </div>
             </div>
@@ -53,7 +53,7 @@
             <mat-tab label="Total Engagement">
               <ng-template matTabContent>
                 <div class='p-3'>
-                  <div class="row">
+                  <div class="row mb-3">
                     <div class="col-md-9">
                       <div>
                         <button class="btn btn-light me-3">All Shares</button>
@@ -74,46 +74,119 @@
                   <div class="row">
                     <div class="col-md-3 d-flex flex-column pt-3">
                       <div class="card card1 d-flex justify-content-center" style="background-color: #A43DA1;color:white">
-                        <h1>{{apiData?.allEngagement.linksShared}}</h1>
+                        <h1>{{apiData?.allEngagement.linksShared || 0}}</h1>
                         <p>Links Shared</p>
                       </div>
                       <div class="card card1 d-flex justify-content-center">
-                        <h1>0</h1>
+                        <h1>{{apiData?.allEngagement.totalLeads || 0}}</h1>
                         <p>Leads Procured</p>
                       </div>
                       <div class="card card1 d-flex justify-content-center">
-                        <h1>{{apiData?.allEngagement.activeClicks}}</h1>
+                        <h1>{{apiData?.allEngagement.activeClicks || 0}}</h1>
                         <p>Active Clicks</p>
                       </div>
                     </div>
                     <div class="col-md-8">
-
+                      <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis" [yAxis]="true"
+                        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="totalEngagementGraph">
+                      </ngx-charts-line-chart>
                     </div>
                   </div>
                 </div>
 
-              </ng-template>
-            </mat-tab>
-            <mat-tab label="Banner Engagement">
-              <ng-template matTabContent>
-                <div class="pt-2">
-                  <div>
-                    <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis"
-                      [yAxis]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="multi">
-                    </ngx-charts-line-chart>
-                  </div>
-                </div>
               </ng-template>
             </mat-tab>
             <mat-tab label="Campaign Engagement">
               <ng-template matTabContent>
-                <div class="card">
-                  <div class="pt-2">
-                    <div>
-
+                <div class="p-3">
+                  <div class="row mb-3">
+                    <div class="col-md-9">
+                      <div>
+                        <button class="btn btn-light me-3">All Campaigns</button>
+                        <button class='btn btn-light me-3'>Active Campaigns</button>
+                        <button class='btn btn-light me-3'>Past Campaigns</button>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="ms-auto">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2">
+                          <mat-option *ngFor="let type of dateTypes" [value]="type.value">
+                            {{type.name}}
+                          </mat-option>
+                        </mat-select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div>
+                        <ngx-charts-pie-chart [view]="[300, 300]" [results]="campaignEngagementGraph" [doughnut]="true" [legendTitle]="''">
+                        </ngx-charts-pie-chart>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="card border-0 shadow-none">
+                        <img [src]="apiData?.campaignEngagement?.campaignImageLink" alt="">
+                        <div class="d-flex justify-content-between mt-2">
+                          <div>
+                            <h2>{{apiData?.campaignEngagement?.campaignName}}</h2>
+                            <p class="mb-0 text-muted">By {{apiData?.campaignEngagement?.dealerName}}</p>
+                          </div>
+                          <div>
+                            <p class="text-muted" style="font-size: 12px;">{{apiData?.campaignEngagement?.campaignStartDate | date: 'mediumDate'}}- {{apiData?.campaignEngagement?.campaignEndDate | date: 'mediumDate'}}</p>
+                            <p style="text-align: right;">10,000</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Leads Generated">
+              <ng-template matTabContent>
+                <div class='p-3'>
+                  <div class="row mb-3">
+                    <div class="col-md-9">
+                      <div>
+                        <button class="btn btn-light me-3">All Leads</button>
+                        <button class='btn btn-light me-3'>Active Leads</button>
+                        <button class='btn btn-light me-3'>Past Leads</button>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="ms-auto">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2">
+                          <mat-option *ngFor="let type of dateTypes" [value]="type.value">
+                            {{type.name}}
+                          </mat-option>
+                        </mat-select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 d-flex flex-column pt-3">
+                      <div class="card card1 d-flex justify-content-center" style="background-color: #A43DA1;color:white">
+                        <h1>{{apiData?.leadEngagement.linksShared || 0}}</h1>
+                        <p>Links Shared</p>
+                      </div>
+                      <div class="card card1 d-flex justify-content-center">
+                        <h1>{{apiData?.leadEngagement.totalLeads || 0}}</h1>
+                        <p>Leads Procured</p>
+                      </div>
+                      <div class="card card1 d-flex justify-content-center">
+                        <h1>{{apiData?.leadEngagement.activeClicks || 0}}</h1>
+                        <p>Active Clicks</p>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis" [yAxis]="true"
+                        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="totalLeadsGraph">
+                      </ngx-charts-line-chart>
+                    </div>
+                  </div>
+                </div>
+
               </ng-template>
             </mat-tab>
           </mat-tab-group>
