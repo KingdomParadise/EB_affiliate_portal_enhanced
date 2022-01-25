@@ -57,6 +57,13 @@
   background-size: cover;
   border-radius: 35px;
   border:1px solid #e2e2e2;
+  position: relative;
+}
+.redDot{
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: red;
 }
 #pointsTable{
   margin-bottom:8px;

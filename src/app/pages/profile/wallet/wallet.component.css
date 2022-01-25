@@ -1,0 +1,26 @@
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: none;
+  border-radius: 0;
+}
+.point{
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.btn-link{
+  text-decoration: none;
+  color: #555555;
+}
+.btn-link:focus{
+  outline: none;
+  box-shadow: none;
+}
+.pointImage{
+  width: 70px;
+  height: 70px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 35px;
+  border:1px solid #e2e2e2;
+}

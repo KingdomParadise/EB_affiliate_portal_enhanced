@@ -46,7 +46,6 @@ import { ShareModalComponent } from './pages/dashboard/share-modal/share-modal.c
 import { ReferComponent } from './pages/refer/refer.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ChangePasswordModalComponent } from './pages/settings/change-password-modal/change-password-modal.component';
-import { WalletComponent } from './pages/wallet/wallet.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
@@ -57,6 +56,8 @@ import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 import { CompanyAffiliationsComponent } from './pages/profile/company-affiliations/company-affiliations.component';
 import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explore-dealers.component';
 import { DealerDetailsComponent } from './pages/dashboard/dealer-details/dealer-details.component';
+import { NotificationsComponent } from './pages/profile/notifications/notifications.component';
+import { WalletComponent } from './pages/profile/wallet/wallet.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,6 @@ import { DealerDetailsComponent } from './pages/dashboard/dealer-details/dealer-
     ReferComponent,
     SettingsComponent,
     ChangePasswordModalComponent,
-    WalletComponent,
     EnterEmailComponent,
     EnterPhoneComponent,
     ProfileComponent,
@@ -79,6 +79,8 @@ import { DealerDetailsComponent } from './pages/dashboard/dealer-details/dealer-
     CompanyAffiliationsComponent,
     ExploreDealersComponent,
     DealerDetailsComponent,
+    NotificationsComponent,
+    WalletComponent
   ],
   imports: [
     BrowserModule,

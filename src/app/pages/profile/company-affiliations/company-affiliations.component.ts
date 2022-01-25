@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InitialDataService } from 'src/app/services/initial-data.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-company-affiliations',
@@ -9,33 +10,11 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
 export class CompanyAffiliationsComponent implements OnInit {
   apiData: any;
   userData: any;
-  dateTypes = [
-    {
-      name: 'Last 7 Days',
-      value: '7',
-    },
-    {
-      name: 'Last Month',
-      value: 'month',
-    },
+  showCopyState:boolean = false;
 
-    {
-      name: 'All Time',
-      value: 'all',
-    },
-    {
-      name: 'Today',
-      value: 'today',
-    },
-    {
-      name: 'This Yesr',
-      value: 'year',
-    },
-  ];
-
-  selectedDateRange = this.dateTypes[0].value;
   constructor(
     private dataService: InitialDataService,
+    private clipboard: Clipboard,
     // private datePipe: DatePipe
   ) { }
 
@@ -46,5 +25,9 @@ export class CompanyAffiliationsComponent implements OnInit {
 
     })
   }
-
+  copyUrl(url:string) {
+    this.clipboard.copy(url);
+    this.showCopyState = true;
+    setTimeout(() => { this.showCopyState = false; }, 1000)
+  }
 }

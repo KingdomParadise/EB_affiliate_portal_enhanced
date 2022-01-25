@@ -29,8 +29,8 @@ export class HeaderComponent implements OnInit {
   }
   selected: any = '0';
   ngOnInit(): void {
-    this.getNotifications();
-    setInterval(()=>{this.getNotifications()},30000);
+    // this.getNotifications();
+    // setInterval(()=>{this.getNotifications()},30000);
     this.dataService.isSettingChanged.subscribe( val =>{
       this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
       this.userPhotoUrl = this.userData.userImage;

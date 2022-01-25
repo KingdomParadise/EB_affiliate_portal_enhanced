@@ -10,14 +10,15 @@ import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explo
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
 import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
 import { CompanyAffiliationsComponent } from './pages/profile/company-affiliations/company-affiliations.component';
+import { NotificationsComponent } from './pages/profile/notifications/notifications.component';
 import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 import { OverviewComponent } from './pages/profile/overview/overview.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { WalletComponent } from './pages/profile/wallet/wallet.component';
 import { ReferComponent } from './pages/refer/refer.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { TrainingComponent } from './pages/training/training.component';
 import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
-import { WalletComponent } from './pages/wallet/wallet.component';
 import { AuthGuard } from './services/auth.gaurds';
 
 
@@ -70,6 +71,16 @@ const routes: Routes = [
             path: 'affiliations',
             component: CompanyAffiliationsComponent,
             canActivate: [AuthGuard]
+          },
+          {
+            path: 'notifications',
+            component: NotificationsComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'wallet',
+            component: WalletComponent,
+            canActivate: [AuthGuard]
           }
         ]
       },
@@ -103,11 +114,7 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent,
-      },
-      {
-        path: 'wallet',
-        component: WalletComponent,
-      },
+      }
     ]
   }
 ];

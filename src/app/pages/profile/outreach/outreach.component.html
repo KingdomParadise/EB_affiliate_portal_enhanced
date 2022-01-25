@@ -56,14 +56,14 @@
                   <div class="row mb-3">
                     <div class="col-md-9">
                       <div>
-                        <button class="btn btn-light me-3">All Shares</button>
+                        <!-- <button class="btn btn-light me-3">All Shares</button>
                         <button class='btn btn-light me-3'>Active Shares</button>
-                        <button class='btn btn-light me-3'>Past Shares</button>
+                        <button class='btn btn-light me-3'>Past Shares</button> -->
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="ms-auto">
-                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2" (selectionChange)="callAPI($event.value)">
                           <mat-option *ngFor="let type of dateTypes" [value]="type.value">
                             {{type.name}}
                           </mat-option>
@@ -74,15 +74,15 @@
                   <div class="row">
                     <div class="col-md-3 d-flex flex-column pt-3">
                       <div class="card card1 d-flex justify-content-center" style="background-color: #A43DA1;color:white">
-                        <h1>{{apiData?.allEngagement.linksShared || 0}}</h1>
+                        <h1>{{apiData?.allEngagement?.linksShared || 0}}</h1>
                         <p>Links Shared</p>
                       </div>
                       <div class="card card1 d-flex justify-content-center">
-                        <h1>{{apiData?.allEngagement.totalLeads || 0}}</h1>
+                        <h1>{{apiData?.allEngagement?.totalLeads || 0}}</h1>
                         <p>Leads Procured</p>
                       </div>
                       <div class="card card1 d-flex justify-content-center">
-                        <h1>{{apiData?.allEngagement.activeClicks || 0}}</h1>
+                        <h1>{{apiData?.allEngagement?.activeClicks || 0}}</h1>
                         <p>Active Clicks</p>
                       </div>
                     </div>
@@ -102,14 +102,14 @@
                   <div class="row mb-3">
                     <div class="col-md-9">
                       <div>
-                        <button class="btn btn-light me-3">All Campaigns</button>
+                        <!-- <button class="btn btn-light me-3">All Campaigns</button>
                         <button class='btn btn-light me-3'>Active Campaigns</button>
-                        <button class='btn btn-light me-3'>Past Campaigns</button>
+                        <button class='btn btn-light me-3'>Past Campaigns</button> -->
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="ms-auto">
-                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2" (selectionChange)="callAPI($event.value)">
                           <mat-option *ngFor="let type of dateTypes" [value]="type.value">
                             {{type.name}}
                           </mat-option>
@@ -149,14 +149,14 @@
                   <div class="row mb-3">
                     <div class="col-md-9">
                       <div>
-                        <button class="btn btn-light me-3">All Leads</button>
+                        <!-- <button class="btn btn-light me-3">All Leads</button>
                         <button class='btn btn-light me-3'>Active Leads</button>
-                        <button class='btn btn-light me-3'>Past Leads</button>
+                        <button class='btn btn-light me-3'>Past Leads</button> -->
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="ms-auto">
-                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2" (selectionChange)="callAPI($event.value)">
                           <mat-option *ngFor="let type of dateTypes" [value]="type.value">
                             {{type.name}}
                           </mat-option>

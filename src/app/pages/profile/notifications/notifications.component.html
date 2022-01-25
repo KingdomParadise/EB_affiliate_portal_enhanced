@@ -21,7 +21,7 @@
 
   <div class="row">
     <div class="col-md-5">
-      <h2>Company Affiliations</h2>
+      <h2>Updates</h2>
       <mat-tab-group>
         <mat-tab label="All">
           <ng-template matTabContent>
@@ -66,28 +66,28 @@
       </mat-tab-group>
     </div>
     <div class="col-md-7">
-      <h2>Shared Links</h2>
+      <h2>Inbox</h2>
       <mat-tab-group>
         <mat-tab label="All">
           <ng-template matTabContent>
             <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let link of apiData?.sharedLinks?.allLinks" class="px-5 pt-3">
-                <h2 class="main-color">{{link.postDate}}</h2>
+              <div *ngFor="let notf of apiData?.allNotifications" class="px-5 pt-3">
+                <h2 class="main-color">{{notf.notificationDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
-                    <tr *ngFor="let item of link.shareList" style="border-top: 1px solid gray;">
+                    <tr *ngFor="let message of notf.messages" style="border-top: 1px solid gray;">
                       <td scope="col">
-                        <p class="mb-0">{{item.companyName}}</p>
+                        <div class="pointImage me-2" [ngStyle]="{'background-image': 'url(assets/image/company1.png)'}">
+                          <div *ngIf="message.readFlag == 0" style="min-width: 10px;margin-top:10px;position: absolute;right:0">
+                            <div class="redDot"></div>
+                          </div>
+                        </div>
                       </td>
                       <td scope="col">
-                        <p class="mb-0">{{item.campaignName}}</p>
+                        <p class="mb-0">{{message.message}}</p>
                       </td>
                       <td scope="col">
-                        <p class="main-color mb-0">{{item.shortUrlLink}}</p>
-                      </td>
-                      <td scope="col">
-                        <p *ngIf='showCopyState' class="mb-0">Copied</p>
-                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink)">Copy</button>
+                        <button class="btn btn-light">View</button>
                       </td>
                     </tr>
                   </tbody>
@@ -96,61 +96,32 @@
             </div>
           </ng-template>
         </mat-tab>
-        <mat-tab label="Active">
+        <mat-tab label="Urgent">
           <ng-template matTabContent>
             <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let link of apiData?.sharedLinks?.activeLinks" class="px-5 pt-3">
-                <h2 class="main-color">{{link.postDate}}</h2>
+              <div *ngFor="let notf of apiData?.urgentNotifications" class="px-5 pt-3">
+                <h2 class="main-color">{{notf.notificationDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
-                    <tr *ngFor="let item of link.shareList" style="border-top: 1px solid gray;">
+                    <tr *ngFor="let message of notf.messages" style="border-top: 1px solid gray;">
                       <td scope="col">
-                        <p class="mb-0">{{item.companyName}}</p>
+                        <div class="pointImage me-2" [ngStyle]="{'background-image': 'url(assets/image/company1.png)'}">
+                          <div *ngIf="message.readFlag == 0" style="min-width: 10px;margin-top:10px;position: absolute;right:0">
+                            <div class="redDot"></div>
+                          </div>
+                        </div>
                       </td>
                       <td scope="col">
-                        <p class="mb-0">{{item.campaignName}}</p>
+                        <p class="mb-0">{{message.message}}</p>
                       </td>
                       <td scope="col">
-                        <p class="main-color mb-0">{{item.shortUrlLink}}</p>
-                      </td>
-                      <td scope="col">
-                        <p *ngIf='showCopyState' class="mb-0">Copied</p>
-                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink)">Copy</button>
+                        <button class="btn btn-light">View</button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Inactive">
-          <ng-template matTabContent>
-            <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let link of apiData?.sharedLinks?.allLinks" class="px-5 pt-3">
-                <h2 class="main-color">{{link.postDate}}</h2>
-                <table class="table table-borderless" id="pointsTable">
-                  <tbody>
-                    <tr *ngFor="let item of link.shareList" style="border-top: 1px solid gray;">
-                      <td scope="col">
-                        <p class="mb-0">{{item.companyName}}</p>
-                      </td>
-                      <td scope="col">
-                        <p class="mb-0">{{item.campaignName}}</p>
-                      </td>
-                      <td scope="col">
-                        <p class="main-color mb-0">{{item.shortUrlLink}}</p>
-                      </td>
-                      <td scope="col">
-                        <p *ngIf='showCopyState' class="mb-0">Copied</p>
-                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink)">Copy</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
           </ng-template>
         </mat-tab>
       </mat-tab-group>

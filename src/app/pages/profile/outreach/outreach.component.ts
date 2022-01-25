@@ -46,7 +46,7 @@ export class OutreachComponent implements OnInit {
 
     {
       name: 'All Time',
-      value: 'all',
+      value: 'allTime',
     },
     {
       name: 'Today',
@@ -67,13 +67,17 @@ export class OutreachComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    this.callAPI('allTime');
+
+  }
+  callAPI(filter:string){
     let req = {
-      engagementPeriod: 'allTime',
+      engagementPeriod: filter,
     };
     this.dataService.getOutReach(req).subscribe((res) => {
       this.apiData = res.response;
 
-      for (let i = 0; i < this.apiData.allEngagement.graphData.length; i++) {
+      for (let i = 0; i < this.apiData?.allEngagement?.graphData.length; i++) {
         let obj = {
           name: this.datePipe.transform(
             this.apiData.allEngagement.graphData[i].date,
@@ -87,7 +91,7 @@ export class OutreachComponent implements OnInit {
       Object.assign(this, { totalEngagementGraph });
 
       //banner engagement donut graph
-      if (this.apiData?.campaignEngagement.graphData.length > 0) {
+      if (this.apiData?.campaignEngagement?.graphData.length > 0) {
         let arr = [
           {
             name: this.apiData?.campaignEngagement.graphData[0].graphName,
@@ -106,7 +110,7 @@ export class OutreachComponent implements OnInit {
       }
 
       //leads chart
-      for (let i = 0; i < this.apiData.leadEngagement.graphData.length; i++) {
+      for (let i = 0; i < this.apiData?.leadEngagement?.graphData.length; i++) {
         let obj = {
           name: this.datePipe.transform(
             this.apiData.leadEngagement.graphData[i].date,

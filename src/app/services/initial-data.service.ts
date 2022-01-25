@@ -158,6 +158,20 @@ export class InitialDataService {
         catchError(this.handleError)
       )
   }
+  getNotifications(){
+    return this.http.post<any>(this.apiUrl + '/affiliate/getNotifications', {})
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+  getPoints(){
+    return this.http.post<any>(this.apiUrl + '/affiliate/getPoints', {})
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
