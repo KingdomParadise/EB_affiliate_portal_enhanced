@@ -12,4 +12,5 @@ export class DealerDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }

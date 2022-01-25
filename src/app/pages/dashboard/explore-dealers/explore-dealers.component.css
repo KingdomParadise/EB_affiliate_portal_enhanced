@@ -26,3 +26,14 @@
   color: #a63da1;
   font-size: 18px;
 }
+.comapanyLogo{
+  width: 70px;
+  height: 70px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 35px;
+  border:1px solid #e2e2e2;
+}
+.card1{
+  width: 320px;
+}

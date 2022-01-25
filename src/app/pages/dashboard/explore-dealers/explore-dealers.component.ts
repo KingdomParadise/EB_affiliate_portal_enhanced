@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InitialDataService } from 'src/app/services/initial-data.service';
 
 @Component({
   selector: 'app-explore-dealers',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./explore-dealers.component.css']
 })
 export class ExploreDealersComponent implements OnInit {
+  apiData:any;
   filterType = [
     {
       name: 'Alphabatical: Dealer Name',
@@ -13,9 +15,19 @@ export class ExploreDealersComponent implements OnInit {
     }
   ]
   selectedFilter = this.filterType[0].value;
-  constructor() { }
+  constructor(
+    private dataService: InitialDataService
+  ) { }
 
   ngOnInit(): void {
+    let req ={
+      searchString :["Mercedes Benz","BMW","AUDI"]
+    }
+
+    this.dataService.exploreDealer(req).subscribe((res) => {
+      this.apiData = res.response;
+      console.log(res);
+    });
   }
 
 }

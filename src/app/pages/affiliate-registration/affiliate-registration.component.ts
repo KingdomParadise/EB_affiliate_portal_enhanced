@@ -228,7 +228,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     });
   }
   public onStepChange(event: any): void {
-    this.currentStepperImage= this.stepperImages[event.selectedIndex].url;
+    //this.currentStepperImage= this.stepperImages[event.selectedIndex].url;
   }
 
   close() {
