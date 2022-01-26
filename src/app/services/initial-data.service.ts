@@ -179,6 +179,20 @@ export class InitialDataService {
         catchError(this.handleError)
       )
   }
+  dealerDetails(data:any){
+    return this.http.post<any>(this.apiUrl + '/affiliate/dealerDetails', data)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+  sendAffiliateRequest(data:any){
+    return this.http.post<any>(this.apiUrl + '/affiliate/sendAffiliateRequest', data)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

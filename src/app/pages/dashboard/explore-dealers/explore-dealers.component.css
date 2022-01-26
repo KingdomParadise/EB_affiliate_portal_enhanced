@@ -25,6 +25,7 @@
   font-weight: bold;
   color: #a63da1;
   font-size: 18px;
+  cursor: pointer;
 }
 .comapanyLogo{
   width: 70px;
@@ -33,6 +34,7 @@
   background-size: cover;
   border-radius: 35px;
   border:1px solid #e2e2e2;
+  cursor: pointer;
 }
 .card1{
   width: 320px;

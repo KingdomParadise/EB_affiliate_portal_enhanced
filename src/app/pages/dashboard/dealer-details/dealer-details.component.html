@@ -10,122 +10,91 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-5">
-      </div>
-      <div class="col-md-7">
-      </div>
-    </div>
-    <div>
-      <div class="row mb-3">
-        <div class="col-md-12 d-flex align-items-center">
-          <img src="assets/image/comapny1.png" alt="" style="width:70px">
-          <span class="dealerName mx-3">Mercedes Benz</span>
-          <mat-icon class="my-auto">add_circle_outline</mat-icon>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card border-0">
-            <img src="assets/image/mercedes1.png" alt="mercedes">
-            <div class="d-flex justify-content-between mt-2">
-              <div>
-                <h2>50% Winter sales</h2>
-                <p class="mb-0 text-muted">By mercedes</p>
-              </div>
-              <div>
-                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
-                <p style="text-align: right;">10,000</p>
-              </div>
+      <div class="col-md-12 profile-header">
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-center">
+            <div id="headerProfileImg">
+              <img [src]="dealer?.companyLogoUrl? dealer?.companyLogoUrl :'assets/images/profile-pic.png'" alt="">
+            </div>
+            <div class="ms-2">
+              <h1 class="mb-2" style="font-size: 32px;">{{dealer?.companyName}}</h1>
+              <p style="font-size: 10px;" class="mb-0">
+                {{dealer?.delaerDescription}}
+              </p>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0">
-            <img src="assets/image/mercedes1.png" alt="mercedes">
-            <div class="d-flex justify-content-between mt-2">
-              <div>
-                <h2>50% Winter sales</h2>
-                <p class="mb-0 text-muted">By mercedes</p>
-              </div>
-              <div>
-                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
-                <p style="text-align: right;">10,000</p>
-              </div>
+          <div class="col-md-6 d-flex justify-content-end mt-2" style="padding-top:60px">
+            <div class='d-flex flex-column justify-content-center align-items-center'>
+              <span class="point mb-2">{{dealer?.totalAffiliates || 0}}</span>
+              <span>Total Affiliates</span>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0">
-            <img src="assets/image/mercedes1.png" alt="mercedes">
-            <div class="d-flex flex-column mt-2">
-              <div class="d-flex justify-content-between align-items-center">
-                <h2>50% Winter sales</h2>
-                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="mb-0 text-muted">By mercedes</p>
-                <p style="text-align: right;">10,000</p>
-              </div>
+            <div class='d-flex flex-column justify-content-center align-items-center ms-4'>
+              <span class="point mb-2">{{dealer?.activeCampaigns || 0}}</span>
+              <span>Active Campaigns</span>
+            </div>
+            <!-- <div class='d-flex flex-column justify-content-center align-items-center ms-4'>
+              <span class="point mb-2">{{dealer?.totalAffiliates || 0}}</span>
+              <span>Active Banners</span>
+            </div> -->
+            <div class='d-flex flex-column justify-content-center align-items-center ms-4'>
+              <span class="point mb-2">{{dealer?.offers || 0}}</span>
+              <span>Offers</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="mt-3">
-      <div class="row mb-3">
-        <div class="col-md-12 d-flex align-items-center">
-          <img src="assets/image/comapny1.png" alt="" style="width:70px">
-          <span class="dealerName mx-3">Mercedes Benz</span>
-          <mat-icon class="my-auto">add_circle_outline</mat-icon>
+      <div class="col-md-12 d-flex justify-content-between mt-5">
+        <div style="margin-left:106px" class="d-flex align-items-center">
+          {{dealer?.companyEmail}}
+          <a [href]="dealer?.facebookLink" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
+              style="width: 22px;margin-right: 6px;margin-left:8px"></a>
+          <a [href]="dealer?.instaLink" target="_blank"><img src="assets/image/SVG/Instagram.png" alt=""
+              style="width: 22px;margin-right: 8px"></a>
+          <a href="http://www.tiktok.com" target="_blank">
+            <img src="assets/image/SVG/TikTok-Icon-logo.png" alt="" style="width: 22px;margin-right: 8px">
+          </a>
+          <a href="http://www.twitter.com" target="_blank">
+            <img src="assets/image/SVG/Twitter_bird_logo_2012.png" alt="" style="width: 22px;margin-right: 8px">
+          </a>
+          <a [href]="dealer?.linkedinLink" target="_blank">
+            <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 22px;">
+          </a>
+        </div>
+        <div class='d-flex align-items-center'>
+          <button class="btn btn-light me-5">Send Affiliate Request</button>
+          <div class="avatar" *ngFor="let follower of dealer?.followingAffiliatesPic" [ngStyle]="{'background-image': 'url(' + follower?.userImage + ')'}">
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card border-0">
-            <img src="assets/image/mercedes1.png" alt="mercedes">
-            <div class="d-flex justify-content-between mt-2">
-              <div>
-                <h2 class='mb-0'>50% Winter sales</h2>
-                <p class="mb-0 text-muted">By mercedes</p>
-              </div>
-              <div>
-                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
-                <p style="text-align: right;">10,000</p>
-              </div>
-            </div>
-          </div>
+      <div class="col-md-12">
+        <div>
+          <hr />
         </div>
-        <div class="col-md-4">
-          <div class="card border-0">
-            <img src="assets/image/mercedes1.png" alt="mercedes">
-            <div class="d-flex justify-content-between mt-2">
-              <div>
-                <h2 class='mb-0'>50% Winter sales</h2>
-                <p class="mb-0 text-muted">By mercedes</p>
-              </div>
-              <div>
-                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
-                <p style="text-align: right;">10,000</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0">
-            <img src="assets/image/mercedes1.png" alt="mercedes">
-            <div class="d-flex flex-column mt-2">
-              <div class="d-flex justify-content-between align-items-center">
-                <h2 class='mb-0'>50% Winter sales</h2>
-                <p class="text-muted" style="font-size: 12px;">Jan 10 2022 - Feb 25 2022</p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="mb-0 text-muted">By mercedes</p>
-                <p style="text-align: right;">10,000</p>
+      </div>
+      <div class="col-md-12">
+        <div>
+          <h2>Campaigns</h2>
+          <div class='d-flex justify-content-between'>
+            <div class="card1" *ngFor="let campaign of dealer.campaignList">
+              <div class="card border-0">
+                <img [src]="campaign.campaignImageLink" alt="mercedes">
+                <div class="d-flex flex-column mt-2">
+                  <div class='d-flex justify-content-between align-items-center'>
+                    <h2 class="mb-0">{{campaign.campaignName}}</h2>
+                    <p class="text-muted mb-0" style="font-size: 12px;">{{campaign.campaignStartDate | date:'mediumDate'}} - {{campaign.campaignEndDate  | date:'mediumDate'}}</p>
+
+                  </div>
+                  <div class='d-flex justify-content-between'>
+                    <p class="mb-0 text-muted">By {{dealer.companyName}}</p>
+                    <p style="text-align: right;">{{campaign.leadPayout}}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>

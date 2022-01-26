@@ -30,10 +30,13 @@
       <div class="row mb-3">
         <div class="col-md-12 d-flex align-items-center">
           <!-- <img src="assets/image/comapny1.png" alt="" style="width:70px"> -->
-          <div class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + dealer.companyLogoUrl + ')'}">
+          <div (click)="navigateToDealer(dealer)" class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + dealer.companyLogoUrl + ')'}">
           </div>
-          <span class="dealerName mx-3">{{dealer.companyName}}</span>
-          <mat-icon class="my-auto">add_circle_outline</mat-icon>
+          <span class="dealerName mx-3" (click)="navigateToDealer(dealer)">{{dealer.companyName}}</span>
+          <mat-icon style="cursor: pointer;" *ngIf="dealer?.following == 0"class="my-auto" (click)="sendAffiliateRequest(dealer.dealerId)">add_circle_outline</mat-icon>
+          <div *ngIf="dealer?.following == 1">
+            <img src="assets/image/tick.png" alt="" width="24px">
+          </div>
         </div>
       </div>
       <div class="row d-flex justify-content-between">
