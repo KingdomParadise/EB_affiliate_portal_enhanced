@@ -1,0 +1,92 @@
+<div>
+  <div style="margin-left:106px">
+    {{userData.referalCode}}
+    <a href="http://facebook.com/" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
+        style="width: 22px;margin-right: 6px;margin-left:8px"></a>
+    <a href="http://www.instagram.com" target="_blank"><img src="assets/image/SVG/Instagram.png" alt=""
+        style="width: 22px;margin-right: 8px"></a>
+    <a href="http://www.tiktok.com" target="_blank">
+      <img src="assets/image/SVG/TikTok-Icon-logo.png" alt="" style="width: 22px;margin-right: 8px">
+    </a>
+    <a href="http://www.twitter.com" target="_blank">
+      <img src="assets/image/SVG/Twitter_bird_logo_2012.png" alt="" style="width: 22px;margin-right: 8px">
+    </a>
+    <a href="http://www.linkedin.com" target="_blank">
+      <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 22px;">
+    </a>
+  </div>
+  <div>
+    <hr />
+  </div>
+
+  <div class="row">
+   <div class="col-md-6">
+    <div class="card border-0">
+      <form [formGroup]="personalForm" class="mb-5 mb-md-0">
+        <ng-template matStepLabel>Account Information</ng-template>
+        <div>
+          <h1 class="main-color font-weight-bold welcomeText">Personal Info</h1>
+        </div>
+        <div class="form-group d-flex flex-column flex-md-row">
+          <div class="col me-md-2">
+            <label>First Name</label>
+            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city"
+              onkeypress="return /[a-z]/i.test(event.key)" formControlName="firstName">
+          </div>
+          <div class="col ms-md-2">
+            <label>Last Name</label>
+            <input type="text" class="form-control" id="companyPhone" onkeypress="return /[a-z]/i.test(event.key)"
+              formControlName="lastName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col">
+            <label for="country">Country</label>
+            <ng-select [items]="countries" bindLabel="countryName" formControlName="countryId"
+              (change)="onCountrySelect($event)" bindValue="countryId">
+            </ng-select>
+          </div>
+          <div class="col">
+            <label for="state">Region</label>
+            <ng-select [items]="states" bindLabel="stateName" formControlName="stateId" bindValue="stateId">
+            </ng-select>
+          </div>
+          <div class="form-group d-flex flex-column flex-md-row mt-3">
+            <div class="col me-md-2">
+              <label>Phone</label>
+              <input matInput type="number" class="form-control" id="personalPhone" formControlName="phone">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+   </div>
+   <div class="col-md-6">
+    <div class="card border-0">
+      <form [formGroup]="affiliationForm" class="mt-md-1">
+        <div>
+          <h1 class="main-color font-weight-bold welcomeText">Affiliation</h1>
+        </div>
+        <div class="form-group d-flex flex-column">
+          <div class="col me-md-2">
+            <label>Companies</label>
+            <ng-select [items]="companies" bindLabel="companyName" placeholder="Company Name" [multiple]="true"
+              formControlName="companyList" bindValue="companyId">
+            </ng-select>
+          </div>
+          <div>
+            <hr />
+          </div>
+
+          <div class="col ms-md-2">
+            <label>Interests</label>
+            <ng-select [items]="interests" bindLabel="industryName" placeholder="Interest Area" [multiple]="true"
+              formControlName="intrestAreaList" bindValue="industryId">
+            </ng-select>
+          </div>
+        </div>
+      </form>
+    </div>
+   </div>
+  </div>
+</div>

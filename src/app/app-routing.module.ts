@@ -14,6 +14,7 @@ import { NotificationsComponent } from './pages/profile/notifications/notificati
 import { OutreachComponent } from './pages/profile/outreach/outreach.component';
 import { OverviewComponent } from './pages/profile/overview/overview.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SettingComponent } from './pages/profile/setting/setting.component';
 import { WalletComponent } from './pages/profile/wallet/wallet.component';
 import { ReferComponent } from './pages/refer/refer.component';
 import { SettingsComponent } from './pages/settings/settings.component';
@@ -81,7 +82,13 @@ const routes: Routes = [
             path: 'wallet',
             component: WalletComponent,
             canActivate: [AuthGuard]
+          },
+          {
+            path: 'settings',
+            component: SettingComponent,
+            canActivate: [AuthGuard]
           }
+
         ]
       },
       {
@@ -111,10 +118,7 @@ const routes: Routes = [
         component: ReferComponent,
         canActivate: [AuthGuard]
       },
-      {
-        path: 'settings',
-        component: SettingsComponent,
-      }
+
     ]
   }
 ];

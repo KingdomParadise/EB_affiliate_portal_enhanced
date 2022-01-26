@@ -58,6 +58,7 @@ import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explo
 import { DealerDetailsComponent } from './pages/dashboard/dealer-details/dealer-details.component';
 import { NotificationsComponent } from './pages/profile/notifications/notifications.component';
 import { WalletComponent } from './pages/profile/wallet/wallet.component';
+import { SettingComponent } from './pages/profile/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { WalletComponent } from './pages/profile/wallet/wallet.component';
     ExploreDealersComponent,
     DealerDetailsComponent,
     NotificationsComponent,
-    WalletComponent
+    WalletComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
