@@ -3,12 +3,11 @@
     <div class="col-md-12" id="dealerBg">
       <div class="container">
         <h1>
-          Explore 2022's <br />
-          <span style="font-size: 28px;font-weight: 500;">Top Dealers</span>
+          Start Sharing <br />
+          <span style="font-size: 28px;font-weight: 500;">Start Earning</span>
         </h1>
         <p>
-          From frequent banners and campaigns to insider perks,<br/>
-          find a Dealer that you can help grow and benefit you!
+          Share your affiliated dealers' campaigns today and start earning.<br/> It's that simple.
         </p>
       </div>
     </div>
@@ -26,21 +25,9 @@
         </mat-select> -->
       </div>
     </div>
-    <div *ngFor="let dealer of apiData?.dealerList" class="mb-5">
-      <div class="row mb-3">
-        <div class="col-md-12 d-flex align-items-center">
-          <!-- <img src="assets/image/comapny1.png" alt="" style="width:70px"> -->
-          <div (click)="navigateToDealer(dealer)" class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + dealer.companyLogoUrl + ')'}">
-          </div>
-          <span class="dealerName mx-3" (click)="navigateToDealer(dealer)">{{dealer.companyName}}</span>
-          <mat-icon style="cursor: pointer;" *ngIf="dealer?.following == 0"class="my-auto" (click)="sendAffiliateRequest(dealer.dealerId)">add_circle_outline</mat-icon>
-          <div *ngIf="dealer?.following == 1">
-            <img src="assets/image/tick.png" alt="" width="24px">
-          </div>
-        </div>
-      </div>
+
       <div class="row d-flex justify-content-between">
-        <div class="card1" *ngFor="let campaign of dealer.campaignList">
+        <div class="card1" *ngFor="let campaign of apiData.campaignList">
           <div class="card border-0">
             <div class="campaignImage" [ngStyle]="{'background-image': 'url(' + campaign.campaignImageLink + ')'}">
               <div class="perLead">
@@ -62,7 +49,7 @@
 
               </div>
               <div class='d-flex justify-content-between'>
-                <p class="mb-0 text-muted">By {{dealer.companyName}}</p>
+                <p class="mb-0 text-muted">By </p>
                 <p style="text-align: right;" class="d-flex align-items-center">
                   <mat-icon style="color:#8E38A3;margin-right:8px">sync </mat-icon>
                   {{campaign.totalShares}}
@@ -72,6 +59,6 @@
           </div>
         </div>
       </div>
-    </div>
+
   </div>
 </div>

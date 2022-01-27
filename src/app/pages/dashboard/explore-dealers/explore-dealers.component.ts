@@ -49,4 +49,14 @@ export class ExploreDealersComponent implements OnInit {
       this.initalCall();
     })
   }
+  filterData(val:any){
+    let req ={
+      searchString : [val]
+    }
+
+    this.dataService.exploreDealer(req).subscribe((res) => {
+      this.apiData = res.response;
+    });
+  }
+
 }
