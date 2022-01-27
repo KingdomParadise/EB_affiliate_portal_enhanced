@@ -44,8 +44,6 @@ import { TrainingComponent } from './pages/training/training.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ShareModalComponent } from './pages/dashboard/share-modal/share-modal.component';
 import { ReferComponent } from './pages/refer/refer.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { ChangePasswordModalComponent } from './pages/settings/change-password-modal/change-password-modal.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
@@ -59,6 +57,7 @@ import { DealerDetailsComponent } from './pages/dashboard/dealer-details/dealer-
 import { NotificationsComponent } from './pages/profile/notifications/notifications.component';
 import { WalletComponent } from './pages/profile/wallet/wallet.component';
 import { SettingComponent } from './pages/profile/setting/setting.component';
+import { ChangePasswordModalComponent } from './pages/profile/setting/change-password-modal/change-password-modal.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +69,6 @@ import { SettingComponent } from './pages/profile/setting/setting.component';
     TrainingComponent,
     ShareModalComponent,
     ReferComponent,
-    SettingsComponent,
     ChangePasswordModalComponent,
     EnterEmailComponent,
     EnterPhoneComponent,

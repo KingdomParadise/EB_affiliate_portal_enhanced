@@ -1,35 +1,62 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
+import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
 
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
-  styleUrls: ['./setting.component.css']
+  styleUrls: ['./setting.component.css'],
 })
 export class SettingComponent implements OnInit {
-  userData:any;
-  settings:any;
+  userData: any;
+  settings: any;
   personalForm: FormGroup;
   affiliationForm: FormGroup;
+  loginForm: FormGroup;
+  socialForm: FormGroup;
   countries = [];
   states = [];
   companies = [];
   interests = [];
   constructor(
     private _formBuilder: FormBuilder,
-    private dataService: InitialDataService
-  ) { }
+    private dataService: InitialDataService,
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
+    this.personalForm = this._formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      countryId: ['', Validators.required],
+      stateId: ['', Validators.required],
+      phone: ['', Validators.required],
+    });
+    this.affiliationForm = this._formBuilder.group({
+      companyList: [null],
+      intrestAreaList: [null],
+    });
+    this.socialForm = this._formBuilder.group({
+      fb: [''],
+      insta: [''],
+      tiktok: [''],
+      twitter: [''],
+      socialHandle:['']
+    });
+    this.loginForm = this._formBuilder.group({
+      email:[],
+      password:[]
+    })
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.dataService.getCountries().subscribe(data => {
+    this.dataService.getCountries().subscribe((data) => {
       this.countries = data.response.countryList;
     });
-    this.dataService.getCompanyList().subscribe(data => {
+    this.dataService.getCompanyList().subscribe((data) => {
       this.companies = data.response.companyList;
     });
-    this.dataService.getIntrestArea().subscribe(data => {
+    this.dataService.getIntrestArea().subscribe((data) => {
       this.interests = data.response.intrestList;
     });
     this.dataService.getSettings().subscribe((res) => {
@@ -41,18 +68,57 @@ export class SettingComponent implements OnInit {
         stateId: [this.settings.stateId, Validators.required],
         phone: [this.settings.phone, Validators.required],
       });
-      this.affiliationForm = this._formBuilder.group({
-        companyList: [''],
-        intrestAreaList: [''],
+      let companiesId = this.settings.companiesList.map((ele: any) => {
+        return ele.companyId;
       });
+      let interests = this.settings.intrestList.map((ele: any) => {
+        return ele.intrestId;
+      });
+      this.affiliationForm = this._formBuilder.group({
+        companyList: [companiesId],
+        intrestAreaList: [interests],
+      });
+      this.socialForm = this._formBuilder.group({
+        fb: [this.settings.facebookLink],
+        insta: [this.settings.instagramLink],
+        tiktok: [this.settings.tiktokLink],
+        twitter: [this.settings.twitterLink],
+        socialHandle:[this.settings.socialMediaHandle]
+      });
+      this.loginForm = this._formBuilder.group({
+        email:[this.settings.email],
+        password:[]
+      })
+      this.onCountrySelect(this.settings.countryId);
+    });
+  }
+  onCountrySelect(country: any) {
+    if (country.countryId) {
+      this.dataService.getStates(country.countryId).subscribe((data) => {
+        this.states = data.response.stateList;
+      });
+    }else if(country){
+      this.dataService.getStates(country).subscribe((data) => {
+        this.states = data.response.stateList;
+      });
+    }
+  }
+  openChangePasswordDialog() {
+    let size = ['375px', '375'];
+    if (window.innerWidth > 786) {
+      size = ['475px', '540px'];
+    } else {
+      size = ['350px', '400px'];
+    }
+    const dialogRef = this.dialog.open(ChangePasswordModalComponent, {
+      maxWidth: size[0],
+      maxHeight: size[1],
+      height: '100%',
+      width: '100%',
+      data: 'h',
+      disableClose: false,
     });
 
-  }
-  onCountrySelect(country:any){
-    if(country){
-      this.dataService.getStates(country.countryId).subscribe(data =>{
-        this.states = data.response.stateList;
-      })
-    }
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }

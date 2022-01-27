@@ -95,6 +95,7 @@
   <div class="row mt-5">
     <div class="col-md-6 px-5">
       <div class="card border-0">
+        <form [formGroup]="loginForm" class="mb-5 mb-md-0">
         <div>
           <h1 class="main-color font-weight-bold welcomeText">Login Details</h1>
         </div>
@@ -105,43 +106,49 @@
         </div>
         <div class="form-group">
           <label>Password</label>
-          <input type="text" class="form-control" id="companyPhone" onkeypress="return /[a-z]/i.test(event.key)">
+          <input type="text" class="form-control" onkeypress="return /[a-z]/i.test(event.key)">
         </div>
+        <div class="form-group">
+          <button class="btn btn-password" (click)="openChangePasswordDialog()">Change Password</button>
+        </div>
+      </form>
       </div>
     </div>
     <div class="col-md-6 px-5">
       <div class="card border-0">
+        <form [formGroup]="socialForm" class="mb-5 mb-md-0">
         <div>
           <h1 class="main-color font-weight-bold welcomeText">Social Media Links</h1>
         </div>
         <div class="form-group d-flex flex-column">
           <div class="col">
             <label>Social Media Handle</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="socialHandle">
           </div>
         </div>
         <div class="form-group d-flex flex-column flex-md-row">
           <div class="col me-md-2">
             <label>Facebook</label>
-            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city"
+            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city" formControlName="fb"
               onkeypress="return /[a-z]/i.test(event.key)">
           </div>
           <div class="col ms-md-2">
             <label>Twitter</label>
-            <input type="text" class="form-control" id="companyPhone" onkeypress="return /[a-z]/i.test(event.key)">
+            <input type="text" class="form-control" id="companyPhone" onkeypress="return /[a-z]/i.test(event.key)" formControlName="twitter">
           </div>
         </div>
         <div class="form-group d-flex flex-column flex-md-row">
           <div class="col me-md-2">
             <label>Instagram</label>
-            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city"
+            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" formControlName="insta"
               onkeypress="return /[a-z]/i.test(event.key)">
           </div>
           <div class="col ms-md-2">
             <label>Tiktok</label>
-            <input type="text" class="form-control" id="companyPhone" onkeypress="return /[a-z]/i.test(event.key)">
+            <input type="text" class="form-control" onkeypress="return /[a-z]/i.test(event.key)" formControlName="tiktok">
           </div>
         </div>
+      </form>
       </div>
     </div>
   </div>

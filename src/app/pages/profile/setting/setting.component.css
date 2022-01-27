@@ -43,3 +43,10 @@ label{
   font-weight: 500;
   margin-top:1.2rem;
 }
+.btn-password{
+  background-color: white;
+  border:1px solid violet;
+  color: #A63DA1;
+  margin-top:18px
+
+}
