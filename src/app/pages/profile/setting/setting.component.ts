@@ -20,6 +20,7 @@ export class SettingComponent implements OnInit {
   states = [];
   companies = [];
   interests = [];
+  enableForm = false;
   constructor(
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
@@ -90,6 +91,8 @@ export class SettingComponent implements OnInit {
         password:[]
       })
       this.onCountrySelect(this.settings.countryId);
+
+      setTimeout(() => {this.personalForm.disable();this.socialForm.disable();this.affiliationForm.disable()}, 0);
     });
   }
   onCountrySelect(country: any) {
@@ -120,5 +123,21 @@ export class SettingComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {});
+  }
+  enableEdit(){
+    this.enableForm = true
+    this.personalForm.enable();
+    this.affiliationForm.enable();
+    this.socialForm.enable();
+  }
+  updateSettings(){
+    let payload = {
+      ...this.personalForm.value,
+      ...this.socialForm.value,
+      ...this.affiliationForm.value
+    }
+    this.dataService.updateAffiliateSetting(payload).subscribe(res =>{
+      console.log(res);
+    })
   }
 }
