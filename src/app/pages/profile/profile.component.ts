@@ -7,9 +7,12 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  editMode = false;
   userData:any;
   userPhotoUrl: any;
   activeLinks:number;
+  selectedUserImg: File;
+  selectedUserImgPath: any = 'assets/images/profile-pic.png';
   constructor(
     private dataService: InitialDataService
   ) {
@@ -18,11 +21,24 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.userPhotoUrl = this.userData.userImage;
+    this.selectedUserImgPath = this.userData.userImage;
+
     this.dataService.activeLinks.subscribe(val =>{
       this.activeLinks = val;
+    });
+    this.dataService.editMode.subscribe((val:boolean) =>{
+      this.editMode = val
     })
 
   }
 
+  onFileChanged(event: any, type: string) {
+    const reader = new FileReader();
+
+    this.selectedUserImg = event.target.files[0];
+    reader.readAsDataURL(this.selectedUserImg);
+    reader.onload = (_event) => {
+      this.selectedUserImgPath = reader.result;
+    };
+  }
 }

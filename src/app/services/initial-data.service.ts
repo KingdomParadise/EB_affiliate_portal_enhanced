@@ -17,6 +17,9 @@ export class InitialDataService {
 
   public activeLinks = new BehaviorSubject<number>(0);
   activeLinkDataSource = this.activeLinks.asObservable();
+
+  public editMode = new BehaviorSubject<boolean>(false);
+  editModeDataSource = this.editMode.asObservable();
   constructor(private http: HttpClient) { }
 
   getCompanyList(): Observable<any> {

@@ -24,9 +24,17 @@
     <div class="col-md-12 profile-header">
       <div class="row">
         <div class="col-md-6 d-flex align-items-center">
-          <div id="headerProfileImg">
+          <!-- <div id="headerProfileImg">
             <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="">
-          </div>
+          </div> -->
+          <div class="position-relative settingImage mb-3"
+                        [ngStyle]="{'background-image': 'url(' + selectedUserImgPath + ')'}">
+                        <input #userLogo type="file" id="companyLogoUpload" [disabled]="!editMode" (change)="onFileChanged($event,'user')"
+                            style="display:none" accept="image/*" />
+                        <div class="camera-icon" *ngIf="editMode">
+                            <img src="assets/images/camera.png" alt="camera"  (click)="editMode ? userLogo.click(): false">
+                        </div>
+                    </div>
           <div class="ms-2">
             <h1 class="mb-2" style="font-size: 32px;">{{userData?.firstName}} {{userData?.lastName}}</h1>
             <h3 class="mb-0 text-muted">{{userData?.countryName}}, {{userData?.stateName}}</h3>

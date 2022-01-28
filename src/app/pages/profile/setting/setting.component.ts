@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
@@ -9,7 +9,7 @@ import { ChangePasswordModalComponent } from './change-password-modal/change-pas
   templateUrl: './setting.component.html',
   styleUrls: ['./setting.component.css'],
 })
-export class SettingComponent implements OnInit {
+export class SettingComponent implements OnInit, OnDestroy {
   userData: any;
   settings: any;
   personalForm: FormGroup;
@@ -48,7 +48,6 @@ export class SettingComponent implements OnInit {
     });
     this.loginForm = this._formBuilder.group({
       email:[],
-      password:[]
     })
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.dataService.getCountries().subscribe((data) => {
@@ -97,7 +96,11 @@ export class SettingComponent implements OnInit {
     });
   }
   onCountrySelect(country: any) {
+
     if (country.countryId) {
+      this.personalForm.patchValue({
+        stateId: null
+      })
       this.dataService.getStates(country.countryId).subscribe((data) => {
         this.states = data.response.stateList;
       });
@@ -130,15 +133,20 @@ export class SettingComponent implements OnInit {
     this.personalForm.enable();
     this.affiliationForm.enable();
     this.socialForm.enable();
+    this.dataService.editMode.next(true);
   }
   updateSettings(){
     let payload = {
       ...this.personalForm.value,
       ...this.socialForm.value,
+      ...this.loginForm.value,
       ...this.affiliationForm.value
     }
     this.dataService.updateAffiliateSetting(payload).subscribe(res =>{
       console.log(res);
     })
+  }
+  ngOnDestroy(){
+    this.dataService.editMode.next(false);
   }
 }

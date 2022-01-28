@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { ShareModalComponent } from '../share-modal/share-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-explore-dealers',
@@ -16,9 +19,12 @@ export class ExploreDealersComponent implements OnInit {
     }
   ]
   selectedFilter = this.filterType[0].value;
+  showCopyState: boolean = false;
   constructor(
     private dataService: InitialDataService,
-    private router: Router
+    private router: Router,
+    private clipboard: Clipboard,
+    public dialog: MatDialog
   ) {
    }
 
@@ -58,5 +64,30 @@ export class ExploreDealersComponent implements OnInit {
       this.apiData = res.response;
     });
   }
-
+  copyLink(ev:any,link:string) {
+    this.clipboard.copy(link);
+    this.showCopyState = true;
+    setTimeout(() => { this.showCopyState = false; }, 1000)
+    ev.stopPropagation();
+  }
+  openCampaignShareModal(campaign: any) {
+    let size = ['675px', '475px'];
+    if (window.innerWidth > 786) {
+      size = ['595px', '450px'];
+    } else {
+      size = ['350px', '600px'];
+    }
+    const dialogRef1 = this.dialog.open(ShareModalComponent, {
+      maxWidth: size[0],
+      maxHeight: size[1],
+      height: '100%',
+      width: '100%',
+      data: campaign,
+      disableClose: false
+    });
+    dialogRef1.afterClosed().subscribe(result => {
+      //this.getdashboardData();
+      this.initalCall();
+    });
+  }
 }

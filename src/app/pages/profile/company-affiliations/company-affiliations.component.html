@@ -127,7 +127,7 @@
         <mat-tab label="Inactive">
           <ng-template matTabContent>
             <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let link of apiData?.sharedLinks?.allLinks" class="px-5 pt-3">
+              <div *ngFor="let link of apiData?.sharedLinks?.inactiveLinks" class="px-5 pt-3">
                 <h2 class="main-color">{{link.postDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>

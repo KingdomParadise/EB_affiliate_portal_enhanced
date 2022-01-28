@@ -75,7 +75,7 @@
         <div>
           <h2>Campaigns</h2>
           <div class='d-flex justify-content-between'>
-            <div class="card1" *ngFor="let campaign of dealer.campaignList">
+            <div class="card1" *ngFor="let campaign of dealer.campaignList" (click)="openCampaignShareModal(campaign)">
               <div class="card border-0">
                 <div class="campaignImage" [ngStyle]="{'background-image': 'url(' + campaign.campaignImageLink + ')'}">
                   <div class="perLead">
