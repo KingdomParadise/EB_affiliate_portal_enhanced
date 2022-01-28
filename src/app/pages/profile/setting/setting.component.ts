@@ -62,6 +62,7 @@ export class SettingComponent implements OnInit {
     });
     this.dataService.getSettings().subscribe((res) => {
       this.settings = res.response;
+      this.dataService.activeLinks.next(this.settings.activeLinks);
       this.personalForm = this._formBuilder.group({
         firstName: [this.settings.firstName, Validators.required],
         lastName: [this.settings.lastName, Validators.required],

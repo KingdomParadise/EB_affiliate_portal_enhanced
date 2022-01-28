@@ -126,7 +126,9 @@
                     </div>
                     <div class="col-md-7">
                       <div class="card border-0 shadow-none">
-                        <img [src]="apiData?.campaignEngagement?.campaignImageLink" alt="">
+                        <div class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + apiData?.campaignEngagement?.campaignImageLink + ')'}">
+                        </div>
+                        <!-- <img [src]="apiData?.campaignEngagement?.campaignImageLink" alt=""> -->
                         <div class="d-flex justify-content-between mt-2">
                           <div>
                             <h2>{{apiData?.campaignEngagement?.campaignName}}</h2>

@@ -77,6 +77,14 @@ export class OutreachComponent implements OnInit {
     this.dataService.getOutReach(req).subscribe((res) => {
       this.apiData = res.response;
 
+      this.dataService.activeLinks.next(this.apiData.activeLinks);
+      totalEngagementGraph = [
+        {
+          name: 'Total Engagement',
+          series: [],
+        },
+      ];
+      this.lineChartData = [];
       for (let i = 0; i < this.apiData?.allEngagement?.graphData.length; i++) {
         let obj = {
           name: this.datePipe.transform(
@@ -87,7 +95,9 @@ export class OutreachComponent implements OnInit {
         };
         this.lineChartData.push(obj);
       }
-      totalEngagementGraph[0]['series'] = this.lineChartData;
+      //this.lineChartData = [...this.lineChartData]
+      totalEngagementGraph[0]['series'] = [...this.lineChartData];
+      console.log(totalEngagementGraph);
       Object.assign(this, { totalEngagementGraph });
 
       //banner engagement donut graph
@@ -110,6 +120,13 @@ export class OutreachComponent implements OnInit {
       }
 
       //leads chart
+      totalLeadsGraph = [
+        {
+          name: 'Total Leads',
+          series: [],
+        },
+      ];
+      this.lineChartData1 = [];
       for (let i = 0; i < this.apiData?.leadEngagement?.graphData.length; i++) {
         let obj = {
           name: this.datePipe.transform(

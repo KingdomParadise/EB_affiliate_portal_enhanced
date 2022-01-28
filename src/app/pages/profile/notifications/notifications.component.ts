@@ -21,7 +21,7 @@ export class NotificationsComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.dataService.getNotifications().subscribe(res =>{
       this.apiData = res.response;
-
+      this.dataService.activeLinks.next(this.apiData.activeLinks);
     })
   }
 

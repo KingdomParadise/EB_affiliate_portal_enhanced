@@ -14,6 +14,9 @@ export class InitialDataService {
   private apiUrl = environment.apiUrl;
   public isSettingChanged = new BehaviorSubject<boolean>(false);
   settingDataSource = this.isSettingChanged.asObservable();
+
+  public activeLinks = new BehaviorSubject<number>(0);
+  activeLinkDataSource = this.activeLinks.asObservable();
   constructor(private http: HttpClient) { }
 
   getCompanyList(): Observable<any> {

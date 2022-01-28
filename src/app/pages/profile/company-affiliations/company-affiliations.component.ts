@@ -22,7 +22,7 @@ export class CompanyAffiliationsComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.dataService.getCompanyAffiliations().subscribe(res =>{
       this.apiData = res.response;
-
+      this.dataService.activeLinks.next(this.apiData.activeLinks);
     })
   }
   copyUrl(url:string) {

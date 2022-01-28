@@ -19,8 +19,8 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.dataService.getOverview().subscribe(res =>{
-      console.log(res);
       this.apiData = res.response;
+      this.dataService.activeLinks.next(this.apiData.activeLinks);
     })
   }
 
