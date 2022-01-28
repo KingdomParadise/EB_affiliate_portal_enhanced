@@ -59,7 +59,6 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-
     this.dataService.getCountries().subscribe(data => {
       this.countries = data.response.countryList;
     });
@@ -145,7 +144,9 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
       this.regForm1.controls.password.setValidators(null);
       this.regForm1.controls.password.updateValueAndValidity();
       this.isCompleted1 = true;
-      this.stepper.next();
+      setTimeout(() =>{
+        this.stepper.next();
+      },0)
     }
 
     // this.secondFormGroup = this._formBuilder.group({

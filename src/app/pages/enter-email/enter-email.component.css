@@ -11,6 +11,7 @@ button:focus{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   height: 100%;
+  width:400px;
 }
 .welcomeText{
   margin-top:25px;
@@ -162,10 +163,23 @@ color:#333333;
 .bg-color{
 background-color: #c4c4c4;
 }
-.main-content{
+/* .main-content{
 height: 76vh;
+} */
+.main-content{
+  /* height: 90vh; */
+  background-image: url('/assets/image/BACKGROUNDS/SignUp-BG.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
+.btn-social{
+  background-color: #ffffff;
+  font-weight: 600;
+  margin-bottom:8px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  font-size: 14px;
+}
 .main-text{
 font-size: 52px;
 line-height: 1.1;

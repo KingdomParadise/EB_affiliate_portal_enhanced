@@ -6,7 +6,7 @@
           <img src="assets/images/HorizontalBA.png" alt="logo" id="header-logo">
           <div class=" d-inline-block ms-5">
             <button class="btn btn-link aff-btn">For Affiliates</button>
-            <button class="btn btn-link deal-btn">For Dealers</button>
+            <a class="btn btn-link deal-btn" href="https://dealer.brandfiliate.net" target="_blank">For Dealers</a>
           </div>
         </div>
       </div>
@@ -45,11 +45,11 @@
           <br/>
           <div class="d-flex mt-5 justify-content-between">
             <div>
-              <mat-slide-toggle>Stay signed in</mat-slide-toggle>
-              <p class="mb-0 main-color">forgot e-mail or password?</p>
+              <button mat-button class="btn btn-outline-dark py-1 mb-5"
+                >Back</button>
             </div>
             <div>
-              <button mat-button class="btn btn-outline-dark py-1 mb-5 ms-5" (click)="submit()"
+              <button mat-button class="btn btn-app py-1 mb-5 ms-5" (click)="submit()"
                 [disabled]="!login.valid">Log In</button>
             </div>
           </div>
@@ -58,20 +58,22 @@
             <div id="or">OR</div>
           </div>
           <div class="d-grid">
-            <button mat-button class="btn btn-social" (click)="logInWithGoogle()">
+            <button mat-button class="btn btn-social position-relative" (click)="logInWithGoogle()">
+              <img src="assets/image/GoogleLogo.svg" alt="fb"
+                style="position:absolute;left:2px;width:20px;margin-left:4px">
               Continue with Google
-              <!-- <img src="assets/images/google-icon.png" alt="fb" style="width:20px;margin-left:4px"> -->
             </button>
           </div>
           <div class="d-grid">
-            <button mat-button class="btn btn-social" (click)="logInWithFb()">
+            <button mat-button class="btn btn-social position-relative" (click)="logInWithFb()">
+              <img src="assets/image/facebook.svg" alt="fb"
+                style="position:absolute;left:2px;width:20px;margin-left:4px">
               Continue with facebook
-              <!-- <img src="assets/images/fb-color.png" alt="fb" style="width:20px;margin-left:4px"> -->
             </button>
           </div>
           <div>
             <p class="text-center mt-2">
-              Are you a Dealer? <a href="#">Login as dealer</a>
+              Are you a Dealer? <a href="https://dealer.brandfiliate.net">Login as dealer</a>
             </p>
           </div>
           <div *ngIf="alertMsg.message"
