@@ -97,35 +97,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
       phone: ['', Validators.required],
       referalCode: [''],
     });
-    // this.regForm1 = this._formBuilder.group({
-    //   userName: [null, Validators.required],
-    //   firstName: ['', Validators.required],
-    //   lastName: [null, Validators.required],
-    //   email: [
-    //     '',
-    //     [
-    //       Validators.required,
-    //       Validators.email,
-    //       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-    //     ],
-    //   ],
-    //   password: [
-    //     '',
-    //     [
-    //       Validators.required,
-    //       Validators.pattern(
-    //         '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-    //       ),
-    //     ]
-    //   ],
-    //   phone: ['', Validators.required],
-    //   referalCode: [''],
-    // });
-    // this.regForm2 = this._formBuilder.group({
-    //   companyList: [''],
-    //   intrestAreaList: [''],
-    //   platformjoinReason: ['']
-    // });
+
     this.regForm3 = this._formBuilder.group({
       companyList: [''],
       intrestAreaList: [''],

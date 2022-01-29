@@ -3,10 +3,10 @@
     <div class="col-md-6 ps-4">
       <div class="row mt-3">
         <div class="my-auto d-none d-md-block">
-          <img src="assets/images/HorizontalBA.png" alt="logo" id="header-logo">
+          <img src="assets/image/logo.png" alt="logo" id="header-logo">
           <div class=" d-inline-block ms-5">
             <button class="btn btn-link aff-btn">For Affiliates</button>
-            <a class="btn btn-link deal-btn" href="https://dealer.brandfiliate.net" target="_blank">For Dealers</a>
+            <a class="btn btn-link deal-btn text-muted" href="https://dealer.brandfiliate.net" target="_blank">For Dealers</a>
           </div>
         </div>
       </div>
@@ -16,9 +16,11 @@
         </div>
         <div class="col-md-8">
           <h1 class="main-text">
-            <p class="mb-0">BRANDFILIATE</p>
-            <p class="mb-0">where <span class="main-color">Affiliates</span></p>
-            <i>engage</i> and <i>earn</i>
+            <p class="mb-0">
+              <img src="assets/image/textlogo.png" alt="" style="width:25rem">
+            </p>
+            <p class="mb-0" style="font-family: 'Montserrat', sans-serif;">where <span class="main-color">Affiliates</span></p>
+            <p style="font-family: 'Montserrat', sans-serif;"><i>engage</i> and <i>earn</i></p>
           </h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Nam aliquet nibh et lacus scelerisque, sed scelerisque tellus rutrum. Nunc in iaculis elit. </p>
@@ -38,23 +40,23 @@
             <form [formGroup]="regForm1" class="mt-3 mt-md-1">
               <ng-template matStepLabel>Login Details</ng-template>
               <div>
-                <h1 class="main-color font-weight-bold welcomeText">Sign Up</h1>
-                <p class="mb-2">Existing User? <a class="main-color text-decoration-none" routerLink="/login">Login
+                <h1 class="main-color main-title mt-2">Sign Up</h1>
+                <p class="mb-2 font-weight-normal">Existing User? <a class="main-color text-decoration-none" routerLink="/login">Login
                     Here</a></p>
               </div>
               <div class="form-group mt-md-3">
-                <label>E-mail</label>
+                <label class='field-label'>E-mail</label>
                 <input type="text" matInput class="form-control" id="exampleFormControlInput1" formControlName="email">
               </div>
               <div class="form-group position-relative">
-                <label>Password</label>
+                <label class='field-label'>Password</label>
                 <input [type]="hide ? 'password' : 'text'" matInput class="form-control" id="exampleFormControlInput1"
                   formControlName="password">
                 <mat-icon style="position: absolute;right: 4px;top:20px" matSuffix (click)="hide = !hide">
                   {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </div>
               <div class="form-group position-relative">
-                <label>Confirm Password</label>
+                <label class='field-label'>Confirm Password</label>
                 <input [type]="hide ? 'password' : 'text'" matInput class="form-control" id="exampleFormControlInput1"
                   formControlName="cnfPassword">
                 <mat-icon style="position: absolute;right: 4px;top:20px" matSuffix (click)="hide = !hide">
@@ -103,7 +105,7 @@
                 </button>
               </div>
               <div>
-                <p class="text-center mt-1">Are you a dealer? <a href="https://dealer.brandfiliate.net">Register as a dealer</a></p>
+                <p class="text-center mt-1 font-weight-normal">Are you a dealer? <a href="https://dealer.brandfiliate.net" style="font-style: italic;text-decoration: none;">Login as a dealer</a></p>
               </div>
             </form>
           </mat-step>
@@ -111,39 +113,39 @@
             <form [formGroup]="regForm2" class="mb-5 mb-md-0">
               <ng-template matStepLabel>Account Information</ng-template>
               <div>
-                <h1 class="main-color font-weight-bold welcomeText">Personal Info</h1>
+                <h1 class="main-color main-title mt-2">Personal Info</h1>
               </div>
               <div class="form-group d-flex flex-column flex-md-row">
                 <div class="col me-md-2">
-                  <label>First Name</label>
+                  <label class='field-label'>First Name</label>
                   <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city"
                     onkeypress="return /[a-z]/i.test(event.key)" formControlName="firstName">
                 </div>
                 <div class="col ms-md-2">
-                  <label>Last Name</label>
+                  <label class='field-label'>Last Name</label>
                   <input type="text" class="form-control" id="companyPhone" onkeypress="return /[a-z]/i.test(event.key)"
                     formControlName="lastName">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col">
-                  <label for="country">Country</label>
+                  <label class='field-label' for="country">Country</label>
                   <ng-select [items]="countries" bindLabel="countryName" formControlName="countryId"
                     (change)="onCountrySelect($event)" bindValue="countryId">
                   </ng-select>
                 </div>
                 <div class="col">
-                  <label for="state">Region</label>
+                  <label class='field-label' for="state">Region</label>
                   <ng-select [items]="states" bindLabel="stateName" formControlName="stateId" bindValue="stateId">
                   </ng-select>
                 </div>
                 <div class="form-group d-flex flex-column flex-md-row mt-3">
                   <div class="col me-md-2">
-                    <label>Phone</label>
+                    <label class='field-label'>Phone</label>
                     <input matInput type="number" class="form-control" id="personalPhone" formControlName="phone">
                   </div>
                   <div class="col ms-md-2">
-                    <label>Referal Code (optional)</label>
+                    <label class='field-label'>Referal Code (optional)</label>
                     <input matInput type="text" class="form-control" formControlName="referalCode">
                   </div>
                 </div>
@@ -183,12 +185,12 @@
             <form [formGroup]="regForm3" class="mt-md-1">
               <ng-template matStepLabel>Company Affiliation <br />and Interests</ng-template>
               <div>
-                <h1 class="main-color font-weight-bold welcomeText">Affiliation</h1>
+                <h1 class="main-color main-title mt-2">Affiliation</h1>
               </div>
               <div class="form-group d-flex flex-column">
-                <div class="col me-md-2">
-                  <label>Companies</label>
-                  <p style="font-size: 10px;">Add one or more companies to affiliate with</p>
+                <div class="col">
+                  <label class='field-label'>Companies</label>
+                  <p style="font-size: 10px;" class="font-weight-normal">Add one or more companies to affiliate with</p>
                   <ng-select [items]="companies" bindLabel="companyName" placeholder="Company Name" [multiple]="true"
                     formControlName="companyList" bindValue="companyId">
                   </ng-select>
@@ -197,8 +199,8 @@
                   <hr />
                 </div>
 
-                <div class="col ms-md-2">
-                  <label>Interests</label>
+                <div class="col">
+                  <label class='field-label'>Interests</label>
                   <ng-select [items]="interests" bindLabel="industryName" placeholder="Interest Area" [multiple]="true"
                     formControlName="intrestAreaList" bindValue="industryId">
                   </ng-select>
@@ -230,13 +232,13 @@
             <ng-template matStepLabel>Account verification</ng-template>
             <div *ngIf="verificationState === 1">
               <div>
-                <h1 class="main-color font-weight-bold welcomeText">One Time Code Verification</h1>
-                <p>An e-mail with a one time code will be sent after you agree to the following terms and conditions:
+                <h1 class="main-color main-title mt-2">One Time Code Verification</h1>
+                <p class="main-color font-weight-normal">An e-mail with a one time code will be sent after you agree to the following terms and conditions:
                 </p>
               </div>
               <div>
                 <mat-checkbox class="example-margin" [(ngModel)]="agreed">
-                  I have agreed and read the <a href="#">Terms and Conditions</a>
+                  <span class="font-weight-normal">I have agreed and read the <a href="/" class="main-color text-decoration-none" style="font-style: italic;">Terms and Conditions</a></span>
                 </mat-checkbox>
               </div>
               <div class="d-flex mt-5 justify-content-between">

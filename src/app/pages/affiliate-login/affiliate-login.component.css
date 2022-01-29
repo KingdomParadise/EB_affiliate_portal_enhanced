@@ -38,7 +38,7 @@ button:focus{
     text-align: center;
 }
 #header-logo{
-    width:28%;
+    width:30%;
     margin-left: 40px;
 }
 #mobile-dealers-text{
@@ -95,7 +95,7 @@ button:focus{
 input{
     margin:0 auto;
     border:none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #a63da1;
     outline: none;
     border-radius: 0;
     color: black;
@@ -106,7 +106,7 @@ select{
     font-weight: 600;
     width: 100%;
     border:none;
-    border-bottom: 1px solid gray;
+    border: 1px solid #c7c7c7 !important;
     color: black;
 }
 input:focus{
@@ -157,12 +157,10 @@ input::placeholder {
 .aff-btn{
   text-decoration: none;
   color:#a63da1;
-  font-weight: 500;
 }
 .deal-btn{
   text-decoration: none;
   color:#333333;
-  font-weight: 500;
 }
 .bg-color{
   background-color: #c4c4c4;
@@ -202,6 +200,12 @@ input::placeholder {
     .btn-back{
         margin-right: 6px;
     }
+    .btn-social{
+      margin-bottom: 1rem;
+    }
+    .deviceMargin{
+      margin-bottom: 2.8rem;
+    }
  }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
@@ -212,6 +216,12 @@ input::placeholder {
     .btn-back{
         margin-right: 6px;
         padding: 0.375rem 3rem;
+    }
+    .btn-social{
+      margin-bottom: 2rem;
+    }
+    .deviceMargin{
+      margin-bottom: 3.5rem;
     }
  }
 /* XXX-Large devices (larger desktops, 1800px and up) */
@@ -235,6 +245,12 @@ input::placeholder {
     }
     .page-margin{
         margin-top: 6rem !important;
+    }
+    .btn-social{
+      margin-bottom: 2rem;
+    }
+    .deviceMargin{
+      margin-bottom: 8rem;
     }
  }
  @media screen and (device-aspect-ratio: 40/71) {

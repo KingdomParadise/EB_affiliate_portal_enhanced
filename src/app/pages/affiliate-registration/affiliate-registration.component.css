@@ -18,7 +18,7 @@ button:focus{
     margin-top:30px;
 }
 #header-logo{
-  width:28%;
+  width:30%;
   margin-left: 40px;
 }
 #mobile-dealers-text{
@@ -74,7 +74,7 @@ button:focus{
 input{
     margin:0 auto;
     border:none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #a63da1;
     outline: none;
     border-radius: 0;
     color: black;
@@ -167,7 +167,7 @@ agm-map{
 
 ::ng-deep .ng-select .ng-select-container{
     border:0 !important;
-    border-bottom: 1px solid gray !important;
+    border: 1px solid #c7c7c7 !important;
 
     border-radius: 0;
 }
@@ -210,7 +210,6 @@ agm-map{
 }
 .btn-social{
   background-color: #ffffff;
-  font-weight: 600;
   margin-bottom:8px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   font-size: 14px;
@@ -218,12 +217,10 @@ agm-map{
 .aff-btn{
   text-decoration: none;
   color:#a63da1;
-  font-weight: 500;
 }
 .deal-btn{
   text-decoration: none;
   color:#333333;
-  font-weight: 500;
 }
 .bg-color{
   background-color: #c4c4c4;
@@ -274,7 +271,7 @@ agm-map{
 .inputs input {
   width: 50px;
   height: 50px;
-  border:1px solid gray;
+  border:1px solid #a63da1;
   text-align: center;
   padding:0;
   font-size: 18px;
@@ -388,6 +385,9 @@ input[type=number]::-webkit-outer-spin-button {
       position: fixed;
       bottom:0;
       padding-right: 140px;
+    }
+    .btn-social{
+      margin-bottom:2rem
     }
  }
 
