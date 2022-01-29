@@ -1,18 +1,18 @@
 <div>
-  <div style="margin-left:106px">
-    {{userData.referalCode}}
+  <div style="margin-left:100px" class="d-flex align-items-center">
+    <span style="font-weight: 500;font-size:18px">{{userData.referalCode}}</span>
     <a href="http://facebook.com/" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
-        style="width: 22px;margin-right: 6px;margin-left:8px"></a>
+        style="width: 24px;margin-right: 12px;margin-left:16px"></a>
     <a href="http://www.instagram.com" target="_blank"><img src="assets/image/SVG/Instagram.png" alt=""
-        style="width: 22px;margin-right: 8px"></a>
+        style="width: 24px;margin-right: 12px"></a>
     <a href="http://www.tiktok.com" target="_blank">
-      <img src="assets/image/SVG/TikTok-Icon-logo.png" alt="" style="width: 22px;margin-right: 8px">
+      <img src="assets/image/SVG/TikTok-Icon-logo.png" alt="" style="width: 24px;margin-right: 12px">
     </a>
     <a href="http://www.twitter.com" target="_blank">
-      <img src="assets/image/SVG/Twitter_bird_logo_2012.png" alt="" style="width: 22px;margin-right: 8px">
+      <img src="assets/image/SVG/Twitter_bird_logo_2012.png" alt="" style="width: 24px;margin-right: 12px">
     </a>
     <a href="http://www.linkedin.com" target="_blank">
-      <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 22px;">
+      <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 24px;">
     </a>
   </div>
   <div>
@@ -87,7 +87,7 @@
                         <p class="mb-0">{{message.message}}</p>
                       </td>
                       <td scope="col">
-                        <button class="btn btn-light">View</button>
+                        <button class="btn btn-light" (click)="openNotificationModal(notf)">View</button>
                       </td>
                     </tr>
                   </tbody>

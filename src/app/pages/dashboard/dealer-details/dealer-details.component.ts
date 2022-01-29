@@ -46,5 +46,13 @@ export class DealerDetailsComponent implements OnInit {
       //this.initalCall();
     });
   }
-
+  sendAffiliateRequest(dealerId:any){
+    let req ={
+      dealerId: dealerId,
+      affiliateId: (JSON.parse(localStorage.getItem('userData') || '{}')).affiliateId
+    }
+    this.dataService.sendAffiliateRequest(req).subscribe( res =>{
+      console.log(res);
+    })
+  }
 }

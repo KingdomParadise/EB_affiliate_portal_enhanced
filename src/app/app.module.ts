@@ -59,6 +59,7 @@ import { WalletComponent } from './pages/profile/wallet/wallet.component';
 import { SettingComponent } from './pages/profile/setting/setting.component';
 import { ChangePasswordModalComponent } from './pages/profile/setting/change-password-modal/change-password-modal.component';
 import { ExploreCampaignsComponent } from './pages/dashboard/explore-campaigns/explore-campaigns.component';
+import { ViewNotificationComponent } from './pages/profile/notifications/view-notification/view-notification.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { ExploreCampaignsComponent } from './pages/dashboard/explore-campaigns/e
     NotificationsComponent,
     WalletComponent,
     SettingComponent,
-    ExploreCampaignsComponent
+    ExploreCampaignsComponent,
+    ViewNotificationComponent
   ],
   imports: [
     BrowserModule,

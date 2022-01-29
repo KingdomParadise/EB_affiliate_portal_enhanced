@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
+import { ViewNotificationComponent } from './view-notification/view-notification.component';
 
 @Component({
   selector: 'app-notifications',
@@ -14,6 +16,7 @@ export class NotificationsComponent implements OnInit {
 
   constructor(
     private dataService: InitialDataService,
+    private dialog : MatDialog
     // private datePipe: DatePipe
   ) { }
 
@@ -25,5 +28,25 @@ export class NotificationsComponent implements OnInit {
     })
   }
 
+  openNotificationModal(notification:any) {
+    let size = ['675px', '475px'];
+    if (window.innerWidth > 786) {
+      size = ['595px', '450px'];
+    } else {
+      size = ['350px', '600px'];
+    }
+    const dialogRef1 = this.dialog.open(ViewNotificationComponent, {
+      maxWidth: size[0],
+      maxHeight: size[1],
+      height: '100%',
+      width: '100%',
+      data: notification,
+      disableClose: false
+    });
+    dialogRef1.afterClosed().subscribe(result => {
+      //this.getdashboardData();
+
+    });
+  }
 }
 

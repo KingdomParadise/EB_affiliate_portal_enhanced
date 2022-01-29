@@ -61,7 +61,7 @@
           </a>
         </div>
         <div class='d-flex align-items-center'>
-          <button class="btn btn-light me-5">Send Affiliate Request</button>
+          <button class="btn btn-light me-5" *ngIf="dealer?.following==0" (click)="sendAffiliateRequest(dealer?.dealerId)">Send Affiliate Request</button>
           <div class="avatar" *ngFor="let follower of dealer?.followingAffiliatesPic" [ngStyle]="{'background-image': 'url(' + follower?.userImage + ')'}">
           </div>
         </div>
