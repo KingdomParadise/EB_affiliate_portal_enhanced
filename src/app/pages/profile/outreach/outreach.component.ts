@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { LegendPosition } from '@swimlane/ngx-charts';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 
 let totalEngagementGraph: any[] = [
@@ -30,6 +31,7 @@ export class OutreachComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
+  below = LegendPosition.Below;
   xAxisLabel: string = 'Dates';
   yAxisLabel: string = 'Count';
   lineChartData: any[] = [];

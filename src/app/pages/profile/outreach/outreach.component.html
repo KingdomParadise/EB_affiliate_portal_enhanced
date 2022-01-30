@@ -121,9 +121,9 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-5" #container>
                       <div>
-                        <ngx-charts-pie-chart [view]="[300, 300]" [results]="campaignEngagementGraph" [doughnut]="true" [legendTitle]="''">
+                        <ngx-charts-pie-chart [labels] = "true" [view]="[container.offsetWidth, container.offsetWidth-100]" [legendPosition]="below" [legend]="true" [results]="campaignEngagementGraph" [doughnut]="true" [legendTitle]="''">
                         </ngx-charts-pie-chart>
                       </div>
                     </div>
@@ -139,7 +139,7 @@
                           </div>
                           <div>
                             <p class="text-muted" style="font-size: 12px;">{{apiData?.campaignEngagement?.campaignStartDate | date: 'mediumDate'}}- {{apiData?.campaignEngagement?.campaignEndDate | date: 'mediumDate'}}</p>
-                            <p style="text-align: right;">10,000</p>
+                            <p style="text-align: right;">{{apiData?.campaignEngagement?.engagementPercent}}</p>
                           </div>
                         </div>
                       </div>

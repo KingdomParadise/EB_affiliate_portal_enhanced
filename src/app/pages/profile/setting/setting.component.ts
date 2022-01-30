@@ -142,9 +142,26 @@ export class SettingComponent implements OnInit, OnDestroy {
       ...this.loginForm.value,
       ...this.affiliationForm.value
     }
-    this.dataService.updateAffiliateSetting(payload).subscribe(res =>{
-      console.log(res);
-    })
+
+    this.dataService.profileImageData.subscribe((val) => {
+      if (val) {
+        let formData = new FormData();
+        formData.append('data', JSON.stringify(payload));
+        formData.append('userPhoto', val);
+        this.dataService.updateAffiliateSetting(formData).subscribe((res) => {
+          if(res.responseCode == 0){
+            localStorage.setItem('userData', JSON.stringify(res.response));
+          }
+        });
+      }else{
+        this.dataService.updateAffiliateSetting(payload).subscribe((res) => {
+          if(res.responseCode == 0){
+            localStorage.setItem('userData', JSON.stringify(res.response));
+          }
+        });
+      }
+    });
+
   }
   ngOnDestroy(){
     this.dataService.editMode.next(false);

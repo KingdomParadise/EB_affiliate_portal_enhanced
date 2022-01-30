@@ -20,6 +20,13 @@ export class InitialDataService {
 
   public editMode = new BehaviorSubject<boolean>(false);
   editModeDataSource = this.editMode.asObservable();
+
+  public profileUrl = new BehaviorSubject<string>('');
+  profileUrlDataSource = this.profileUrl.asObservable();
+
+  public profileImageData = new BehaviorSubject<any>(null);
+  profileImageDataDataSource = this.profileImageData.asObservable();
+
   constructor(private http: HttpClient) { }
 
   getCompanyList(): Observable<any> {

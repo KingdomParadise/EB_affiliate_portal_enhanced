@@ -22,6 +22,14 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.selectedUserImgPath = this.userData.userImage;
+    this.dataService.profileUrl.subscribe(val =>{
+      if(val){
+        this.selectedUserImgPath = val
+      }else{
+        this.selectedUserImgPath = this.userData.userImage;
+      }
+
+    })
 
     this.dataService.activeLinks.subscribe(val =>{
       this.activeLinks = val;
@@ -36,9 +44,11 @@ export class ProfileComponent implements OnInit {
     const reader = new FileReader();
 
     this.selectedUserImg = event.target.files[0];
+    this.dataService.profileImageData.next(this.selectedUserImg);
     reader.readAsDataURL(this.selectedUserImg);
     reader.onload = (_event) => {
       this.selectedUserImgPath = reader.result;
+      this.dataService.profileUrl.next(this.selectedUserImgPath);
     };
   }
 }
