@@ -171,9 +171,7 @@ agm-map{
 
     border-radius: 0;
 }
-::ng-deep .ng-select .ng-select-container .ng-value-container{
 
-}
 ::ng-deep .ng-select.ng-select-single .ng-select-container{
     min-height: 30px;
     height: 30px;
