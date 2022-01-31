@@ -46,18 +46,18 @@
               </div>
               <div class="form-group mt-md-3">
                 <label class='field-label'>E-mail</label>
-                <input type="text" matInput class="form-control" id="exampleFormControlInput1" formControlName="email">
+                <input type="text" matInput class="form-control" formControlName="email">
               </div>
               <div class="form-group position-relative">
                 <label class='field-label'>Password</label>
-                <input [type]="hide ? 'password' : 'text'" matInput class="form-control" id="exampleFormControlInput1"
-                  formControlName="password">
+                <input [type]="hide ? 'password' : 'text'" #pass matInput class="form-control"
+                  formControlName="password" (keyup)="showValidityState($event)">
                 <mat-icon style="position: absolute;right: 4px;top:20px" matSuffix (click)="hide = !hide">
                   {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </div>
               <div class="form-group position-relative">
                 <label class='field-label'>Confirm Password</label>
-                <input [type]="hide ? 'password' : 'text'" matInput class="form-control" id="exampleFormControlInput1"
+                <input [type]="hide ? 'password' : 'text'" matInput class="form-control"
                   formControlName="cnfPassword">
                 <mat-icon style="position: absolute;right: 4px;top:20px" matSuffix (click)="hide = !hide">
                   {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -66,20 +66,32 @@
 
               <div class="form-group mt-3">
                 <p class="mb-0">Password must have the following: </p>
-                <ul>
-                  <li>
+                <ul style="list-style-type: none;padding-left:12px">
+                  <li class="d-flex align-items-center">
+                    <mat-icon class="me-2" *ngIf="!passwordValidity.length">radio_button_unchecked</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.length">check_circle</mat-icon>
                     length of 8 or more character
                   </li>
-                  <li>
+                  <li class="d-flex align-items-center">
+                    <mat-icon class="me-2" *ngIf="!passwordValidity.isLowercase">radio_button_unchecked</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isLowercase">check_circle</mat-icon>
                     one lowercase letter
                   </li>
-                  <li>
+                  <li class="d-flex align-items-center">
+                    <mat-icon class="me-2" *ngIf="!passwordValidity.isUppercase">radio_button_unchecked</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isUppercase">check_circle</mat-icon>
                     one uppercase letter
                   </li>
-                  <li>
+                  <li class="d-flex align-items-center">
+                     <mat-icon class="me-2" *ngIf="!passwordValidity.isNumerical">radio_button_unchecked</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isNumerical">check_circle</mat-icon>
                     one numerical
                   </li>
-                  <li>one special character</li>
+                  <li class="d-flex align-items-center">
+                    <mat-icon class="me-2" *ngIf="!passwordValidity.isSpecial">radio_button_unchecked</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isSpecial">check_circle</mat-icon>
+                    one special character
+                  </li>
                 </ul>
               </div>
               <div class="d-flex mt-4 text-right">
