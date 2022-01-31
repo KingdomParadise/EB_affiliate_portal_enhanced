@@ -14,6 +14,15 @@ label{
     width: 20px;
     position: relative;
 }
+.pointImage{
+  width: 260px;
+  height: 220px;
+  background-position: center;
+  background-size: cover;
+
+  border:1px solid #e2e2e2;
+  background-repeat: no-repeat;
+}
 @media only screen and (min-device-width: 768px){
     .app-btn{
         padding-right: 4rem;

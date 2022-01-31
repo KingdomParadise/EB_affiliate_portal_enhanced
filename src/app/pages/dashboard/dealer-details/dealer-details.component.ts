@@ -29,7 +29,7 @@ export class DealerDetailsComponent implements OnInit {
   openCampaignShareModal(campaign: any) {
     let size = ['675px', '475px'];
     if (window.innerWidth > 786) {
-      size = ['595px', '450px'];
+      size = ['595px', '500px'];
     } else {
       size = ['350px', '600px'];
     }

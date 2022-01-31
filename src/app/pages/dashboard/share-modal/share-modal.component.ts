@@ -4,6 +4,7 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
 import { Meta } from '@angular/platform-browser';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ShareDialogResponse } from 'ngx-facebook/models/ui-response';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-share-modal',
@@ -28,6 +29,7 @@ export class ShareModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.campaign = this.data;
+    console.log(this.campaign)
   }
 
   closeModal() {
@@ -49,6 +51,12 @@ export class ShareModalComponent implements OnInit {
           if (res.responseCode == 0) {
             this.alertMsg.type = 'success';
             this.alertMsg.message = res.successMsg;
+            Swal.fire(
+              'Success!',
+              'Thanks for sharing the details on the facebook. Your points are been added now!',
+              'success'
+            )
+            this.dialogRef.close();
           }
           else if (res.responseCode == -1) {
             this.alertMsg.type = 'danger';
