@@ -54,9 +54,9 @@
         <div>
           <h2>Affiliated Companies</h2>
           <div class="d-flex">
-            <div class="card p-3 d-flex flex-row flex-wrap w-100 justify-content-between">
+            <div class="card p-3 d-flex flex-row flex-wrap w-100 justify-content-start">
 
-              <div *ngFor="let company of apiData?.affiliatedCompanies">
+              <div *ngFor="let company of apiData?.affiliatedCompanies" class="mx-3">
                 <div class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + company.companyLogoUrl + ')'}">
                 </div>
                 <p class="text-center text-uppercase mt-2">{{company.companyName}}</p>

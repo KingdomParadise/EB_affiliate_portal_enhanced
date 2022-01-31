@@ -13,7 +13,7 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
 export class HeaderComponent implements OnInit {
   isExpanded: boolean = true;
   isNewNotification: boolean = false;
-  userPhotoUrl: any;
+  userPhotoUrl: any = 'assets/images/profile-pic.png';
   userData:any;
   notificationList = [
     {
@@ -24,16 +24,22 @@ export class HeaderComponent implements OnInit {
   ]
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
   constructor(public dialog: MatDialog, private router: Router,private dataService: InitialDataService) {
-    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.userPhotoUrl = this.userData.userImage;
+
   }
   selected: any = '0';
   ngOnInit(): void {
     // this.getNotifications();
     // setInterval(()=>{this.getNotifications()},30000);
-    this.dataService.isSettingChanged.subscribe( val =>{
-      this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-      this.userPhotoUrl = this.userData.userImage;
+    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    this.userPhotoUrl = this.userData.userImage;
+    // this.dataService.isSettingChanged.subscribe( val =>{
+    //   this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    //   this.userPhotoUrl = this.userData.userImage;
+    // });
+    this.dataService.profileUrl.subscribe(val =>{
+      if(val){
+        this.userPhotoUrl = val;
+      }
     })
   }
 

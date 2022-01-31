@@ -81,7 +81,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
         [
           Validators.required,
           Validators.pattern(
-            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}'
           ),
         ],
       ],
@@ -90,7 +90,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
         [
           Validators.required,
           Validators.pattern(
-            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,}'
           ),
         ],
       ],

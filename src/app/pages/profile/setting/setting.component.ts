@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
 
+import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
@@ -21,6 +24,8 @@ export class SettingComponent implements OnInit, OnDestroy {
   companies = [];
   interests = [];
   enableForm = false;
+  isLoading = false;
+  subscription1: Subscription;
   constructor(
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
@@ -96,7 +101,6 @@ export class SettingComponent implements OnInit, OnDestroy {
     });
   }
   onCountrySelect(country: any) {
-
     if (country.countryId) {
       this.personalForm.patchValue({
         stateId: null
@@ -136,32 +140,45 @@ export class SettingComponent implements OnInit, OnDestroy {
     this.dataService.editMode.next(true);
   }
   updateSettings(){
+    this.isLoading = true;
     let payload = {
       ...this.personalForm.value,
       ...this.socialForm.value,
       ...this.loginForm.value,
       ...this.affiliationForm.value
     }
-
-    this.dataService.profileImageData.subscribe((val) => {
+    this.subscription1 = this.dataService.profileImageData.subscribe((val) => {
       if (val) {
         let formData = new FormData();
         formData.append('data', JSON.stringify(payload));
         formData.append('userPhoto', val);
         this.dataService.updateAffiliateSetting(formData).subscribe((res) => {
           if(res.responseCode == 0){
+            Swal.fire(
+              'Success!',
+              'Settings Updated!',
+              'success'
+            )
             localStorage.setItem('userData', JSON.stringify(res.response));
+            this.isLoading = false;
+            this.dataService.isSettingChanged.next(true);
           }
         });
       }else{
         this.dataService.updateAffiliateSetting(payload).subscribe((res) => {
           if(res.responseCode == 0){
+            Swal.fire(
+              'Success!',
+              'Settings Updated!',
+              'success'
+            )
             localStorage.setItem('userData', JSON.stringify(res.response));
+            this.isLoading = false;
           }
         });
       }
     });
-
+    this.subscription1.unsubscribe();
   }
   ngOnDestroy(){
     this.dataService.editMode.next(false);
