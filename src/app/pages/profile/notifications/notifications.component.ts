@@ -29,6 +29,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   openNotificationModal(notification:any) {
+    console.log(notification);
     let size = ['675px', '475px'];
     if (window.innerWidth > 786) {
       size = ['595px', '450px'];
@@ -47,6 +48,14 @@ export class NotificationsComponent implements OnInit {
       //this.getdashboardData();
 
     });
+  }
+  markViewed(){
+    let payload ={
+      notiId:1
+    }
+    this.dataService.markViewed(payload).subscribe(res =>{
+
+    })
   }
 }
 

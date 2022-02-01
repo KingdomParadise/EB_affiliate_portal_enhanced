@@ -74,7 +74,7 @@
       <div class="col-md-12">
         <div>
           <h2>Campaigns</h2>
-          <div class='d-flex justify-content-between'>
+          <div class='d-flex flex-wrap justify-content-between' style="gap: 24px;">
             <div class="card1" *ngFor="let campaign of dealer.campaignList" (click)="openCampaignShareModal(campaign)">
               <div class="card border-0">
                 <div class="campaignImage" [ngStyle]="{'background-image': 'url(' + campaign.campaignImageLink + ')'}">
@@ -105,6 +105,9 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div *ngIf="dealer?.campaignList.length == 0">
+              <h3>No campaigns available</h3>
             </div>
           </div>
         </div>

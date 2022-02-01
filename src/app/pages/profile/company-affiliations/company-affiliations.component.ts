@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-affiliations',
@@ -15,6 +16,7 @@ export class CompanyAffiliationsComponent implements OnInit {
   constructor(
     private dataService: InitialDataService,
     private clipboard: Clipboard,
+    private router : Router
     // private datePipe: DatePipe
   ) { }
 
@@ -29,5 +31,9 @@ export class CompanyAffiliationsComponent implements OnInit {
     this.clipboard.copy(url);
     this.showCopyState = true;
     setTimeout(() => { this.showCopyState = false; }, 1000)
+  }
+
+  goToDealerDetails(id:any){
+    this.router.navigateByUrl('dashboard/dealer-details', { state: { id: id } });
   }
 }

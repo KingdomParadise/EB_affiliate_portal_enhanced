@@ -7,9 +7,8 @@ import { environment } from 'src/environments/environment';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class InitialDataService {
   private apiUrl = environment.apiUrl;
   public isSettingChanged = new BehaviorSubject<boolean>(false);
@@ -27,198 +26,151 @@ export class InitialDataService {
   public profileImageData = new BehaviorSubject<any>(null);
   profileImageDataDataSource = this.profileImageData.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCompanyList(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + '/affiliate/getCompanyList')
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .get<any>(this.apiUrl + '/affiliate/getCompanyList')
+      .pipe(retry(1), catchError(this.handleError));
   }
 
   getIntrestArea(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + '/affiliate/getIntrestArea')
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .get<any>(this.apiUrl + '/affiliate/getIntrestArea')
+      .pipe(retry(1), catchError(this.handleError));
   }
   getCountries(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + '/dealer/getCountryCode')
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .get<any>(this.apiUrl + '/dealer/getCountryCode')
+      .pipe(retry(1), catchError(this.handleError));
   }
   getStates(id: number): Observable<any> {
-    return this.http.get<any>(this.apiUrl + '/dealer/getStates/countryId/' + id)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .get<any>(this.apiUrl + '/dealer/getStates/countryId/' + id)
+      .pipe(retry(1), catchError(this.handleError));
   }
   checkUsernameExist(username: string) {
-    return this.http.get<any>(this.apiUrl + '/affiliate/checkUsernameExist/userName/' + username)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
+    return this.http
+      .get<any>(
+        this.apiUrl + '/affiliate/checkUsernameExist/userName/' + username
       )
+      .pipe(retry(1), catchError(this.handleError));
   }
-  register(data:any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/register', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  register(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/register', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  validateOtp(data:any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/validateOtp', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  validateOtp(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/validateOtp', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  login(data:any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/login', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  login(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/login', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  getDashboardData(data:any){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getDashboardData', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getDashboardData(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getDashboardData', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
   referFriends(data: any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/referFriends', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/referFriends', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
   contactUs(data: any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/contactUs', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/contactUs', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
   sharedOnFb(data: any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/sharedOnFb', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/sharedOnFb', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  getAffiliateNotification(){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getAffiliateNotification', {})
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getAffiliateNotification() {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getAffiliateNotification', {})
+      .pipe(retry(1), catchError(this.handleError));
   }
-  marAffiliateNotificationRead(){
-    return this.http.post<any>(this.apiUrl + '/affiliate/marAffiliateNotificationRead', {})
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  marAffiliateNotificationRead() {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/marAffiliateNotificationRead', {})
+      .pipe(retry(1), catchError(this.handleError));
   }
-  updateAffiliateSetting(data:any){
-    return this.http.post<any>(this.apiUrl + '/affiliate/updateAffiliateSetting', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  updateAffiliateSetting(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/updateAffiliateSetting', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
   changeAffiliatePassword(data: any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/changeAffiliatePassword', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/changeAffiliatePassword', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
   affililateWallet(data: any) {
-    return this.http.post<any>(this.apiUrl + '/affiliate/affililateWallet', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/affililateWallet', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
 
-  getOverview(){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getOverview', {})
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getOverview() {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getOverview', {})
+      .pipe(retry(1), catchError(this.handleError));
   }
-  getOutReach(data:any){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getOutReach', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getOutReach(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getOutReach', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  getCompanyAffiliations(){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getCompanyAffiliations', {})
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getCompanyAffiliations() {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getCompanyAffiliations', {})
+      .pipe(retry(1), catchError(this.handleError));
   }
-  getNotifications(){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getNotifications', {})
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getNotifications() {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getNotifications', {})
+      .pipe(retry(1), catchError(this.handleError));
   }
-  getPoints(){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getPoints', {})
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  markViewed(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/markViewed', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  exploreDealer(data:any){
-    return this.http.post<any>(this.apiUrl + '/affiliate/exploreDealer', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getPoints() {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getPoints', {})
+      .pipe(retry(1), catchError(this.handleError));
   }
-  dealerDetails(data:any){
-    return this.http.post<any>(this.apiUrl + '/affiliate/dealerDetails', data)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
+  exploreDealer(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/exploreDealer', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  sendAffiliateRequest(data:any){
-    return this.http.post<any>(this.apiUrl + '/affiliate/sendAffiliateRequest', data)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
+  dealerDetails(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/dealerDetails', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  getSettings(){
-    return this.http.post<any>(this.apiUrl + '/affiliate/getSettings', {})
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
+  sendAffiliateRequest(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/sendAffiliateRequest', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
-  exploreCampaign(data:any){
-    return this.http.post<any>(this.apiUrl + '/affiliate/exploreCampaign', data)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      )
+  getSettings() {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/getSettings', {})
+      .pipe(retry(1), catchError(this.handleError));
+  }
+  exploreCampaign(data: any) {
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/exploreCampaign', data)
+      .pipe(retry(1), catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse) {

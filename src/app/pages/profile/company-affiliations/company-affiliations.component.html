@@ -31,7 +31,7 @@
                 <div class="d-flex flex-wrap justify-content-between">
                   <div *ngFor="let dealer of industry.dealerList" class="d-flex justify-content-center"
                     style="width: 140px;">
-                    <div>
+                    <div style="cursor: pointer;" (click)="goToDealerDetails(dealer.dealerId)">
                       <div class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + dealer.companyLogoUrl + ')'}">
                       </div>
 
