@@ -1,23 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-affiliate-login',
   templateUrl: './affiliate-login.component.html',
   styleUrls: ['./affiliate-login.component.css']
 })
-export class AffiliateLoginComponent implements OnInit {
+export class AffiliateLoginComponent implements OnInit, OnDestroy {
   login: FormGroup;
   alertMsg: any = {
     type: '',
     message: ''
   };
   hide = true;
+  subscription1: Subscription;
   constructor(
     private router: Router,
     private _formBuilder: FormBuilder,
@@ -39,18 +41,20 @@ export class AffiliateLoginComponent implements OnInit {
       ],
     });
 
-    this.authService.authState.subscribe((user) => {
+    this.subscription1 = this.authService.authState.subscribe((user) => {
       console.log(user);
       let req;
       if (user.provider == 'FACEBOOK') {
         req = {
           loginType: 'facebook',
-          socialLoginId: user.id
+          socialLoginId: user.id,
+          userName: user.email
         }
       } else if (user.provider == 'GOOGLE') {
         req = {
           loginType: 'google',
-          socialLoginId: user.id
+          socialLoginId: user.id,
+          userName: user.email
         }
       }
       this.dataService.login(req).subscribe(res => {
@@ -82,6 +86,7 @@ export class AffiliateLoginComponent implements OnInit {
         }
       })
     });
+
   }
   get f1() {
     return this.login.controls;
@@ -119,5 +124,8 @@ export class AffiliateLoginComponent implements OnInit {
   }
   close() {
     this.alertMsg.message = ''
+  }
+  ngOnDestroy(): void {
+      this.subscription1.unsubscribe();
   }
 }

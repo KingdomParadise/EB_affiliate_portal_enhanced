@@ -96,63 +96,62 @@
     <div class="col-md-6 px-5">
       <div class="card border-0">
         <form [formGroup]="loginForm" class="mb-5 mb-md-0">
-        <div>
-          <h1 class="main-color main-title">Login Details</h1>
-        </div>
-        <div class="form-group">
-          <label class='field-label'>Email</label>
-          <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" formControlName="email" readonly
-            onkeypress="return /[a-z]/i.test(event.key)">
-        </div>
+          <div>
+            <h1 class="main-color main-title">Login Details</h1>
+          </div>
+          <div class="form-group">
+            <label class='field-label'>Email</label>
+            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" formControlName="email" readonly
+              onkeypress="return /[a-z]/i.test(event.key)">
+          </div>
 
-        <div class="form-group">
-          <button class="btn btn-password" (click)="openChangePasswordDialog()">Change Password</button>
-        </div>
-      </form>
+          <div class="form-group">
+            <button class="btn btn-password" (click)="openChangePasswordDialog()">Change Password</button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="col-md-6 px-5">
       <div class="card border-0">
         <form [formGroup]="socialForm" class="mb-5 mb-md-0">
-        <div>
-          <h1 class="main-color main-title">Social Media Links</h1>
-        </div>
-        <div class="form-group d-flex flex-column">
-          <div class="col">
-            <label class='field-label'>Social Media Handle</label>
-            <input type="text" class="form-control" formControlName="socialHandle">
+          <div>
+            <h1 class="main-color main-title">Social Media Links</h1>
           </div>
-        </div>
-        <div class="form-group d-flex flex-column flex-md-row">
-          <div class="col me-md-2">
-            <label class='field-label'>Facebook</label>
-            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city" formControlName="fb"
-              >
+          <div class="form-group d-flex flex-column">
+            <div class="col">
+              <label class='field-label'>Social Media Handle</label>
+              <input type="text" class="form-control" formControlName="socialHandle">
+            </div>
           </div>
-          <div class="col ms-md-2">
-            <label class='field-label'>Twitter</label>
-            <input type="text" class="form-control" id="companyPhone" formControlName="twitter">
+          <div class="form-group d-flex flex-column flex-md-row">
+            <div class="col me-md-2">
+              <label class='field-label'>Facebook</label>
+              <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" id="city" formControlName="fb">
+            </div>
+            <div class="col ms-md-2">
+              <label class='field-label'>Twitter</label>
+              <input type="text" class="form-control" id="companyPhone" formControlName="twitter">
+            </div>
           </div>
-        </div>
-        <div class="form-group d-flex flex-column flex-md-row">
-          <div class="col me-md-2">
-            <label class='field-label'>Instagram</label>
-            <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" formControlName="insta"
-              >
+          <div class="form-group d-flex flex-column flex-md-row">
+            <div class="col me-md-2">
+              <label class='field-label'>Instagram</label>
+              <input type="text" class="form-control mb-3 mb-md-0 mb-lg-2 me-md-2" formControlName="insta">
+            </div>
+            <div class="col ms-md-2">
+              <label class='field-label'>Tiktok</label>
+              <input type="text" class="form-control" formControlName="tiktok">
+            </div>
           </div>
-          <div class="col ms-md-2">
-            <label class='field-label'>Tiktok</label>
-            <input type="text" class="form-control" formControlName="tiktok">
-          </div>
-        </div>
-      </form>
+        </form>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 d-flex justify-content-end px-5">
-      <button class="btn btn-app ms-auto" *ngIf='enableForm' (click)="updateSettings()" [disabled]="isLoading">
-        <i class="fa me-1" [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-check': !isLoading}"></i>Save
+      <button class="btn btn-app ms-auto d-flex align-items-center" *ngIf='enableForm' (click)="updateSettings()" [disabled]="isLoading">
+        <mat-spinner *ngIf='isLoading' [diameter]="16" style="color:white;margin-right: 5px;"></mat-spinner>
+        Save
       </button>
     </div>
   </div>

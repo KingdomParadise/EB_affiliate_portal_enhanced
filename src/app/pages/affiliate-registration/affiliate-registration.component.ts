@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatHorizontalStepper, MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
@@ -6,12 +6,13 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
 import {} from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-affiliate-registration',
   templateUrl: './affiliate-registration.component.html',
   styleUrls: ['./affiliate-registration.component.css'],
 })
-export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
+export class AffiliateRegistrationComponent implements OnInit, AfterViewInit, OnDestroy {
   regForm1: FormGroup;
   regForm3: FormGroup;
   regForm2: FormGroup;
@@ -54,6 +55,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     isNumerical: false,
     isSpecial: false,
   };
+  subscription1: Subscription;
   @ViewChild('stepper') stepper: MatStepper;
   constructor(
     private _formBuilder: FormBuilder,
@@ -137,8 +139,11 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
     //   mapTypeId: google.maps.MapTypeId.ROADMAP
     // };
     // this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
-    this.authService.authState.subscribe((user) => {
+    this.subscription1 = this.authService.authState.subscribe((user) => {
       console.log(user);
+      this.regForm1.patchValue({
+        email: user.email
+      });
       let req;
       if (user.provider == 'FACEBOOK') {
         req = {
@@ -314,5 +319,8 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit {
   containsSpecialChars(str:any) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     return specialChars.test(str);
+  }
+  ngOnDestroy(): void {
+      this.subscription1.unsubscribe();
   }
 }
