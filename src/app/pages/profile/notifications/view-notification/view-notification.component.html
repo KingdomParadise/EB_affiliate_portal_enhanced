@@ -6,19 +6,20 @@
           </button>
       </div>
   </div>
+  <hr>
   <div class="d-flex flex-column flex-md-row justify-content-between">
     <table class="table table-borderless" id="pointsTable">
       <tbody>
-        <tr *ngFor="let message of notification.messages" style="border-top: 1px solid gray;">
+        <tr>
           <td scope="col">
-            <div class="pointImage me-2" [ngStyle]="{'background-image': 'url(' + message.fromUserImage + ')'}">
-              <div *ngIf="message.readFlag == 0" style="min-width: 10px;margin-top:10px;position: absolute;right:0">
+            <div class="pointImage me-2" [ngStyle]="{'background-image': 'url(' + notification.fromUserImage + ')'}">
+              <div *ngIf="notification.readFlag == 0" style="min-width: 10px;margin-top:10px;position: absolute;right:0">
                 <div class="redDot"></div>
               </div>
             </div>
           </td>
           <td scope="col">
-            <p class="mb-0">{{message.message}}</p>
+            <p class="mb-0">{{notification.message}}</p>
           </td>
           <td scope="col">
 

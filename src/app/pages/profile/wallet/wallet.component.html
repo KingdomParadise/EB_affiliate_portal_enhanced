@@ -35,11 +35,9 @@
             <button class="btn btn-link text-white d-flex align-items-center ms-auto">Redeem Points
               <mat-icon style="text-decoration: none;">
                 arrow_right_alt</mat-icon>
-              </button>
+            </button>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 px-5">
         <div class="card p-3 mt-5" style="background-color: #7031A5;color:white">
           <h3>
             Cash Balance
@@ -56,34 +54,6 @@
             </button>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-md-6 px-5">
-        <h2 class="mt-4">Balance History</h2>
-        <div style="max-height: 500px;overflow-y:auto;">
-
-          <div class="card px-3">
-            <table class="table table-borderless" id="pointsTable">
-              <tbody>
-                <tr *ngFor="let point of apiData?.pointsHistory">
-                  <td scope="col">
-                    <div class="pointImage" [ngStyle]="{'background-image': 'url(' + point.image + ')'}">
-                    </div>
-                  </td>
-                  <td scope="col">
-                    <h3 class="mb-0">{{point.companyName}}</h3>
-                    <p>{{point.remark}}</p>
-                    <p>{{point.createTs | date: 'mediumDate'}}</p>
-                  </td>
-                  <td scope="col" class="main-color" style="font-weight: 600;font-size: 16px;">+{{(point.pointsProvided).toFixed(2)}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 px-5">
         <div class="card p-3 mt-5">
           <h3>
             My Referral Code
@@ -99,6 +69,38 @@
             </button>
           </div>
         </div>
+      </div>
+      <div class="col-md-6 px-5">
+        <h2 class="mt-4">Balance History</h2>
+        <div style="max-height: 500px;overflow-y:auto;">
+
+          <div class="card px-3">
+            <table class="table table-borderless" id="pointsTable">
+              <tbody>
+                <tr *ngFor="let point of apiData?.pointsHistory | paginate: { itemsPerPage: 4, currentPage: currentPage }">
+                  <td style="width: 100px;">
+                    <div class="pointImage" [ngStyle]="{'background-image': 'url(' + point.image + ')'}">
+                    </div>
+                  </td>
+                  <td>
+                    <h3 class="mb-0 montserrat">{{point.companyName}}</h3>
+                    <p class="inter">Campaign: {{point.remark}}</p>
+                    <p>{{point.createTs | date: 'mediumDate'}}</p>
+                  </td>
+                  <td class="main-color" style="font-weight: 600;font-size: 16px;">
+                    +{{(point.pointsProvided).toFixed(2)}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+
+      <div class="col-md-6 px-5">
+
       </div>
     </div>
   </div>

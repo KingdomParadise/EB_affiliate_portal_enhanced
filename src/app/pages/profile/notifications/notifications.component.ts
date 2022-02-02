@@ -46,12 +46,16 @@ export class NotificationsComponent implements OnInit {
     });
     dialogRef1.afterClosed().subscribe(result => {
       //this.getdashboardData();
-
+      this.markViewed(notification.notiId);
+      this.dataService.getNotifications().subscribe(res =>{
+        this.apiData = res.response;
+        this.dataService.activeLinks.next(this.apiData.activeLinks);
+      })
     });
   }
-  markViewed(){
+  markViewed(id:any){
     let payload ={
-      notiId:1
+      notiId:[id]
     }
     this.dataService.markViewed(payload).subscribe(res =>{
 

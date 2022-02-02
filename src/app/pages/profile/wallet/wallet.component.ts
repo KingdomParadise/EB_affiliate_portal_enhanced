@@ -9,6 +9,7 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
 export class WalletComponent implements OnInit {
   apiData:any;
   userData:any;
+  currentPage = 0;
   constructor(
     private dataService: InitialDataService,
   ) { }

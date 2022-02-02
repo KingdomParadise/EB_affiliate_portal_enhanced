@@ -84,6 +84,9 @@ input[type=number] {
 .montserrat{
   font-family: 'Montserrat', sans-serif !important;
 }
+.inter{
+  font-family: 'Inter', sans-serif !important;
+}
 .montserratLight{
   font-family: 'Montserrat', sans-serif !important;
   font-weight: 100 !important;
