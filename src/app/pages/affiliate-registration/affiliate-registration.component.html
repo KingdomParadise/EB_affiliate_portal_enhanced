@@ -6,7 +6,8 @@
           <img src="assets/image/logo.png" alt="logo" id="header-logo">
           <div class=" d-inline-block ms-5">
             <button class="btn btn-link aff-btn">For Affiliates</button>
-            <a class="btn btn-link deal-btn text-muted" href="https://dealer.brandfiliate.net" target="_blank">For Dealers</a>
+            <a class="btn btn-link deal-btn text-muted" href="https://dealer.brandfiliate.net" target="_blank">For
+              Dealers</a>
           </div>
         </div>
       </div>
@@ -19,7 +20,8 @@
             <p class="mb-0">
               <img src="assets/image/textlogo.png" alt="" style="width:25rem">
             </p>
-            <p class="mb-0" style="font-family: 'Montserrat', sans-serif;">where <span class="main-color">Affiliates</span></p>
+            <p class="mb-0" style="font-family: 'Montserrat', sans-serif;">where <span
+                class="main-color">Affiliates</span></p>
             <p style="font-family: 'Montserrat', sans-serif;"><i>engage</i> and <i>earn</i></p>
           </h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -41,7 +43,8 @@
               <ng-template matStepLabel>Login Details</ng-template>
               <div>
                 <h1 class="main-color main-title mt-2">Sign Up</h1>
-                <p class="mb-2 font-weight-normal">Existing User? <a class="main-color text-decoration-none" routerLink="/login">Login
+                <p class="mb-2 font-weight-normal">Existing User? <a class="main-color text-decoration-none"
+                    routerLink="/login">Login
                     Here</a></p>
               </div>
               <div class="form-group mt-md-3">
@@ -57,8 +60,7 @@
               </div>
               <div class="form-group position-relative">
                 <label class='field-label'>Confirm Password</label>
-                <input [type]="hide ? 'password' : 'text'" matInput class="form-control"
-                  formControlName="cnfPassword">
+                <input [type]="hide ? 'password' : 'text'" matInput class="form-control" formControlName="cnfPassword">
                 <mat-icon style="position: absolute;right: 4px;top:20px" matSuffix (click)="hide = !hide">
                   {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </div>
@@ -74,22 +76,26 @@
                   </li>
                   <li class="d-flex align-items-center">
                     <mat-icon class="me-2" *ngIf="!passwordValidity.isLowercase">radio_button_unchecked</mat-icon>
-                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isLowercase">check_circle</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isLowercase">check_circle
+                    </mat-icon>
                     one lowercase letter
                   </li>
                   <li class="d-flex align-items-center">
                     <mat-icon class="me-2" *ngIf="!passwordValidity.isUppercase">radio_button_unchecked</mat-icon>
-                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isUppercase">check_circle</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isUppercase">check_circle
+                    </mat-icon>
                     one uppercase letter
                   </li>
                   <li class="d-flex align-items-center">
-                     <mat-icon class="me-2" *ngIf="!passwordValidity.isNumerical">radio_button_unchecked</mat-icon>
-                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isNumerical">check_circle</mat-icon>
+                    <mat-icon class="me-2" *ngIf="!passwordValidity.isNumerical">radio_button_unchecked</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isNumerical">check_circle
+                    </mat-icon>
                     one numerical
                   </li>
                   <li class="d-flex align-items-center">
                     <mat-icon class="me-2" *ngIf="!passwordValidity.isSpecial">radio_button_unchecked</mat-icon>
-                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isSpecial">check_circle</mat-icon>
+                    <mat-icon class="me-2" style="color:green" *ngIf="passwordValidity.isSpecial">check_circle
+                    </mat-icon>
                     one special character
                   </li>
                 </ul>
@@ -117,7 +123,9 @@
                 </button>
               </div>
               <div>
-                <p class="text-center mt-1 font-weight-normal">Are you a dealer? <a href="https://dealer.brandfiliate.net" style="font-style: italic;text-decoration: none;">Login as a dealer</a></p>
+                <p class="text-center mt-1 font-weight-normal">Are you a dealer? <a
+                    href="https://dealer.brandfiliate.net" style="font-style: italic;text-decoration: none;">Login as a
+                    dealer</a></p>
               </div>
             </form>
           </mat-step>
@@ -224,7 +232,7 @@
                 </div>
 
                 <div class='d-flex align-items-center'>
-                  <button class="btn btn-link me-2 my-auto" style="text-decoration: none;"><i>Skip</i></button>
+                  <!-- <button class="btn btn-link me-2 my-auto" style="text-decoration: none;"><i>Skip</i></button> -->
                   <button mat-button class="btn btn-app" matStepperNext [disabled]="!regForm3.valid">Next</button>
                 </div>
 
@@ -245,18 +253,23 @@
             <div *ngIf="verificationState === 1">
               <div>
                 <h1 class="main-color main-title mt-2">One Time Code Verification</h1>
-                <p class="main-color font-weight-normal">An e-mail with a one time code will be sent after you agree to the following terms and conditions:
+                <p class="main-color font-weight-normal">An e-mail with a one time code will be sent after you agree to
+                  the following terms and conditions:
                 </p>
               </div>
               <div>
                 <mat-checkbox class="example-margin" [(ngModel)]="agreed">
-                  <span class="font-weight-normal">I have agreed and read the <a href="/" class="main-color text-decoration-none" style="font-style: italic;">Terms and Conditions</a></span>
+                  <span class="font-weight-normal">I have agreed and read the <a href="/"
+                      class="main-color text-decoration-none" style="font-style: italic;">Terms and
+                      Conditions</a></span>
                 </mat-checkbox>
               </div>
-              <div *ngIf="alertMsg.message" class="alert fade show d-flex justify-content-between align-items-center mt-2 p-2"
+              <div *ngIf="alertMsg.message"
+                class="alert fade show d-flex justify-content-between align-items-center mt-2 p-2"
                 [ngClass]="(alertMsg.type == 'danger')?'alert-danger': 'alert-success'" role="alert">
                 <span>{{alertMsg.message}}</span>
-                <button type="button" class="btn btn-default close" (click)="close()" data-dismiss="alert" aria-label="Close">
+                <button type="button" class="btn btn-default close" (click)="close()" data-dismiss="alert"
+                  aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>

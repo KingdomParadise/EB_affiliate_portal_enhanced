@@ -1,18 +1,32 @@
-import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatHorizontalStepper, MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import {} from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthService,
+} from 'angularx-social-login';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-affiliate-registration',
   templateUrl: './affiliate-registration.component.html',
   styleUrls: ['./affiliate-registration.component.css'],
 })
-export class AffiliateRegistrationComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AffiliateRegistrationComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   regForm1: FormGroup;
   regForm3: FormGroup;
   regForm2: FormGroup;
@@ -142,7 +156,7 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit, On
     this.subscription1 = this.authService.authState.subscribe((user) => {
       console.log(user);
       this.regForm1.patchValue({
-        email: user.email
+        email: user.email,
       });
       let req;
       if (user.provider == 'FACEBOOK') {
@@ -288,39 +302,40 @@ export class AffiliateRegistrationComponent implements OnInit, AfterViewInit, On
     let lowerCaseLetters = /[a-z]/g;
     let upperCaseLetters = /[A-Z]/g;
     let numbers = /[0-9]/g;
-    let regExp = /[^<>{}\"/|;:.,~!?@#$%^=&*\\]\\\\()\\[¿§«»ω⊙¤°℃℉€¥£¢¡®©0-9_+]/g;
-    let value = (val.target.value).toString();
+    let regExp =
+      /[^<>{}\"/|;:.,~!?@#$%^=&*\\]\\\\()\\[¿§«»ω⊙¤°℃℉€¥£¢¡®©0-9_+]/g;
+    let value = val.target.value.toString();
     if (value.length > 7) {
       this.passwordValidity.length = true;
     } else {
       this.passwordValidity.length = false;
     }
-    if(value.match(upperCaseLetters)){
+    if (value.match(upperCaseLetters)) {
       this.passwordValidity.isUppercase = true;
-    }else{
+    } else {
       this.passwordValidity.isUppercase = false;
     }
-    if(value.match(lowerCaseLetters)){
+    if (value.match(lowerCaseLetters)) {
       this.passwordValidity.isLowercase = true;
-    }else{
+    } else {
       this.passwordValidity.isLowercase = false;
     }
-    if(value.match(numbers)){
+    if (value.match(numbers)) {
       this.passwordValidity.isNumerical = true;
-    }else{
+    } else {
       this.passwordValidity.isNumerical = false;
     }
-    if(this.containsSpecialChars(value)){
+    if (this.containsSpecialChars(value)) {
       this.passwordValidity.isSpecial = true;
-    }else{
+    } else {
       this.passwordValidity.isSpecial = false;
     }
   }
-  containsSpecialChars(str:any) {
+  containsSpecialChars(str: any) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     return specialChars.test(str);
   }
   ngOnDestroy(): void {
-      this.subscription1.unsubscribe();
+    this.subscription1.unsubscribe();
   }
 }
