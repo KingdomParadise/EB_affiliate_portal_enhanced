@@ -70,6 +70,7 @@ export class AffiliateLoginComponent implements OnInit, OnDestroy {
               localStorage.setItem('referalCode', res.response.referalCode);
               localStorage.setItem('referalReward', res.response.referalReward);
               localStorage.setItem('userData', JSON.stringify(res.response));
+              this.dataService.totalPoints.next(res.response.totalPoints);
               this.router.navigateByUrl('/profile/overview', { state: { affiliateId: res.response.affiliateId } });
             }
           }

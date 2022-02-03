@@ -11,6 +11,7 @@ export class OverviewComponent implements OnInit {
   apiData:any;
   userData:any;
   showCopyState:boolean = false;
+  copyIndex:number;
   constructor(
     private dataService: InitialDataService,
     private clipboard: Clipboard,
@@ -21,12 +22,14 @@ export class OverviewComponent implements OnInit {
     this.dataService.getOverview().subscribe(res =>{
       this.apiData = res.response;
       this.dataService.activeLinks.next(this.apiData.activeLinks);
+      this.dataService.totalPoints.next(res.response.points);
     })
   }
 
-  copyUrl(url:string) {
+  copyUrl(url:string, i:number) {
     this.clipboard.copy(url);
     this.showCopyState = true;
+    this.copyIndex = i;
     setTimeout(() => { this.showCopyState = false; }, 1000)
   }
 }

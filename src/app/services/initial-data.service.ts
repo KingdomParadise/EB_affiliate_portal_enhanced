@@ -17,6 +17,9 @@ export class InitialDataService {
   public activeLinks = new BehaviorSubject<number>(0);
   activeLinkDataSource = this.activeLinks.asObservable();
 
+  public totalPoints = new BehaviorSubject<number>(0);
+  totalPointsDataSource = this.totalPoints.asObservable();
+
   public editMode = new BehaviorSubject<boolean>(false);
   editModeDataSource = this.editMode.asObservable();
 

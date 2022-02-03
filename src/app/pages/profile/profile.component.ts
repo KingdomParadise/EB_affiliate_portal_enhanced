@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 
 @Component({
@@ -6,13 +7,17 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   editMode = false;
   userData:any;
   userPhotoUrl: any;
   activeLinks:number;
+  totalPoints:number;
   selectedUserImg: File;
   selectedUserImgPath: any = 'assets/images/profile-pic.png';
+  subs1:Subscription;
+  subs2:Subscription;
+  subs3:Subscription;
   constructor(
     private dataService: InitialDataService
   ) {
@@ -31,10 +36,14 @@ export class ProfileComponent implements OnInit {
 
     })
 
-    this.dataService.activeLinks.subscribe(val =>{
+    this.subs1 = this.dataService.activeLinks.subscribe(val =>{
       this.activeLinks = val;
     });
-    this.dataService.editMode.subscribe((val:boolean) =>{
+    this.subs2 = this.dataService.totalPoints.subscribe(val =>{
+      this.totalPoints = val;
+    });
+
+    this.subs3 = this.dataService.editMode.subscribe((val:boolean) =>{
       this.editMode = val
     })
 
@@ -50,5 +59,10 @@ export class ProfileComponent implements OnInit {
       this.selectedUserImgPath = reader.result;
       this.dataService.profileUrl.next(this.selectedUserImgPath);
     };
+  }
+  ngOnDestroy(): void {
+      this.subs1.unsubscribe();
+      this.subs2.unsubscribe();
+      this.subs3.unsubscribe();
   }
 }

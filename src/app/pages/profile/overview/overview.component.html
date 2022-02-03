@@ -76,7 +76,7 @@
           <div class="card px-3">
             <table class="table table-borderless" id="pointsTable">
               <tbody>
-                <tr *ngFor="let links of apiData?.activeUniqueLinks">
+                <tr *ngFor="let links of apiData?.activeUniqueLinks;let i =index">
                   <td scope="col">
                     <p>{{links.companyName}}</p>
                   </td>
@@ -87,8 +87,8 @@
                     <p>{{links.shortUrlLink}}</p>
                   </td>
                   <td scope="col">
-                    <p *ngIf='showCopyState'>Copied</p>
-                    <button class="btn btn-light" (click)="copyUrl(links.shortUrlLink)">Copy</button>
+                    <p *ngIf='showCopyState && (i == copyIndex)'>Copied</p>
+                    <button class="btn btn-light" (click)="copyUrl(links.shortUrlLink, i)">Copy</button>
                   </td>
                 </tr>
               </tbody>
