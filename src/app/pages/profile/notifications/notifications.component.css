@@ -71,3 +71,24 @@
 #pointsTable td{
   vertical-align: middle;
 }
+:ng-deep .ngx-pagination {
+  text-align: center !important;
+}
+:ng-deep .ngx-pagination .btn-info{
+  text-decoration: none !important;
+}
+::ng-deep .ngx-pagination .current,
+.btn-info {
+  background: transparent !important;
+  color:black !important;
+  font-weight: bold !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+}
+
+::ng-deep .ngx-pagination .current:hover {
+  background: transparent !important;
+  color:gray !important;
+  border-radius: 20px !important;
+  border: transparent !important;
+}

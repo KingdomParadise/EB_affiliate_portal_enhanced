@@ -31,7 +31,7 @@
         <form [formGroup]="personalForm" class="mb-5 mb-md-0">
           <ng-template matStepLabel>Account Information</ng-template>
           <div>
-            <h1 class="main-color main-title">Personal Info</h1>
+            <h1 class="main-color montserrat">Personal Info</h1>
           </div>
           <div class="form-group d-flex flex-column flex-md-row">
             <div class="col me-md-2">
@@ -59,7 +59,7 @@
             </div>
             <div class="form-group d-flex flex-column flex-md-row mt-3">
               <div class="col me-md-2">
-                <label class='field-label'>Phone</label>
+                <label class='field-label'>Phone Number</label>
                 <input matInput type="number" class="form-control" id="personalPhone" formControlName="phone">
               </div>
             </div>
@@ -71,7 +71,7 @@
       <div class="card border-0">
         <form [formGroup]="affiliationForm" class="mt-md-1">
           <div>
-            <h1 class="main-color main-title">Affiliation</h1>
+            <h1 class="main-color montserrat">Affiliation</h1>
           </div>
           <div class="form-group d-flex flex-column">
             <div class="col">
@@ -80,12 +80,22 @@
                 bindValue="companyId">
               </ng-select>
             </div>
-
+            <div class="col">
+              <hr>
+            </div>
             <div class="col">
               <label class='field-label'>Interests</label>
-              <ng-select [items]="interests" bindLabel="industryName" [multiple]="true"
+              <!-- <ng-select [items]="interests" bindLabel="industryName" [multiple]="true"
                 formControlName="intrestAreaList" bindValue="industryId">
-              </ng-select>
+              </ng-select> -->
+              <div class="d-flex flex-wrap" > 
+                <div *ngFor="let interest of interests" class="d-flex align-items-center me-3" >
+                  <input type="checkbox" name="" id="" checked="interest.checked"> 
+                  <span class="ms-1"> {{interest.industryName}}</span>
+                </div>
+               
+              </div>
+              
             </div>
           </div>
         </form>
@@ -97,7 +107,7 @@
       <div class="card border-0">
         <form [formGroup]="loginForm" class="mb-5 mb-md-0">
           <div>
-            <h1 class="main-color main-title">Login Details</h1>
+            <h1 class="main-color montserrat">Login Details</h1>
           </div>
           <div class="form-group">
             <label class='field-label'>Email</label>
@@ -115,7 +125,7 @@
       <div class="card border-0">
         <form [formGroup]="socialForm" class="mb-5 mb-md-0">
           <div>
-            <h1 class="main-color main-title">Social Media Links</h1>
+            <h1 class="main-color montserrat">Social Media Links</h1>
           </div>
           <div class="form-group d-flex flex-column">
             <div class="col">
@@ -149,7 +159,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 d-flex justify-content-end px-5">
-      <button class="btn btn-app ms-auto d-flex align-items-center" *ngIf='enableForm' (click)="updateSettings()" [disabled]="isLoading">
+      <button class="btn btn-app ms-auto d-flex align-items-center mt-2" *ngIf='enableForm' (click)="updateSettings()" [disabled]="isLoading">
         <mat-spinner *ngIf='isLoading' [diameter]="16" style="color:white;margin-right: 5px;"></mat-spinner>
         Save
       </button>

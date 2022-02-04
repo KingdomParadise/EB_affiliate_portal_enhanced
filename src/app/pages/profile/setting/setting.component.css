@@ -2,18 +2,19 @@
 input{
   margin:0 auto;
   border:none;
-  border-bottom: 1px solid #a63da1;
+  border: 1px solid #a63da1;
   outline: none;
   border-radius: 0;
   color: black;
   font-size: 12px;
+  padding: 2px 6px;
 }
 select{
   text-transform: uppercase;
   font-weight: 600;
   width: 100%;
   border:none;
-  border-bottom: 1px solid gray;
+  border: 1px solid #a63da1;
   color: black;
 }
 input:focus{
@@ -36,13 +37,22 @@ input::placeholder {
 }
 ::ng-deep .ng-select .ng-select-container{
   border:0 !important;
-  border-bottom: 1px solid gray !important;
+  border: 1px solid white !important;
 
   border-radius: 0;
+  padding: 2px 6px;
+  min-height: unset !important;
+  height: unset !important;
+  box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.1);
+
+}
+.ng-select.ng-select-disabled>.ng-select-container{
+  background-color: white;
 }
 label{
   font-weight: 500;
   margin-top:1.2rem;
+  margin-bottom: 6px;
 }
 .btn-password{
   background-color: white;

@@ -28,13 +28,13 @@
             <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="">
           </div> -->
           <div class="position-relative settingImage mb-3"
-                        [ngStyle]="{'background-image': 'url(' + selectedUserImgPath + ')'}">
-                        <input #userLogo type="file" id="companyLogoUpload" [disabled]="!editMode" (change)="onFileChanged($event,'user')"
-                            style="display:none" accept="image/*" />
-                        <div class="camera-icon" *ngIf="editMode">
-                            <img src="assets/images/camera.png" alt="camera"  (click)="editMode ? userLogo.click(): false">
-                        </div>
-                    </div>
+            [ngStyle]="{'background-image': 'url(' + selectedUserImgPath + ')'}">
+            <input #userLogo type="file" id="companyLogoUpload" [disabled]="!editMode"
+              (change)="onFileChanged($event,'user')" style="display:none" accept="image/*" />
+            <div class="camera-icon" *ngIf="editMode">
+              <img src="assets/images/camera.png" alt="camera" (click)="editMode ? userLogo.click(): false">
+            </div>
+          </div>
           <div class="ms-2">
             <h1 class="mb-2 montserrat" style="font-size: 32px;">{{userData?.firstName}} {{userData?.lastName}}</h1>
             <h3 class="mb-0 text-muted">{{userData?.countryName}}, {{userData?.stateName}}</h3>
@@ -48,7 +48,7 @@
             <span class="point mb-2">{{activeLinks || 0}}</span>
             <span>Active Links</span>
           </div>
-          <div class='d-flex flex-column justify-content-center align-items-center ms-3'>
+          <div class='d-flex flex-column justify-content-center align-items-center ms-5'>
             <span class="point mb-2 main-color">{{totalPoints}}</span>
             <span>Points</span>
           </div>
@@ -60,4 +60,3 @@
     </div>
   </div>
 </div>
-

@@ -25,9 +25,6 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield !important;
 }
-.form-control{
-  padding-left:0 !important
-}
 
 .main-color{
   color: #a63da1;
@@ -92,5 +89,11 @@ input[type=number] {
 }
 .fs-12{
   font-size: 12px;
+}
+.form-control:disabled, .form-control[readonly]{
+  background-color: #FFFFFF;
+}
+.ngx-pagination a, .ngx-pagination button{
+  text-decoration: none !important;
 }
 

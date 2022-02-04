@@ -20,7 +20,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-5">
+    <!-- <div class="col-md-5">
       <h2>Updates</h2>
       <mat-tab-group>
         <mat-tab label="All">
@@ -64,14 +64,14 @@
           </ng-template>
         </mat-tab>
       </mat-tab-group>
-    </div>
-    <div class="col-md-7">
+    </div> -->
+    <div class="col-md-8">
       <h2>Inbox</h2>
       <mat-tab-group>
         <mat-tab label="All">
           <ng-template matTabContent>
-            <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let notf of apiData?.allNotifications" class="px-5 pt-3">
+            <div>
+              <div *ngFor="let notf of apiData?.allNotifications | paginate: { itemsPerPage: 2, currentPage: currentPage }" class="px-5 pt-3">
                 <h2 class="main-color">{{notf.notificationDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
@@ -93,12 +93,17 @@
                   </tbody>
                 </table>
               </div>
+             
             </div>
+            <div class="d-flex justify-content-center mt-3">
+              <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>
+            </div>
+            
           </ng-template>
         </mat-tab>
         <mat-tab label="Urgent">
           <ng-template matTabContent>
-            <div style="height:500px;overflow-y: scroll;">
+            <div>
               <div *ngFor="let notf of apiData?.urgentNotifications" class="px-5 pt-3">
                 <h2 class="main-color">{{notf.notificationDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">

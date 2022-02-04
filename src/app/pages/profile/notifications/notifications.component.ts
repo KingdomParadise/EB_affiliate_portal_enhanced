@@ -13,7 +13,7 @@ export class NotificationsComponent implements OnInit {
   apiData: any;
   userData: any;
   showCopyState:boolean = false;
-
+  currentPage = 0;
   constructor(
     private dataService: InitialDataService,
     private dialog : MatDialog

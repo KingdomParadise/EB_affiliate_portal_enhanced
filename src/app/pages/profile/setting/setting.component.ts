@@ -22,7 +22,7 @@ export class SettingComponent implements OnInit, OnDestroy {
   countries = [];
   states = [];
   companies = [];
-  interests = [];
+  interests:any[] = [];
   enableForm = false;
   isLoading = false;
   subscription1: Subscription;
@@ -78,8 +78,10 @@ export class SettingComponent implements OnInit, OnDestroy {
         return ele.companyId;
       });
       let interests = this.settings.intrestList.map((ele: any) => {
-        return ele.intrestId;
+        return {...ele,
+        checked: true}
       });
+      console.log(interests);
       this.affiliationForm = this._formBuilder.group({
         companyList: [companiesId],
         intrestAreaList: [interests],
