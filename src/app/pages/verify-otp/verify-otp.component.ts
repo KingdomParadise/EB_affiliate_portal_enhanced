@@ -14,7 +14,7 @@ export class VerifyOtpComponent implements OnInit {
     type: '',
     message: ''
   };
-
+  isLoading:boolean = false;
   constructor(
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
@@ -29,13 +29,26 @@ export class VerifyOtpComponent implements OnInit {
   close() {
     this.alertMsg.message = ''
   }
+  resend(){
+    let payload ={
+      affiliateId: Number(localStorage.getItem('affiliateId'))
+    }
+    this.dataService.resendOtp(payload).subscribe(res =>{
+      if (res.responseCode == 0) {
+        this.alertMsg.type = 'success';
+        this.alertMsg.message = res.successMsg
+      }
+    })
+  }
   onSubmit() {
+
     if (this.otpForm.valid) {
+      this.isLoading = true;
       this.otpForm.value.affiliateId = Number(localStorage.getItem('affiliateId'));
       this.dataService.validateOtp(this.otpForm.value).subscribe(res => {
         if (res.responseCode == 0) {
           localStorage.setItem('affiliateId', res.response.affiliateId);
-          this.router.navigateByUrl('/profile/overview');
+          this.router.navigateByUrl('/dashboard/explore-dealers');
         } else if (res.responseCode == -1) {
           this.alertMsg.type = 'danger';
           this.alertMsg.message = res.errorMsg
@@ -43,6 +56,7 @@ export class VerifyOtpComponent implements OnInit {
           this.alertMsg.type = 'danger';
           this.alertMsg.message = 'Server error'
         }
+        this.isLoading =false;
       });
     }
     //this.router.navigateByUrl('/review');

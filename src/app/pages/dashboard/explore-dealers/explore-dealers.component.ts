@@ -4,6 +4,7 @@ import { InitialDataService } from 'src/app/services/initial-data.service';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ShareModalComponent } from '../share-modal/share-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-explore-dealers',
@@ -11,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./explore-dealers.component.css']
 })
 export class ExploreDealersComponent implements OnInit {
-  apiData:any;
+  apiData:any = null;
   filterType = [
     {
       name: 'Alphabatical: Dealer Name',
@@ -24,21 +25,27 @@ export class ExploreDealersComponent implements OnInit {
     private dataService: InitialDataService,
     private router: Router,
     private clipboard: Clipboard,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private spinner: NgxSpinnerService
   ) {
+    
    }
 
   ngOnInit(): void {
-    this.initalCall();
+    if(this.apiData === null){
+      this.initalCall();
+    }
   }
 
   initalCall(){
+    this.spinner.show();
     let req ={
       searchString :["Mercedes Benz","BMW","AUDI"]
     }
 
     this.dataService.exploreDealer(req).subscribe((res) => {
       this.apiData = res.response;
+      this.spinner.hide();
       console.log(res);
     });
   }
@@ -79,8 +86,7 @@ export class ExploreDealersComponent implements OnInit {
     }
     const dialogRef1 = this.dialog.open(ShareModalComponent, {
       maxWidth: size[0],
-      maxHeight: size[1],
-      height: '100%',
+      height: 'auto',
       width: '100%',
       data: campaign,
       disableClose: false

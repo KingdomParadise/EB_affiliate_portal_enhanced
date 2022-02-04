@@ -187,7 +187,7 @@ export class AffiliateRegistrationComponent
               localStorage.setItem('referalCode', res.response.referalCode);
               localStorage.setItem('referalReward', res.response.referalReward);
               localStorage.setItem('userData', JSON.stringify(res.response));
-              this.router.navigateByUrl('/profile/overview', {
+              this.router.navigateByUrl('/dashboard/explore-dealers', {
                 state: { affiliateId: res.response.affiliateId },
               });
             }
@@ -276,7 +276,7 @@ export class AffiliateRegistrationComponent
           localStorage.setItem('referalCode', res.response.referalCode);
           localStorage.setItem('referalReward', res.response.referalReward);
           localStorage.setItem('userData', JSON.stringify(res.response));
-          this.router.navigateByUrl('/profile/overview');
+          this.router.navigateByUrl('/dashboard/explore-dealers');
         } else if (res.responseCode == -1) {
           this.alertMsg.type = 'danger';
           this.alertMsg.message = res.errorMsg;
@@ -331,11 +331,24 @@ export class AffiliateRegistrationComponent
       this.passwordValidity.isSpecial = false;
     }
   }
+  resend(){
+    let payload ={
+      affiliateId: Number(localStorage.getItem('affiliateId'))
+    }
+    this.dataService.resendOtp(payload).subscribe(res =>{
+      if (res.responseCode == 0) {
+        this.alertMsg.type = 'success';
+        this.alertMsg.message = res.successMsg
+      }
+    })
+  }
   containsSpecialChars(str: any) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     return specialChars.test(str);
   }
+
   ngOnDestroy(): void {
     this.subscription1.unsubscribe();
   }
+
 }

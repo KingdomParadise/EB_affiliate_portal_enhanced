@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { retry, catchError, publishReplay, refCount } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 
@@ -67,6 +67,11 @@ export class InitialDataService {
   validateOtp(data: any) {
     return this.http
       .post<any>(this.apiUrl + '/affiliate/validateOtp', data)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+  resendOtp(data: any){
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/resendOtp', data)
       .pipe(retry(1), catchError(this.handleError));
   }
   login(data: any) {
