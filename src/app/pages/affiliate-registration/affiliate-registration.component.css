@@ -308,10 +308,10 @@ input[type=number]::-webkit-outer-spin-button {
     .customMargin{
         margin-top:120px;
     }
-    #profileBox{
+    /* #profileBox{
       height: 90vh;
       margin-right: 200px;
-    }
+    } */
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
@@ -379,11 +379,7 @@ input[type=number]::-webkit-outer-spin-button {
     .main-content{
       height: 90vh;
     }
-    #footer{
-      position: fixed;
-      bottom:0;
-      padding-right: 210px;
-    }
+   
     .btn-social{
       margin-bottom:2rem
     }
