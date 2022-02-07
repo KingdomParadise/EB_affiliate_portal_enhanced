@@ -62,6 +62,7 @@ import { ExploreCampaignsComponent } from './pages/dashboard/explore-campaigns/e
 import { ViewNotificationComponent } from './pages/profile/notifications/view-notification/view-notification.component';
 import { OtpSentComponent } from './pages/otp-sent/otp-sent.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { AccountDetailsComponent } from './pages/profile/wallet/account-details/account-details.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     ExploreCampaignsComponent,
     ViewNotificationComponent,
     OtpSentComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AccountDetailsComponent
   ],
   imports: [
     BrowserModule,

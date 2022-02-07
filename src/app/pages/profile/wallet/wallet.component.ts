@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
+import { AccountDetailsComponent } from './account-details/account-details.component';
 
 @Component({
   selector: 'app-wallet',
@@ -12,6 +14,7 @@ export class WalletComponent implements OnInit {
   currentPage = 0;
   constructor(
     private dataService: InitialDataService,
+    private dialog:MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -21,4 +24,24 @@ export class WalletComponent implements OnInit {
     });
   }
 
+  openModal(){
+    let size = ['675px', '475px'];
+    if (window.innerWidth > 786) {
+      size = ['695px', '500px'];
+    } else {
+      size = ['350px', '600px'];
+    }
+    const dialogRef1 = this.dialog.open(AccountDetailsComponent, {
+      maxWidth: size[0],
+      height: 'auto',
+      width: '100%',
+      data: {},
+      disableClose: false
+    });
+    dialogRef1.afterClosed().subscribe(result => {
+      //this.getdashboardData();
+      //this.initalCall();
+    });
+  }
+  
 }
