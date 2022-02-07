@@ -60,6 +60,8 @@ import { SettingComponent } from './pages/profile/setting/setting.component';
 import { ChangePasswordModalComponent } from './pages/profile/setting/change-password-modal/change-password-modal.component';
 import { ExploreCampaignsComponent } from './pages/dashboard/explore-campaigns/explore-campaigns.component';
 import { ViewNotificationComponent } from './pages/profile/notifications/view-notification/view-notification.component';
+import { OtpSentComponent } from './pages/otp-sent/otp-sent.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,9 @@ import { ViewNotificationComponent } from './pages/profile/notifications/view-no
     WalletComponent,
     SettingComponent,
     ExploreCampaignsComponent,
-    ViewNotificationComponent
+    ViewNotificationComponent,
+    OtpSentComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

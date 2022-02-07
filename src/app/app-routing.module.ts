@@ -10,6 +10,7 @@ import { ExploreCampaignsComponent } from './pages/dashboard/explore-campaigns/e
 import { ExploreDealersComponent } from './pages/dashboard/explore-dealers/explore-dealers.component';
 import { EnterEmailComponent } from './pages/enter-email/enter-email.component';
 import { EnterPhoneComponent } from './pages/enter-phone/enter-phone.component';
+import { OtpSentComponent } from './pages/otp-sent/otp-sent.component';
 import { CompanyAffiliationsComponent } from './pages/profile/company-affiliations/company-affiliations.component';
 import { NotificationsComponent } from './pages/profile/notifications/notifications.component';
 import { OutreachComponent } from './pages/profile/outreach/outreach.component';
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'verify',
     component: VerifyOtpComponent,
+  },
+  {
+    path: 'otp-sent',
+    component: OtpSentComponent,
   },
   {
     path: '',
