@@ -21,6 +21,7 @@ export class ExploreDealersComponent implements OnInit {
   ]
   selectedFilter = this.filterType[0].value;
   showCopyState: boolean = false;
+  copyIndex:number;
   constructor(
     private dataService: InitialDataService,
     private router: Router,
@@ -71,9 +72,10 @@ export class ExploreDealersComponent implements OnInit {
       this.apiData = res.response;
     });
   }
-  copyLink(ev:any,link:string) {
+  copyLink(ev:any,link:string,index:number) {
     this.clipboard.copy(link);
     this.showCopyState = true;
+    this.copyIndex = index
     setTimeout(() => { this.showCopyState = false; }, 1000)
     ev.stopPropagation();
   }

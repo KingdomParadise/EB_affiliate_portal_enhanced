@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="row d-flex justify-content-between">
-        <div class="card1" *ngFor="let campaign of dealer.campaignList" (click)="openCampaignShareModal(campaign)">
+        <div class="card1" *ngFor="let campaign of dealer.campaignList;let j =index" (click)="openCampaignShareModal(campaign)">
           <div class="card border-0">
             <div class="campaignImage" [ngStyle]="{'background-image': 'url(' + campaign.campaignImageLink + ')'}">
               <div class="perLead">
@@ -51,10 +51,12 @@
                 <div class="px-2">
                   {{campaign.shortUrlLink}}
                 </div>
-                <div class="copyBtn" (click)="copyLink($event,campaign.shortUrlLink)">
-                  Copy
+                <div class="copyBtn" (click)="copyLink($event,campaign.shortUrlLink,j)">
+                 Copy
+                  
 
                 </div>
+                <span class="copied" *ngIf="showCopyState && (copyIndex == j)">Copied</span>
                 <!-- <span class="ms-5 ps-3 mt-1" *ngIf="showCopyState">Link copied successfully!</span> -->
               </div>
             </div>

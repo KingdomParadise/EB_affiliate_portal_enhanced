@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import { ShareModalComponent } from '../share-modal/share-modal.component';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-explore-campaigns',
@@ -10,9 +11,13 @@ import { ShareModalComponent } from '../share-modal/share-modal.component';
 })
 export class ExploreCampaignsComponent implements OnInit {
   apiData:any;
+  showCopyState: boolean = false;
+  copyIndex:number;
   constructor(
     private dataService: InitialDataService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private clipboard: Clipboard,
+
   ) { }
 
   ngOnInit(): void {
@@ -50,5 +55,12 @@ export class ExploreCampaignsComponent implements OnInit {
       //this.getdashboardData();
       //this.initalCall();
     });
+  }
+  copyLink(ev:any,link:string,index:number) {
+    this.clipboard.copy(link);
+    this.showCopyState = true;
+    this.copyIndex = index
+    setTimeout(() => { this.showCopyState = false; }, 1000)
+    ev.stopPropagation();
   }
 }
