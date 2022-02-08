@@ -35,7 +35,7 @@ export class WalletComponent implements OnInit {
       maxWidth: size[0],
       height: 'auto',
       width: '100%',
-      data: {},
+      data: this.apiData?.cashBalance,
       disableClose: false
     });
     dialogRef1.afterClosed().subscribe(result => {

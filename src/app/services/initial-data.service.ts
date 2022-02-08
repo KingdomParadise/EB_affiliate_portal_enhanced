@@ -187,6 +187,12 @@ export class InitialDataService {
       .post<any>(this.apiUrl + '/affiliate/forgotPassword', data)
       .pipe(retry(1), catchError(this.handleError));
   }
+  
+  affiliatePayment(data: any){
+    return this.http
+      .post<any>(this.apiUrl + '/affiliate/affiliatePayment', data)
+      .pipe(retry(1), catchError(this.handleError));
+  }
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

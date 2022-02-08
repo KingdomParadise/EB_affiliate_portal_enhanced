@@ -102,6 +102,12 @@ export class SettingComponent implements OnInit, OnDestroy {
       setTimeout(() => {this.personalForm.disable();this.socialForm.disable();this.affiliationForm.disable()}, 0);
     });
   }
+  modifyState(ev:any, index:number){
+    console.log(ev.currentTarget.checked);
+    if(ev.currentTarget.checked){
+      this.interests[index].checked = true;
+    }
+  }
   onCountrySelect(country: any) {
     if (country.countryId) {
       this.personalForm.patchValue({
@@ -143,6 +149,15 @@ export class SettingComponent implements OnInit, OnDestroy {
   }
   updateSettings(){
     this.isLoading = true;
+    let interest = [];
+    for(let i = 0; i< this.interests.length; i++){
+      if(this.interests[i].checked){
+        interest.push({intrestId:this.interests[i].industryId})
+      }
+    }
+    this.affiliationForm.patchValue({
+      intrestAreaList: interest
+    });
     let payload = {
       ...this.personalForm.value,
       ...this.socialForm.value,

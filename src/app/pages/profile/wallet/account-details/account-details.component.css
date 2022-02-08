@@ -1,3 +1,21 @@
 .form-group{
     margin-right: 8px !important;
 }
+::ng-deep .mat-tab-body-wrapper{
+    box-shadow: none !important;
+}
+.form-control{
+    border: none;
+    border-bottom: 1px solid #a63da1 !important;
+    border-radius: 0;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 0;
+    padding:16px
+  }
+  .point{
+    font-size: 32px;
+    font-weight: 500;
+  }

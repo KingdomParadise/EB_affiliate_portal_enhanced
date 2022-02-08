@@ -89,8 +89,8 @@
                 formControlName="intrestAreaList" bindValue="industryId">
               </ng-select> -->
               <div class="d-flex flex-wrap" > 
-                <div *ngFor="let interest of interests" class="d-flex align-items-center me-3" >
-                  <input type="checkbox" name="" id="" checked="interest.checked"> 
+                <div *ngFor="let interest of interests;let i =index" class="d-flex align-items-center me-3" >
+                  <input type="checkbox" name="" id="" checked="interest.checked" (change)="modifyState($event, i)"> 
                   <span class="ms-1"> {{interest.industryName}}</span>
                 </div>
                
