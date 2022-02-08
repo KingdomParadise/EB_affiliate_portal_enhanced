@@ -12,12 +12,18 @@ export class OtpSentComponent implements OnInit {
     type: '',
     message: ''
   };
+  type = 'email';
+  val ='';
   constructor(
     private authService: SocialAuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    if(history.state.page){
+      this.type = history.state.page;
+      this.val = history.state.val
+    }
   }
   close(){
 

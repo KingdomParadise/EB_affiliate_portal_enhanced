@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-verify-otp',
@@ -18,7 +19,8 @@ export class VerifyOtpComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
-    private router: Router
+    private router: Router,
+    private location : Location
   ) { }
 
   ngOnInit(): void {
@@ -60,5 +62,8 @@ export class VerifyOtpComponent implements OnInit {
       });
     }
     //this.router.navigateByUrl('/review');
+  }
+  back(){
+    this.location.back();
   }
 }
