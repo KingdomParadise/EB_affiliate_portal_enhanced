@@ -39,7 +39,7 @@ button:focus{
 }
 #header-logo{
     width:30%;
-    margin-left: 40px;
+    margin-left: 0px;
 }
 #mobile-dealers-text{
     color:white;
@@ -167,7 +167,7 @@ input::placeholder {
 }
 .main-content{
   /* height: 90vh; */
-  background-image: url('/assets/image/BACKGROUNDS/SignIn-BG.jpg');
+  background-image: url('/assets/image/login-bg-sm.png');
   background-position: center;
   background-size: cover;
 }
@@ -176,7 +176,13 @@ input::placeholder {
   font-size: 52px;
   line-height: 1.1;
 }
+.bgWhiteSm{
+    background-color: white;
+}
 @media only screen and (min-device-width: 768px){
+    .bgWhiteSm{
+        background-color: transparent;
+    }
     .header{
         padding:.5rem 5rem;
         text-align: left;
@@ -190,6 +196,17 @@ input::placeholder {
     #profileBox{
       margin-right: 200px;
     }
+    #header-logo{
+        width:30%;
+        margin-left: 40px;
+    }
+    .main-content{
+        /* height: 90vh; */
+        background-image: url('/assets/image/BACKGROUNDS/SignIn-BG.jpg');
+        background-position: center;
+        background-size: cover;
+        backdrop-filter: brightness(0.30);
+      }
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
@@ -205,6 +222,10 @@ input::placeholder {
     }
     .deviceMargin{
       margin-bottom: 2.8rem;
+    }
+    #header-logo{
+        width:30%;
+        margin-left: 40px;
     }
  }
 
