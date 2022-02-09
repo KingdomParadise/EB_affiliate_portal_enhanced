@@ -1,101 +1,121 @@
-<mat-toolbar style="background-color: white; color: black; width: 100%; padding: 0px;height: 10vh;">
-    <mat-toolbar-row style="width: 100%;margin:auto;">
-        <div class="row w-100 d-none d-md-block g-0">
-            <div class="col-md-12 p-0">
-                <div class="header d-none d-md-flex flex-column flex-md-row justify-content-between align-item-center">
-                    <div class="d-flex my-auto">
-                        <div class="my-auto d-none d-md-block">
-                          <div class="d-flex flex-column">
-
-                            <img src="assets/image/logo.png" alt="logo" id="header-logo">
-                             <span class="text2 main-color" style="margin-left:100px;margin-top:-10px;font-size:16px;font-weight: 400;">Affiliate Portal</span>
-                          </div>
-
-                        </div>
-                        <button class="me-2 d-block d-md-none" mat-icon-button style="color: rgb(55, 10, 160);" (click)="toggleSideBar()">
-                            <mat-icon>menu</mat-icon>
-                        </button>
-                    </div>
-
-                    <div class="my-auto d-none d-md-flex">
-                        <!-- <button class="btn btn-link headerLink my-auto" (click)="goToTraining()">Dashboard</button>
-                        <button class="btn btn-link headerLink" (click)="goToTraining()">Support</button> -->
-                        <a class="headerLink btn px-1 btn-link rounded-0 my-auto me-5" style="font-size: 16px;" routerLinkActive="router-active1" routerLink="/dashboard">Dashboard</a>
-                        <div class="d-flex align-items-center btn btn-link headerLink px-1">
-                          <div id="headerProfileImg">
-                            <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt="" style="width:50px;height:50px;margin-right: 6px;">
-                          </div>
-                          <a class="headerLink ms-2" routerLinkActive="router-active1" routerLink="/profile">{{userData.firstName}}</a>
-                        </div>
-                        <!-- <button class="btn btn-link headerLink" (click)="goToTraining()">
-                          <div class="d-inline-block">
-                            <img src="assets/image/SVG/Wallet.svg" alt="" style="width:20px;height:20px;margin-right: 2px;">
-                          </div>
-                          {{userData.totalPoints}}</button> -->
-                        <button class="btn btn-link headerLink" (click)="logout()">
-                          Logout
-                          <div class="d-inline-block">
-                            <img src="assets/image/SVG/LogOut.svg" alt="" style="width:20px;height:20px;margin-left: 0px;">
-                          </div>
-                        </button>
-                        <div class="my-auto">
-                          <!-- <a href="https://www.facebook.com/" target="_blank">
-                            <img src="assets/images/fb-dark.png" alt="fb" class="headerIcon">
-                          </a> -->
-                            <!-- <a href="https://www.facebook.com/" target="_blank">
-                                <img src="assets/images/fb-dark.png" alt="fb" class="headerIcon">
-                            </a>
-                            <a href="https://www.linkedin.com/" target="_blank">
-                                <img src="assets/images/linkedIn-dark.png" alt="linkedIn" class="headerIcon">
-                            </a>
-                            <a style="position: relative;" [matMenuTriggerFor]="adminActions"
-                                (menuClosed)="menuClosed()" (menuOpened)="menuOpened()">
-                                <img src="assets/images/Bell.png" alt="linkedIn" class="headerIcon">
-                                <div class="red-dot" *ngIf="isNewNotification">
-
-                                </div>
-                            </a>
-
-                            <mat-menu #adminActions="matMenu" xPosition="before" class="p-0">
-                                <div id="notificationHead">
-                                    <h3 class="mb-0">Notifications</h3>
-                                </div>
-                                <div *ngFor="let notification of notificationList" class="px-2 py-2">
-                                    <div class='d-flex'>
-                                        <img [src]="notification.fromUserImage" alt="user Image" class="notf-image">
-                                        <p class="mb-0">{{notification.message}}</p>
-                                    </div>
-                                    <p class="timeText">{{notification.createTs | date: 'short'}}</p>
-                                    <hr />
-                                </div>
-                            </mat-menu> -->
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="col-md-12 p-0" style="background-color: #7031A5;">
-              <div class="d-flex justify-content-between mx-4" style="padding:6px 120px">
-                <a class="headerLink2" routerLinkActive="router-active" routerLink="/profile/overview">Overview</a>
-                <a class="headerLink2" routerLinkActive="router-active" routerLink="/profile/outreach">Outreach</a>
-                <a class="headerLink2" routerLinkActive="router-active" routerLink="/dashboard/affiliations">Company Affiliations</a>
-                <a class="headerLink2" href="">Notifications</a>
-                <a class="headerLink2" href="">Points</a>
-                <a class="headerLink2" href="">Settings</a>
+<!-- <mat-toolbar style="background-color: white; color: black; width: 100%; padding: 0px;height: 10vh;">
+  <mat-toolbar-row style="width: 100%;margin:auto;">
+    <div class="row w-100 d-none d-md-block g-0">
+      <div class="col-md-12 p-0">
+        <div class="header d-none d-md-flex flex-column flex-md-row justify-content-between align-item-center">
+          <div class="d-flex my-auto">
+            <div class="my-auto d-none d-md-block">
+              <div class="d-flex flex-column">
+                <img src="assets/image/logo.png" alt="logo" id="header-logo">
+                <span class="text2 main-color"
+                  style="margin-left:100px;margin-top:-10px;font-size:16px;font-weight: 400;">Affiliate Portal</span>
               </div>
-            </div> -->
-        </div>
-        <div class="d-flex d-md-none justify-content-center my-3 w-100" id="header-mobile">
-            <div class="d-flex flex-row d-md-none text-center mt-2">
-                <button id="mobileMenu" mat-icon-button style="color: rgb(55, 10, 160);" (click)="toggleSideBar()">
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <div>
-                    <img src="assets/images/main-logo-mobile.png" alt="main-logo" id="mobile-logo">
-
-                </div>
             </div>
+          </div>
+
+          <div class="my-auto d-none d-md-flex">
+            <a class="headerLink btn px-1 btn-link rounded-0 my-auto me-5" style="font-size: 16px;"
+              routerLinkActive="router-active1" routerLink="/dashboard">Dashboard</a>
+            <div class="d-flex align-items-center btn btn-link headerLink px-1">
+              <div id="headerProfileImg">
+                <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt=""
+                  style="width:50px;height:50px;margin-right: 6px;">
+              </div>
+              <a class="headerLink ms-2" routerLinkActive="router-active1"
+                routerLink="/profile">{{userData.firstName}}</a>
+            </div>
+            <button class="btn btn-link headerLink" (click)="logout()">
+              Logout
+              <div class="d-inline-block">
+                <img src="assets/image/SVG/LogOut.svg" alt="" style="width:20px;height:20px;margin-left: 0px;">
+              </div>
+            </button>
+            <div class="my-auto">
+            </div>
+          </div>
+         
         </div>
-    </mat-toolbar-row>
-</mat-toolbar>
+      </div>
+    </div>
+   
+    
+  </mat-toolbar-row>
+</mat-toolbar> -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+  <div class="container-fluid d-flex d-md-block justify-content-between ">
+      <div class="navbar-brand">
+        <img src="assets/image/logo.png" alt="logo" id="header-logo">
+      </div>
+  
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="headerLink btn px-1 btn-link rounded-0 my-auto me-5" style="font-size: 16px;"
+          routerLinkActive="router-active1" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <div class="d-flex align-items-center btn btn-link headerLink px-1">
+            <div id="headerProfileImg">
+              <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt=""
+                style="width:50px;height:50px;margin-right: 6px;">
+            </div>
+            <a class="headerLink ms-2" routerLinkActive="router-active1"
+              routerLink="/profile">{{userData.firstName}}</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-link headerLink" (click)="logout()">
+            Logout
+            <div class="d-inline-block">
+              <img src="assets/image/SVG/LogOut.svg" alt="" style="width:20px;height:20px;margin-left: 0px;">
+            </div>
+          </button>
+        </li>
+      
+      </ul>
+     
+    </div>
+  </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/image/logo.png" alt="logo" class="img-fluid ms-2 ms-md-4" style="width:180px;"> 
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item d-flex align-items-center">
+          <a class="headerLink btn px-1 btn-link rounded-0 my-auto me-5" style="font-size: 16px;"
+          routerLinkActive="router-active1" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <div class="d-flex align-items-center btn btn-link headerLink px-1">
+            <div id="headerProfileImg">
+              <img [src]="userPhotoUrl ? userPhotoUrl :'assets/images/profile-pic.png'" alt=""
+                style="width:50px;height:50px;margin-right: 6px;">
+            </div>
+            <a class="headerLink ms-2" routerLinkActive="router-active1"
+              routerLink="/profile">{{userData.firstName}}</a>
+          </div>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <button class="btn btn-link headerLink my-auto" (click)="logout()">
+            Logout
+            <div class="d-inline-block">
+              <img src="assets/image/SVG/LogOut.svg" alt="" style="width:20px;height:20px;margin-left: 0px;">
+            </div>
+          </button>
+        </li>
+        
+      </ul>
+    
+    </div>
+  </div>
+</nav>
