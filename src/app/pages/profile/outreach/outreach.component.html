@@ -30,12 +30,7 @@
                 <p>Total Engagement</p>
               </div>
             </div>
-            <!-- <div class="col-md-4">
-              <div class="card px-3 py-4">
-                <h4 class="point">{{apiData?.bannersShared || 0}} </h4>
-                <p>Total Banners Shared</p>
-              </div>
-            </div> -->
+
             <div class="col-md-4">
               <div class="card px-3 py-4">
                 <h4 class="point">{{apiData?.campaignsShared || 0}}</h4>
@@ -43,7 +38,10 @@
               </div>
             </div>
             <div class="col-md-4">
-
+              <div class="card px-3 py-4">
+                <h4 class="point">{{apiData?.leadGenerated || 0}} </h4>
+                <p>Total Leads Generated</p>
+              </div>
             </div>
           </div>
         </div>
@@ -66,7 +64,8 @@
                     </div>
                     <div class="col-md-3">
                       <div class="ms-auto">
-                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2" (selectionChange)="callAPI($event.value)">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2"
+                          (selectionChange)="callAPI($event.value)">
                           <mat-option *ngFor="let type of dateTypes" [value]="type.value">
                             {{type.name}}
                           </mat-option>
@@ -76,7 +75,8 @@
                   </div>
                   <div class="row">
                     <div class="col-md-3 d-flex flex-column pt-3">
-                      <div class="card card1 d-flex justify-content-center" style="background-color: #A43DA1;color:white">
+                      <div class="card card1 d-flex justify-content-center"
+                        style="background-color: #A43DA1;color:white">
                         <h1>{{apiData?.allEngagement?.linksShared || 0}}</h1>
                         <p>Links Shared</p>
                       </div>
@@ -90,8 +90,9 @@
                       </div>
                     </div>
                     <div class="col-md-8">
-                      <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis" [yAxis]="true"
-                        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="totalEngagementGraph">
+                      <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis"
+                        [yAxis]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                        [results]="totalEngagementGraph">
                       </ngx-charts-line-chart>
                     </div>
                   </div>
@@ -112,7 +113,8 @@
                     </div>
                     <div class="col-md-3">
                       <div class="ms-auto">
-                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2" (selectionChange)="callAPI($event.value)">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2"
+                          (selectionChange)="callAPI($event.value)">
                           <mat-option *ngFor="let type of dateTypes" [value]="type.value">
                             {{type.name}}
                           </mat-option>
@@ -123,13 +125,16 @@
                   <div class="row">
                     <div class="col-md-5" #container>
                       <div>
-                        <ngx-charts-pie-chart [labels] = "true" [view]="[container.offsetWidth, container.offsetWidth-100]" [legendPosition]="below" [legend]="true" [results]="campaignEngagementGraph" [doughnut]="true" [legendTitle]="''">
+                        <ngx-charts-pie-chart [labels]="true"
+                          [view]="[container.offsetWidth, container.offsetWidth-100]" [legendPosition]="below"
+                          [legend]="true" [results]="campaignEngagementGraph" [doughnut]="true" [legendTitle]="''">
                         </ngx-charts-pie-chart>
                       </div>
                     </div>
                     <div class="col-md-7">
                       <div class="card border-0 shadow-none">
-                        <div class="comapanyLogo" [ngStyle]="{'background-image': 'url(' + apiData?.campaignEngagement?.campaignImageLink + ')'}">
+                        <div class="comapanyLogo"
+                          [ngStyle]="{'background-image': 'url(' + apiData?.campaignEngagement?.campaignImageLink + ')'}">
                         </div>
                         <!-- <img [src]="apiData?.campaignEngagement?.campaignImageLink" alt=""> -->
                         <div class="d-flex justify-content-between mt-2">
@@ -138,7 +143,9 @@
                             <p class="mb-0 text-muted">By {{apiData?.campaignEngagement?.dealerName}}</p>
                           </div>
                           <div>
-                            <p class="text-muted" style="font-size: 12px;">{{apiData?.campaignEngagement?.campaignStartDate | date: 'mediumDate'}}- {{apiData?.campaignEngagement?.campaignEndDate | date: 'mediumDate'}}</p>
+                            <p class="text-muted" style="font-size: 12px;">
+                              {{apiData?.campaignEngagement?.campaignStartDate | date: 'mediumDate'}}-
+                              {{apiData?.campaignEngagement?.campaignEndDate | date: 'mediumDate'}}</p>
                             <p style="text-align: right;">{{apiData?.campaignEngagement?.engagementPercent}}</p>
                           </div>
                         </div>
@@ -161,7 +168,8 @@
                     </div>
                     <div class="col-md-3">
                       <div class="ms-auto">
-                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2" (selectionChange)="callAPI($event.value)">
+                        <mat-select [(value)]="selectedDateRange" name="date" class="mt-2"
+                          (selectionChange)="callAPI($event.value)">
                           <mat-option *ngFor="let type of dateTypes" [value]="type.value">
                             {{type.name}}
                           </mat-option>
@@ -171,7 +179,8 @@
                   </div>
                   <div class="row">
                     <div class="col-md-3 d-flex flex-column pt-3">
-                      <div class="card card1 d-flex justify-content-center" style="background-color: #A43DA1;color:white">
+                      <div class="card card1 d-flex justify-content-center"
+                        style="background-color: #A43DA1;color:white">
                         <h1>{{apiData?.leadEngagement.linksShared || 0}}</h1>
                         <p>Links Shared</p>
                       </div>
@@ -185,8 +194,8 @@
                       </div>
                     </div>
                     <div class="col-md-8">
-                      <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis" [yAxis]="true"
-                        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="totalLeadsGraph">
+                      <ngx-charts-line-chart style="width: 100%;" [showXAxisLabel]="showXAxisLabel" [xAxis]="xAxis"
+                        [yAxis]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="totalLeadsGraph">
                       </ngx-charts-line-chart>
                     </div>
                   </div>
