@@ -36,8 +36,8 @@ button:focus{
     text-align: center;
   }
   #header-logo{
-    width:28%;
-    margin-left: 40px;
+    width:30%;
+    margin-left: 0px;
   }
   #mobile-dealers-text{
     color:white;
@@ -136,6 +136,7 @@ button:focus{
     font-style: italic;
     font-size: 24px;
     vertical-align: middle;
+    border-color: red;
     margin-left: 10px;
   
   }
@@ -147,7 +148,6 @@ button:focus{
     width: 30px;
   }
   .ng-dirty.ng-invalid {
-    border-color: red;
   }
   .ng-touched.ng-invalid {
     border-color: red !important;
@@ -168,7 +168,7 @@ button:focus{
   } */
   .main-content{
     /* height: 90vh; */
-    background-image: url('/assets/image/BACKGROUNDS/SignUp-BG.jpg');
+    background-image:   url('/assets/image/login-bg-sm.png');
     background-position: center;
     background-size: cover;
   }
@@ -184,7 +184,13 @@ button:focus{
   font-size: 52px;
   line-height: 1.1;
   }
+  .bgWhiteSm{
+    background-color: white;
+  }
   @media only screen and (min-device-width: 768px){
+    .bgWhiteSm{
+      background-color: transparent;
+    }
     .header{
         padding:.5rem 5rem;
         text-align: left;
@@ -197,6 +203,17 @@ button:focus{
     }
     #profileBox{
       margin-right: 200px;
+    }
+    .main-content{
+      /* height: 90vh; */
+      background-image: url('/assets/image/BACKGROUNDS/SignIn-BG.jpg');
+      background-position: center;
+      background-size: cover;
+      backdrop-filter: brightness(0.30);
+    }
+    #header-logo{
+      width:28%;
+      margin-left: 40px;
     }
   }
   
