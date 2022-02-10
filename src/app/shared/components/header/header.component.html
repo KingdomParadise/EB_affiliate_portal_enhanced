@@ -81,16 +81,23 @@
     </div>
   </div>
 </nav> -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-0">
+  <div class="container-fluid px-0 pt-2 pt-md-0">
     <a class="navbar-brand" href="#">
-      <img src="assets/image/logo.png" alt="logo" class="img-fluid ms-2 ms-md-4" style="width:180px;"> 
+      <div>
+        <img src="assets/image/logo.png" alt="logo" class="img-fluid ms-2 ms-md-4" style="width:180px;"> 
+        <br/>
+        <span class="text2 main-color" style="margin-left:100px;font-weight: 400;font-size: 16px;">
+          Affiliate Portal
+        </span>
+      </div>
+      
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-none d-md-flex">
         <li class="nav-item d-flex align-items-center">
           <a class="headerLink btn px-1 btn-link rounded-0 my-auto me-5" style="font-size: 16px;"
           routerLinkActive="router-active1" routerLink="/dashboard">Dashboard</a>
@@ -112,6 +119,23 @@
               <img src="assets/image/SVG/LogOut.svg" alt="" style="width:20px;height:20px;margin-left: 0px;">
             </div>
           </button>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-block d-md-none">
+        <li class="nav-item d-flex align-items-center">
+          <a class="li-sm"
+          routerLinkActive="router-sm-active1" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          
+            <a class="li-sm" routerLinkActive="router-sm-active1"
+              routerLink="/profile">{{userData.firstName}}</a>
+         
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <a class=" li-sm" (click)="logout()"
+              >Logout</a>
         </li>
         
       </ul>

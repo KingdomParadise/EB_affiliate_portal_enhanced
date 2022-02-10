@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 .card1{
-  width: 320px;
+  width: 100%;
 }
 .campaignImage{
   width:100%;
@@ -70,4 +70,9 @@
 .copied{
   color:#588158;
   padding:0px 6px;
+}
+@media only screen and (min-device-width: 768px){
+  .card1{
+    width: 320px;
+  }
 }

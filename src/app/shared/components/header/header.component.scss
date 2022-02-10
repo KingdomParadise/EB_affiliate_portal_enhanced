@@ -124,6 +124,31 @@
   border-radius: 25px;
   border:1px solid #e2e2e2;
 }
+.navbar-light .navbar-toggler{
+    border:none !important
+}
+.navbar-toggler:focus{
+    box-shadow: none !important;
+}
+.nav-item{
+    text-align: center;
+}
+.li-sm{
+    width: 100%;
+    background-color: #ECEBEB;
+    padding: 9px 0px;
+    text-decoration: none;
+    color:black
+}
+.li-sm:hover{
+    background-color: #A63DA1;
+    color:white;
+}
+.li-sm:active{
+    background-color: #A63DA1;
+    color:white;
+
+}
 @media only screen and (min-device-width: 768px){
     .header{
         padding:.5rem 3rem;

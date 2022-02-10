@@ -13,3 +13,16 @@
   text-decoration: none;
 }
 
+.customPos{
+  position: relative;
+  z-index: 100;
+}
+.pad{
+  padding:12px 120px
+}
+@media only screen and (min-device-width: 768px){
+  .customPos{
+    position: fixed;
+    z-index: 100;
+  }
+}
