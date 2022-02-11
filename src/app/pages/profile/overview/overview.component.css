@@ -77,6 +77,10 @@
 #notf > div{
   /* width: 50%; */
 }
+.color-box{
+  display: inline-block;
+  width: 46%;
+}
 @media only screen and (min-device-width: 768px){
   .ml-social{
     margin-left:100px;
@@ -89,5 +93,9 @@
   }
   #overViewContainer > :nth-child(2){
     order:2;
+  }
+  .color-box{
+    display: inline-block;
+    width: 100%;
   }
 }
