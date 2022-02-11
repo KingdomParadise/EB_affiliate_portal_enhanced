@@ -1,5 +1,5 @@
 <div>
-  <div style="margin-left:100px" class="d-flex align-items-center">
+  <div class="d-flex align-items-center ml-social">
     <span style="font-weight: 500;font-size:18px">{{userData.referalCode}}</span>
     <a href="http://facebook.com/" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
         style="width: 24px;margin-right: 12px;margin-left:16px"></a>
@@ -19,7 +19,7 @@
     <hr />
   </div>
   <div>
-    <div class="row">
+    <div class="row" id="overViewContainer">
       <div class="col-md-8 pe-4">
         <div>
           <h2>Outreach</h2>
@@ -73,7 +73,7 @@
         </div>
         <div>
           <h2>Active Unique Links</h2>
-          <div class="card px-3">
+          <div class="card px-3" style="overflow-x: auto;">
             <table class="table table-borderless" id="pointsTable">
               <tbody>
                 <tr *ngFor="let links of apiData?.activeUniqueLinks;let i =index">
@@ -99,7 +99,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 ps-4">
+      <div class="col-md-4 ps-4" id="notf">
         <div>
           <h2>Notifications <span class="badge">{{apiData?.notificationCount}}</span></h2>
           <div>

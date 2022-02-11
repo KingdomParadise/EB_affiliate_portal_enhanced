@@ -65,3 +65,29 @@
   border-radius: 35px;
   border:1px solid #e2e2e2;
 }
+.ml-social{
+  margin-left:0
+}
+#overViewContainer{
+  display: flex;
+}
+#overViewContainer > :nth-child(1){
+  order:2;
+}
+#notf > div{
+  /* width: 50%; */
+}
+@media only screen and (min-device-width: 768px){
+  .ml-social{
+    margin-left:100px;
+  }
+  #overViewContainer{
+    display: flex;
+  }
+  #overViewContainer > :nth-child(1){
+    order:1;
+  }
+  #overViewContainer > :nth-child(2){
+    order:2;
+  }
+}

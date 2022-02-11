@@ -1,6 +1,6 @@
 .bg-header{
   background-color: #C4C4C4;
-  background-image: url('/assets/image/BACKGROUNDS/top-header.png');
+  background-image: url('/assets/image/profile-sm-bg.png');
   background-position: center;
   background-size: cover;
 }
@@ -12,8 +12,8 @@
 }
 .settingImage{
 
-  width: 90px;
-  height: 90px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@
   border: 1px solid #f3f3f3;
 }
 .point{
-  font-size: 32px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -54,4 +54,53 @@
   width:30px;
   height: 30px;
 }
+.nameFont{
+  font-size: 22px;
+}
+.mt-adjust{
+  margin-top:-34px;
+}
+.country{
+  font-size: 14px;
+}
+.fs-sm{
+  font-size: 10px;
+}
+.mt-n{
+  margin-top:-2.5rem;
+}
+@media only screen and (min-device-width: 768px){
+  .bg-header{
+    background-color: #C4C4C4;
+    background-image: url('/assets/image/BACKGROUNDS/top-header.png');
+    background-position: center;
+    background-size: cover;
+  }
+  .settingImage{
 
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .settingImage > img{
+    border: 1px solid #f3f3f3;
+  }
+  .nameFont{
+    font-size: 32px;
+  }
+  .mt-adjust{
+    margin-top:-50px;
+  }
+  .country{
+    font-size: 16px;
+  }
+  .point{
+    font-size: 32px;
+  }
+  .fs-sm{
+    font-size: 14px;
+  }
+}
