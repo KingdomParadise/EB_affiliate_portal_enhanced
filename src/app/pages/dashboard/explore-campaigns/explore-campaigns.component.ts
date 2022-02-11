@@ -10,22 +10,21 @@ import { Clipboard } from '@angular/cdk/clipboard';
   styleUrls: ['./explore-campaigns.component.css']
 })
 export class ExploreCampaignsComponent implements OnInit {
-  apiData:any;
+  apiData: any;
   showCopyState: boolean = false;
-  copyIndex:number;
+  copyIndex: number;
   constructor(
     private dataService: InitialDataService,
     public dialog: MatDialog,
     private clipboard: Clipboard,
-
   ) { }
 
   ngOnInit(): void {
     this.initalCall();
   }
-  initalCall(){
-    let req ={
-      searchString :["Mercedes Benz","BMW","AUDI"]
+  initalCall() {
+    let req = {
+      searchString: ["Mercedes Benz", "BMW", "AUDI"]
     }
 
     this.dataService.exploreCampaign(req).subscribe((res) => {
@@ -33,8 +32,14 @@ export class ExploreCampaignsComponent implements OnInit {
       console.log(res);
     });
   }
-  filterData(val:any){
+  filterData(val: any) {
+    let req = {
+      searchString: [val]
+    }
 
+    this.dataService.exploreCampaign(req).subscribe((res) => {
+      this.apiData = res.response;
+    });
   }
   openCampaignShareModal(campaign: any) {
     let size = ['675px', '475px'];
@@ -52,11 +57,9 @@ export class ExploreCampaignsComponent implements OnInit {
       disableClose: false
     });
     dialogRef1.afterClosed().subscribe(result => {
-      //this.getdashboardData();
-      //this.initalCall();
     });
   }
-  copyLink(ev:any,link:string,index:number) {
+  copyLink(ev: any, link: string, index: number) {
     this.clipboard.copy(link);
     this.showCopyState = true;
     this.copyIndex = index
