@@ -20,27 +20,27 @@
   </div>
   <div>
     <div class="row">
-      <div class="col-md-8 pe-4">
+      <div class="col-md-8 pe-3 pe-md-4">
         <div>
           <h2>Outreach</h2>
           <div class="row mb-3">
-            <div class="col-md-4">
-              <div class="card px-3 py-4" style="background-color: #7031A5;color:white">
+            <div class="col-4 col-md-4">
+              <div class="card px-2 py-3 px-md-3 py-md-4" style="background-color: #7031A5;color:white">
                 <h4 class="point">{{apiData?.totalEngagement || 0}}</h4>
-                <p>Total Engagement</p>
+                <p class="fs-sm">Total Engagement</p>
               </div>
             </div>
 
-            <div class="col-md-4">
-              <div class="card px-3 py-4">
+            <div class="col-4 col-md-4">
+              <div class="card px-2 py-3 px-md-3 py-md-4">
                 <h4 class="point">{{apiData?.campaignsShared || 0}}</h4>
-                <p>Total Compaign Shared</p>
+                <p class="fs-sm"> Total Compaign Shared</p>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card px-3 py-4">
+            <div class="col-4 col-md-4">
+              <div class="card px-2 py-3 px-md-3 py-md-4">
                 <h4 class="point">{{apiData?.leadGenerated || 0}} </h4>
-                <p>Total Leads Generated</p>
+                <p class="fs-sm">Total Leads Generated</p>
               </div>
             </div>
           </div>
@@ -73,8 +73,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-3 d-flex flex-column pt-3">
+                  <div class="row flexBox">
+                    <div class="col-md-3 d-flex flex-row flex-md-column pt-3">
                       <div class="card card1 d-flex justify-content-center"
                         style="background-color: #A43DA1;color:white">
                         <h1>{{apiData?.allEngagement?.linksShared || 0}}</h1>
@@ -122,7 +122,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row flexBox">
                     <div class="col-md-5" #container>
                       <div>
                         <ngx-charts-pie-chart [labels]="true"
@@ -177,18 +177,18 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-3 d-flex flex-column pt-3">
-                      <div class="card card1 d-flex justify-content-center"
+                  <div class="row flexBox">
+                    <div class="col-md-3 d-flex flex-row flex-md-column pt-3">
+                      <div class="col-3 card card1 d-flex justify-content-center"
                         style="background-color: #A43DA1;color:white">
                         <h1>{{apiData?.leadEngagement.linksShared || 0}}</h1>
                         <p>Links Shared</p>
                       </div>
-                      <div class="card card1 d-flex justify-content-center">
+                      <div class="col-3 card card1 d-flex justify-content-center">
                         <h1>{{apiData?.leadEngagement.totalLeads || 0}}</h1>
                         <p>Leads Procured</p>
                       </div>
-                      <div class="card card1 d-flex justify-content-center">
+                      <div class="col-3 card card1 d-flex justify-content-center">
                         <h1>{{apiData?.leadEngagement.activeClicks || 0}}</h1>
                         <p>Active Clicks</p>
                       </div>

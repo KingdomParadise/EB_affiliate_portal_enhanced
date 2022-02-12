@@ -81,6 +81,9 @@
   display: inline-block;
   width: 46%;
 }
+.fs-sm{
+  font-size: 12px;
+}
 @media only screen and (min-device-width: 768px){
   .ml-social{
     margin-left:100px;
@@ -97,5 +100,8 @@
   .color-box{
     display: inline-block;
     width: 100%;
+  }
+  .fs-sm{
+    font-size: 16px;
   }
 }
