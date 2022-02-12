@@ -21,13 +21,16 @@ mat-drawer-container{
 #footer{
   width: 100%;
   background-color: #4A4A4E;
-  padding-right: 210px;
+  padding-right: 16px;
   color: white;
   padding-bottom: 4px;
   margin-top:36px;
 }
 .pt-custom{
     padding-top: 55px;
+}
+.footerWidth{
+    width:unset;
 }
 // @media (min-width: 768px) {
 //     .pt-custom{
@@ -47,8 +50,15 @@ mat-drawer-container{
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 2200px) {
     #footer{
-        
         margin-top:18rem;
-      }
-     
+    }
+ }
+ @media only screen and (min-device-width: 768px){
+    #footer{
+        margin-top:18rem;
+        padding-right: 210px;
+    }
+    .footerWidth{
+        width:200px;
+    }
  }

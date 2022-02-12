@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import { ShareModalComponent } from '../share-modal/share-modal.component';
@@ -13,12 +13,21 @@ export class ExploreCampaignsComponent implements OnInit {
   apiData: any;
   showCopyState: boolean = false;
   copyIndex: number;
+  isScrolled:boolean = false;
   constructor(
     private dataService: InitialDataService,
     public dialog: MatDialog,
     private clipboard: Clipboard,
   ) { }
 
+  @HostListener('window:scroll', ['$event'])
+  scrollHandler(event: any) {
+    if(window.scrollY > 200){
+      this.isScrolled = true
+    }else{
+      this.isScrolled = false
+    }
+  }
   ngOnInit(): void {
     this.initalCall();
   }

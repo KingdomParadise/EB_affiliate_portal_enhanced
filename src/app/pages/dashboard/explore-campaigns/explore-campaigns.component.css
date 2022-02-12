@@ -1,18 +1,42 @@
+.router-active{
+  color:white !important;
+}
+
+.headerLink2{
+  text-decoration: none;
+  color: #DDB4D9;
+  font-weight: 500;
+  font-size: 16px;
+}
+.headerLink2:hover{
+  color:white;
+  text-decoration: none;
+}
 #dealerBg{
   background-image: url('/assets/image/BACKGROUNDS/explore-dealers.png');
   background-position: center;
   background-size: cover;
-  padding:40px;
+  padding:40px 0px;
+}
+.scrolledDiv{
+  background-color: #7031A5;
+  position: fixed;
+  margin-top:-44px;
+  z-index: 200
 }
 .searchInput{
-  width: 95%;
+  width: 100%;
   padding:8px 8px;
   position: relative;
   bottom:20px;
   border: 2px solid #d1d1d1;
   box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.1);
 }
-
+.searchInput1{
+  border: 2px solid #d1d1d1;
+  box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.1);
+  margin-left:10px;
+}
 #filter{
   border: 1px solid #cccccc;
   margin-top:0 !important;
@@ -38,6 +62,7 @@
 }
 .card1{
   width: 100%;
+  margin-bottom:1.5rem;
 }
 .campaignImage{
   width:100%;
@@ -71,8 +96,28 @@
   color:#588158;
   padding:0px 6px;
 }
+
 @media only screen and (min-device-width: 768px){
   .card1{
-    width: 320px;
+    width: 360px;
+    margin-bottom: 0;
+  }
+  .searchInput{
+    width: 95%;
+  }
+  #dealerBg{
+    padding:40px;
+  }
+  .searchInput1{
+    width: 300px;
+    border: 2px solid #d1d1d1;
+    box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.1);
+    margin-left:100px;
+  }
+  .scrolledDiv{
+    background-color: #7031A5;
+    position: fixed;
+    margin-top:-24px;
+    z-index: 200
   }
 }

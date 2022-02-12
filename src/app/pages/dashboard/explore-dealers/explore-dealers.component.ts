@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -12,7 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./explore-dealers.component.css']
 })
 export class ExploreDealersComponent implements OnInit {
-  apiData:any = null;
+  apiData: any = null;
   filterType = [
     {
       name: 'Alphabatical: Dealer Name',
@@ -21,7 +21,8 @@ export class ExploreDealersComponent implements OnInit {
   ]
   selectedFilter = this.filterType[0].value;
   showCopyState: boolean = false;
-  copyIndex:number;
+  copyIndex: number;
+  isScrolled:boolean =false;
   constructor(
     private dataService: InitialDataService,
     private router: Router,
@@ -29,19 +30,26 @@ export class ExploreDealersComponent implements OnInit {
     public dialog: MatDialog,
     private spinner: NgxSpinnerService
   ) {
-    
-   }
 
+  }
+  @HostListener('window:scroll', ['$event'])
+  scrollHandler(event: any) {
+    if(window.scrollY > 200){
+      this.isScrolled = true
+    }else{
+      this.isScrolled = false
+    }
+  }
   ngOnInit(): void {
-    if(this.apiData === null){
+    if (this.apiData === null) {
       this.initalCall();
     }
   }
 
-  initalCall(){
+  initalCall() {
     this.spinner.show();
-    let req ={
-      searchString :["Mercedes Benz","BMW","AUDI"]
+    let req = {
+      searchString: ["Mercedes Benz", "BMW", "AUDI"]
     }
 
     this.dataService.exploreDealer(req).subscribe((res) => {
@@ -50,29 +58,29 @@ export class ExploreDealersComponent implements OnInit {
       console.log(res);
     });
   }
-  navigateToDealer(dealer:any){
+  navigateToDealer(dealer: any) {
     this.router.navigateByUrl('dashboard/dealer-details', { state: { id: dealer.dealerId } });
   }
-  sendAffiliateRequest(dealerId:any){
-    let req ={
+  sendAffiliateRequest(dealerId: any) {
+    let req = {
       dealerId: dealerId,
       affiliateId: (JSON.parse(localStorage.getItem('userData') || '{}')).affiliateId
     }
-    this.dataService.sendAffiliateRequest(req).subscribe( res =>{
+    this.dataService.sendAffiliateRequest(req).subscribe(res => {
       console.log(res);
       this.initalCall();
     })
   }
-  filterData(val:any){
-    let req ={
-      searchString : [val]
+  filterData(val: any) {
+    let req = {
+      searchString: [val]
     }
 
     this.dataService.exploreDealer(req).subscribe((res) => {
       this.apiData = res.response;
     });
   }
-  copyLink(ev:any,link:string,index:number) {
+  copyLink(ev: any, link: string, index: number) {
     this.clipboard.copy(link);
     this.showCopyState = true;
     this.copyIndex = index

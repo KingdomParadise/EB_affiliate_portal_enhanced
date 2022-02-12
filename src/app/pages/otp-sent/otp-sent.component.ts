@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-otp-sent',
@@ -16,7 +17,8 @@ export class OtpSentComponent implements OnInit {
   val ='';
   constructor(
     private authService: SocialAuthService,
-    private router: Router
+    private router: Router,
+    private location : Location
   ) { }
 
   ngOnInit(): void {
@@ -36,5 +38,8 @@ export class OtpSentComponent implements OnInit {
   }
   submit(){
     this.router.navigateByUrl('/verify');
+  }
+  back(){
+    this.location.back();
   }
 }

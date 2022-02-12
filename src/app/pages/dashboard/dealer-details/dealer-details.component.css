@@ -27,9 +27,9 @@
 }
 
 #headerProfileImg img{
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
 }
 .point{
   font-size: 32px;
@@ -37,7 +37,7 @@
 }
 .profile-header{
   height: 120px;
-  margin-top: -60px;
+  margin-top: -30px;
 }
 .avatar{
   width: 60px;
@@ -78,4 +78,15 @@
   color:white;
   padding:4px 8px;
   cursor: pointer;
+}
+@media only screen and (min-device-width: 768px){
+  #headerProfileImg img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+  }
+  .profile-header{
+    height: 120px;
+    margin-top: -60px;
+  }
 }

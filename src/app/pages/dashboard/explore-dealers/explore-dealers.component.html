@@ -1,5 +1,23 @@
 <ngx-spinner bdColor = "rgba(0,0,0,0.9)" type="timer">Loading...</ngx-spinner>
 <div class="container-fluid">
+  <div class="row" *ngIf="isScrolled">
+    <div class="col-md-12 px-0 py-2 py-md-2 scrolledDiv">
+      <div class="d-flex justify-content-start mx-4">
+        <div>
+          <a class="headerLink2 me-3 me-md-5" routerLinkActive="router-active" routerLink="/dashboard/explore-dealers">
+            <span class="d-none d-md-inline-block">Explore</span> Dealers
+          </a>
+          <a class="headerLink2" routerLinkActive="router-active" routerLink="/dashboard/explore-campaigns">
+            <span class="d-none d-md-inline-block">Explore</span> Campaigns
+          </a>
+        </div>
+        <div>
+          <input #typeVal type="text" placeholder="Search.." name="search" class="searchInput1"
+            (keydown)="filterData(typeVal.value)">
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-12" id="dealerBg">
       <div class="container">
@@ -27,7 +45,7 @@
         </mat-select> -->
       </div>
     </div>
-    <div *ngFor="let dealer of apiData?.dealerList" class="mb-5">
+    <div *ngFor="let dealer of apiData?.dealerList" class="mb-md-5">
       <div class="row mb-3">
         <div class="col-md-12 d-flex align-items-center">
           <!-- <img src="assets/image/comapny1.png" alt="" style="width:70px"> -->
