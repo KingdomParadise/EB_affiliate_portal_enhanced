@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SocialAuthService } from 'angularx-social-login';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 
 
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
     }
   ]
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
-  constructor(public dialog: MatDialog, private router: Router,private dataService: InitialDataService) {
+  constructor(public dialog: MatDialog, private router: Router,private dataService: InitialDataService,private authService: SocialAuthService) {
 
   }
   selected: any = '0';
@@ -69,6 +70,7 @@ export class HeaderComponent implements OnInit {
   }
   logout(){
     localStorage.clear();
+    this.authService.signOut();
     this.router.navigateByUrl('/login');
   }
 }
