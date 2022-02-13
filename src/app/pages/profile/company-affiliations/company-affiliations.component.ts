@@ -12,7 +12,7 @@ export class CompanyAffiliationsComponent implements OnInit {
   apiData: any;
   userData: any;
   showCopyState:boolean = false;
-
+  copyIndex:number =0;
   constructor(
     private dataService: InitialDataService,
     private clipboard: Clipboard,
@@ -27,9 +27,10 @@ export class CompanyAffiliationsComponent implements OnInit {
       this.dataService.activeLinks.next(this.apiData.activeLinks);
     })
   }
-  copyUrl(url:string) {
+  copyUrl(url:string, i:number) {
     this.clipboard.copy(url);
     this.showCopyState = true;
+    this.copyIndex = i;
     setTimeout(() => { this.showCopyState = false; }, 1000)
   }
 

@@ -75,7 +75,7 @@
                 <h2 class="main-color">{{link.postDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
-                    <tr *ngFor="let item of link.shareList" style="border-top: 1px solid gray;">
+                    <tr *ngFor="let item of link.shareList;let i = index" style="border-top: 1px solid gray;">
                       <td scope="col">
                         <p class="mb-0">{{item.companyName}}</p>
                       </td>
@@ -86,8 +86,8 @@
                         <p class="main-color mb-0">{{item.shortUrlLink}}</p>
                       </td>
                       <td scope="col">
-                        <p *ngIf='showCopyState' class="mb-0">Copied</p>
-                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink)">Copy</button>
+                        <p *ngIf='showCopyState && (i == copyIndex)'  class="mb-0">Copied</p>
+                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink, i)">Copy</button>
                       </td>
                     </tr>
                   </tbody>
@@ -103,7 +103,7 @@
                 <h2 class="main-color">{{link.postDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
-                    <tr *ngFor="let item of link.shareList" style="border-top: 1px solid gray;">
+                    <tr *ngFor="let item of link.shareList;let i = index" style="border-top: 1px solid gray;">
                       <td scope="col">
                         <p class="mb-0">{{item.companyName}}</p>
                       </td>
@@ -114,8 +114,8 @@
                         <p class="main-color mb-0">{{item.shortUrlLink}}</p>
                       </td>
                       <td scope="col">
-                        <p *ngIf='showCopyState' class="mb-0">Copied</p>
-                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink)">Copy</button>
+                        <p *ngIf='showCopyState && (i == copyIndex)' class="mb-0">Copied</p>
+                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink, i)">Copy</button>
                       </td>
                     </tr>
                   </tbody>
@@ -131,7 +131,7 @@
                 <h2 class="main-color">{{link.postDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
-                    <tr *ngFor="let item of link.shareList" style="border-top: 1px solid gray;">
+                    <tr *ngFor="let item of link.shareList;let i = index" style="border-top: 1px solid gray;">
                       <td scope="col">
                         <p class="mb-0">{{item.companyName}}</p>
                       </td>
@@ -142,8 +142,8 @@
                         <p class="main-color mb-0">{{item.shortUrlLink}}</p>
                       </td>
                       <td scope="col">
-                        <p *ngIf='showCopyState' class="mb-0">Copied</p>
-                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink)">Copy</button>
+                        <p *ngIf='showCopyState && (i == copyIndex)' class="mb-0">Copied</p>
+                        <button class="btn btn-light" (click)="copyUrl(item.shortUrlLink, i)">Copy</button>
                       </td>
                     </tr>
                   </tbody>

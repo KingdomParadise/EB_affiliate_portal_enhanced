@@ -32,7 +32,7 @@
   border-radius: 30px;
 }
 .point{
-  font-size: 32px;
+  font-size: 16px;
   font-weight: bold;
 }
 .profile-header{
@@ -49,7 +49,8 @@
 }
 
 .card1{
-  width: 320px;
+  width: 100%;
+  margin-bottom:1.5rem;
 }
 .campaignImage{
   width:100%;
@@ -79,7 +80,26 @@
   padding:4px 8px;
   cursor: pointer;
 }
+.nameFont{
+  font-size: 22px;
+}
+.mt-n{
+  margin-top:-1.5rem;
+}
+.fs-sm{
+  font-size: 10px;
+}
+.ml-social{
+  margin-left:0
+}
 @media only screen and (min-device-width: 768px){
+  .ml-social{
+    margin-left:100px
+  }
+  .card1{
+    width: 360px;
+    margin-bottom: 0;
+  }
   #headerProfileImg img{
     width: 100px;
     height: 100px;
@@ -88,5 +108,17 @@
   .profile-header{
     height: 120px;
     margin-top: -60px;
+  }
+  .nameFont{
+    font-size: 32px;
+  }
+  .mt-n{
+    margin-top:4.5rem;
+  }
+  .point{
+    font-size: 32px;
+  }
+  .fs-sm{
+    font-size: 14px;
   }
 }

@@ -43,3 +43,18 @@
   border-radius: 20px !important;
   border: transparent !important;
 }
+.card-sm-half{
+  width: 46%;
+  display: inline-block;
+}
+.ml-social{
+  margin-left:0
+}
+@media only screen and (min-device-width: 768px){
+  .ml-social{
+    margin-left:100px;
+  }
+  .card-sm-half{
+    width: 100%;
+  }
+}

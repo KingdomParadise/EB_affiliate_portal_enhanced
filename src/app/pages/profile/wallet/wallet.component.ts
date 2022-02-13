@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-wallet',
@@ -12,9 +13,11 @@ export class WalletComponent implements OnInit {
   apiData:any;
   userData:any;
   currentPage = 0;
+  showCopyState:boolean = false;
   constructor(
     private dataService: InitialDataService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private clipboard: Clipboard,
   ) { }
 
   ngOnInit(): void {
@@ -43,5 +46,9 @@ export class WalletComponent implements OnInit {
       //this.initalCall();
     });
   }
-  
+  copyCode(code:string) {
+    this.clipboard.copy(code);
+    this.showCopyState = true;
+    setTimeout(() => { this.showCopyState = false; }, 1000)
+  }
 }

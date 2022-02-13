@@ -17,34 +17,34 @@
               <img [src]="dealer?.companyLogoUrl? dealer?.companyLogoUrl :'assets/images/profile-pic.png'" alt="">
             </div>
             <div class="ms-2">
-              <h1 class="mb-2" style="font-size: 32px;">{{dealer?.companyName}}</h1>
+              <h1 class="mb-2 nameFont">{{dealer?.companyName}}</h1>
               <p style="font-size: 10px;" class="mb-0">
                 {{dealer?.delaerDescription}}
               </p>
             </div>
           </div>
-          <div class="col-md-6 d-flex justify-content-end mt-2" style="padding-top:60px">
+          <div class="col-md-6 d-flex justify-content-end mt-n">
             <div class='d-flex flex-column justify-content-center align-items-center'>
-              <span class="point mb-2">{{dealer?.totalAffiliates || 0}}</span>
-              <span>Total Affiliates</span>
+              <span class="point mb-1 mb-md-2">{{dealer?.totalAffiliates || 0}}</span>
+              <span class="fs-sm">Total Affiliates</span>
             </div>
-            <div class='d-flex flex-column justify-content-center align-items-center ms-4'>
-              <span class="point mb-2">{{dealer?.activeCampaigns || 0}}</span>
-              <span>Active Campaigns</span>
+            <div class='d-flex flex-column justify-content-center align-items-center ms-2 ms-md-4'>
+              <span class="point mb-1 mb-md-2">{{dealer?.activeCampaigns || 0}}</span>
+              <span class="fs-sm">Active Campaigns</span>
             </div>
             <!-- <div class='d-flex flex-column justify-content-center align-items-center ms-4'>
               <span class="point mb-2">{{dealer?.totalAffiliates || 0}}</span>
               <span>Active Banners</span>
             </div> -->
-            <div class='d-flex flex-column justify-content-center align-items-center ms-4'>
-              <span class="point mb-2">{{dealer?.offers || 0}}</span>
-              <span>Offers</span>
+            <div class='d-flex flex-column justify-content-center align-items-center ms-2 ms-md-4'>
+              <span class="point mb-1 mb-md-2">{{dealer?.offers || 0}}</span>
+              <span class="fs-sm">Offers</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-12 d-flex justify-content-between mt-5">
-        <div style="margin-left:106px" class="d-flex align-items-center">
+      <div class="col-md-12 d-flex flex-column flex-md-row justify-content-between mt-5">
+        <div class="d-flex align-items-center ml-social">
           {{dealer?.companyEmail}}
           <a [href]="dealer?.facebookLink" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
               style="width: 22px;margin-right: 6px;margin-left:8px"></a>
@@ -60,7 +60,7 @@
             <img src="assets/image/SVG/linkedin-logo-icon.png" alt="" style="width: 22px;">
           </a>
         </div>
-        <div class='d-flex align-items-center'>
+        <div class='d-flex align-items-center mt-3 mt-md-0'>
           <button class="btn btn-light me-5" *ngIf="dealer?.following==0" (click)="sendAffiliateRequest(dealer?.dealerId)">Send Affiliate Request</button>
           <div class="avatar" *ngFor="let follower of dealer?.followingAffiliatesPic" [ngStyle]="{'background-image': 'url(' + follower?.userImage + ')'}">
           </div>
