@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="ms-2">
-            <h1 class="mb-1 mb-md-2 montserrat nameFont">{{userData?.firstName}} {{userData?.lastName}}</h1>
+            <h1 class="mb-1 mb-md-2 montserrat nameFont" style="cursor:pointer" (click)="goToSettings()">{{userData?.firstName }} {{userData?.lastName}}</h1>
             <h3 class="mb-0 text-muted country">{{userData?.countryName}}, {{userData?.stateName}}</h3>
             <p style="font-size: 10px;" class="mb-0">
               {{userData?.aboutMyself}}

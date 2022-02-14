@@ -90,8 +90,8 @@
               </ng-select> -->
               <div class="d-flex flex-wrap" > 
                 <div *ngFor="let interest of interests;let i =index" class="d-flex align-items-center me-3" >
-                  <input type="checkbox" name="" id="" [checked]="interest.following" value="interest.intrestId"  (change)="modifyState($event, i)"> 
-                  <span class="ms-1"> {{interest.intrestNAME}}</span>
+                  <input type="checkbox" name="" id="" [disabled]="!enableForm" [checked]="interest.following" value="interest.intrestId"  (change)="modifyState($event, i)"> 
+                  <span class="ms-1"> {{interest.intrestName}}</span>
                 </div>
                
               </div>

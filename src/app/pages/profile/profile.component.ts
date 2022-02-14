@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 
@@ -13,13 +14,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
   userPhotoUrl: any;
   activeLinks:number;
   totalPoints:number;
+  userName ='';
   selectedUserImg: File;
   selectedUserImgPath: any = 'assets/images/profile-pic.png';
   subs1:Subscription;
   subs2:Subscription;
   subs3:Subscription;
+  subs4:Subscription;
   constructor(
-    private dataService: InitialDataService
+    private dataService: InitialDataService,
+    private router: Router
   ) {
 
   }
@@ -46,7 +50,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.subs3 = this.dataService.editMode.subscribe((val:boolean) =>{
       this.editMode = val
     })
-
+    this.subs4 = this.dataService.userData.subscribe((val:any) =>{
+      console.log(val);
+      if(val){
+        this.userData = val;
+      }else{
+        this.userData = this.userData;
+      }
+    })
   }
 
   onFileChanged(event: any, type: string) {
@@ -60,9 +71,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.dataService.profileUrl.next(this.selectedUserImgPath);
     };
   }
+  goToSettings(){
+    this.router.navigateByUrl('/profile/settings')
+  }
   ngOnDestroy(): void {
       this.subs1.unsubscribe();
       this.subs2.unsubscribe();
       this.subs3.unsubscribe();
+      this.subs4.unsubscribe();
   }
 }

@@ -168,7 +168,7 @@ export class SettingComponent implements OnInit, OnDestroy {
     console.log(this.interests);
     for (let i = 0; i < this.interests.length; i++) {
       if (this.interests[i].checked) {
-        interest.push({ intrestId: this.interests[i].industryId })
+        interest.push({ intrestId: this.interests[i].intrestId })
       }
     }
     console.log(interest)
@@ -188,14 +188,16 @@ export class SettingComponent implements OnInit, OnDestroy {
         formData.append('userPhoto', val);
         this.dataService.updateAffiliateSetting(formData).subscribe((res) => {
           if (res.responseCode == 0) {
+           
+            localStorage.setItem('userData', JSON.stringify(res.response));
+            this.dataService.userData.next(res.response);
+            this.isLoading = false;
+            this.dataService.isSettingChanged.next(true);
             Swal.fire(
               'Success!',
               'Settings Updated!',
               'success'
             )
-            localStorage.setItem('userData', JSON.stringify(res.response));
-            this.isLoading = false;
-            this.dataService.isSettingChanged.next(true);
           }
         });
       } else {
@@ -207,6 +209,7 @@ export class SettingComponent implements OnInit, OnDestroy {
               'success'
             )
             localStorage.setItem('userData', JSON.stringify(res.response));
+            this.dataService.userData.next(res.response);
             this.isLoading = false;
           }
         });

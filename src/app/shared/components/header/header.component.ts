@@ -42,6 +42,11 @@ export class HeaderComponent implements OnInit {
         this.userPhotoUrl = val;
       }
     })
+    this.dataService.userData.subscribe(val =>{
+      if(val){
+        this.userData = val;
+      }
+    })
   }
 
   getNotifications(){

@@ -29,6 +29,10 @@ export class InitialDataService {
   public profileImageData = new BehaviorSubject<any>(null);
   profileImageDataDataSource = this.profileImageData.asObservable();
 
+  user = JSON.parse(localStorage.getItem('userData') || '{}');
+  public userData = new BehaviorSubject<any>(null || this.user);
+  userNameDataSource = this.userData.asObservable();
+
   constructor(private http: HttpClient) {}
 
   getCompanyList(): Observable<any> {
