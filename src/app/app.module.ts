@@ -64,6 +64,7 @@ import { ViewNotificationComponent } from './pages/profile/notifications/view-no
 import { OtpSentComponent } from './pages/otp-sent/otp-sent.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { AccountDetailsComponent } from './pages/profile/wallet/account-details/account-details.component';
+import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { AccountDetailsComponent } from './pages/profile/wallet/account-details/
     ViewNotificationComponent,
     OtpSentComponent,
     ResetPasswordComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    TermsConditionComponent
   ],
   imports: [
     BrowserModule,

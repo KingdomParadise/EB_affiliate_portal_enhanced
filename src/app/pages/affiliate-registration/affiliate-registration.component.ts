@@ -19,6 +19,8 @@ import {
   SocialAuthService,
 } from 'angularx-social-login';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { TermsConditionComponent } from '../terms-condition/terms-condition.component';
 @Component({
   selector: 'app-affiliate-registration',
   templateUrl: './affiliate-registration.component.html',
@@ -77,7 +79,8 @@ export class AffiliateRegistrationComponent
     private router: Router,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -346,9 +349,29 @@ export class AffiliateRegistrationComponent
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     return specialChars.test(str);
   }
-
+  openTermsModal(){
+    let size = ['675px', '475px'];
+    if (window.innerWidth > 786) {
+      size = ['600px', '500px'];
+    } else {
+      size = ['350px', '600px'];
+    }
+    const dialogRef1 = this.dialog.open(TermsConditionComponent, {
+    
+      height: 'auto',
+      width: '100%',
+      data: {},
+      disableClose: false
+    });
+    dialogRef1.afterClosed().subscribe(result => {
+      //this.getdashboardData();
+      //this.initalCall();
+    });
+  }
+  
   ngOnDestroy(): void {
     this.subscription1.unsubscribe();
   }
+
 
 }
