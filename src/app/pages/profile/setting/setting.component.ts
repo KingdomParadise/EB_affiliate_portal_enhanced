@@ -22,7 +22,7 @@ export class SettingComponent implements OnInit, OnDestroy {
   countries = [];
   states = [];
   companies = [];
-  interests:any[] = [];
+  interests: any[] = [];
   enableForm = false;
   isLoading = false;
   subscription1: Subscription;
@@ -30,7 +30,7 @@ export class SettingComponent implements OnInit, OnDestroy {
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
     public dialog: MatDialog,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.personalForm = this._formBuilder.group({
@@ -49,10 +49,10 @@ export class SettingComponent implements OnInit, OnDestroy {
       insta: [''],
       tiktok: [''],
       twitter: [''],
-      socialHandle:['']
+      socialHandle: ['']
     });
     this.loginForm = this._formBuilder.group({
-      email:[],
+      email: [],
     })
     this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
     this.dataService.getCountries().subscribe((data) => {
@@ -62,10 +62,12 @@ export class SettingComponent implements OnInit, OnDestroy {
       this.companies = data.response.companyList;
     });
     this.dataService.getIntrestArea().subscribe((data) => {
-      this.interests = data.response.intrestList;
+      //this.interests = data.response.intrestList;
+      
     });
     this.dataService.getSettings().subscribe((res) => {
       this.settings = res.response;
+      this.interests = res.response.intrestList;
       this.dataService.activeLinks.next(this.settings.activeLinks);
       this.personalForm = this._formBuilder.group({
         firstName: [this.settings.firstName, Validators.required],
@@ -77,35 +79,47 @@ export class SettingComponent implements OnInit, OnDestroy {
       let companiesId = this.settings.companiesList.map((ele: any) => {
         return ele.companyId;
       });
-      let interests = this.settings.intrestList.map((ele: any) => {
-        return {...ele,
-        checked: true}
-      });
-      console.log(interests);
+      // let interests = this.settings.intrestList.map((ele: any) => {
+      //   return {...ele,
+      //   checked: true}
+      // });
+      console.log(this.interests);
+      console.log(this.settings.intrestList);
+      // for (let i = 0; i < this.interests.length; i++) {
+      //   for (let j = 0; j < this.settings.intrestList.length; j++) {
+      //     if (this.settings.intrestList[j].intrestId == this.interests[i].industryId) {
+      //       //console.log(this.interests);
+      //       this.interests[i].checked = true;
+      //     }
+      //   }
+      // }
+      //console.log(this.interests);
       this.affiliationForm = this._formBuilder.group({
         companyList: [companiesId],
-        intrestAreaList: [interests],
+        intrestAreaList: [this.interests],
       });
       this.socialForm = this._formBuilder.group({
         fb: [this.settings.facebookLink],
         insta: [this.settings.instagramLink],
         tiktok: [this.settings.tiktokLink],
         twitter: [this.settings.twitterLink],
-        socialHandle:[this.settings.socialMediaHandle]
+        socialHandle: [this.settings.socialMediaHandle]
       });
       this.loginForm = this._formBuilder.group({
-        email:[this.settings.email],
-        password:[]
+        email: [this.settings.email],
+        password: []
       })
       this.onCountrySelect(this.settings.countryId);
 
-      setTimeout(() => {this.personalForm.disable();this.socialForm.disable();this.affiliationForm.disable()}, 0);
+      setTimeout(() => { this.personalForm.disable(); this.socialForm.disable(); this.affiliationForm.disable() }, 0);
     });
   }
-  modifyState(ev:any, index:number){
+  modifyState(ev: any, index: number) {
     console.log(ev.currentTarget.checked);
-    if(ev.currentTarget.checked){
+    if (ev.currentTarget.checked) {
       this.interests[index].checked = true;
+    }else{
+      this.interests[index].checked = false;
     }
   }
   onCountrySelect(country: any) {
@@ -116,7 +130,7 @@ export class SettingComponent implements OnInit, OnDestroy {
       this.dataService.getStates(country.countryId).subscribe((data) => {
         this.states = data.response.stateList;
       });
-    }else if(country){
+    } else if (country) {
       this.dataService.getStates(country).subscribe((data) => {
         this.states = data.response.stateList;
       });
@@ -138,23 +152,26 @@ export class SettingComponent implements OnInit, OnDestroy {
       disableClose: false,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => { });
   }
-  enableEdit(){
+  enableEdit() {
     this.enableForm = true
     this.personalForm.enable();
     this.affiliationForm.enable();
     this.socialForm.enable();
     this.dataService.editMode.next(true);
   }
-  updateSettings(){
+  updateSettings() {
     this.isLoading = true;
     let interest = [];
-    for(let i = 0; i< this.interests.length; i++){
-      if(this.interests[i].checked){
-        interest.push({intrestId:this.interests[i].industryId})
+
+    console.log(this.interests);
+    for (let i = 0; i < this.interests.length; i++) {
+      if (this.interests[i].checked) {
+        interest.push({ intrestId: this.interests[i].industryId })
       }
     }
+    console.log(interest)
     this.affiliationForm.patchValue({
       intrestAreaList: interest
     });
@@ -170,7 +187,7 @@ export class SettingComponent implements OnInit, OnDestroy {
         formData.append('data', JSON.stringify(payload));
         formData.append('userPhoto', val);
         this.dataService.updateAffiliateSetting(formData).subscribe((res) => {
-          if(res.responseCode == 0){
+          if (res.responseCode == 0) {
             Swal.fire(
               'Success!',
               'Settings Updated!',
@@ -181,9 +198,9 @@ export class SettingComponent implements OnInit, OnDestroy {
             this.dataService.isSettingChanged.next(true);
           }
         });
-      }else{
+      } else {
         this.dataService.updateAffiliateSetting(payload).subscribe((res) => {
-          if(res.responseCode == 0){
+          if (res.responseCode == 0) {
             Swal.fire(
               'Success!',
               'Settings Updated!',
@@ -197,7 +214,7 @@ export class SettingComponent implements OnInit, OnDestroy {
     });
     this.subscription1.unsubscribe();
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.dataService.editMode.next(false);
   }
 }

@@ -8,6 +8,7 @@
     border: none;
     border-bottom: 1px solid #a63da1 !important;
     border-radius: 0;
+    margin-top:4px;
 }
 .card{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -19,3 +20,17 @@
     font-size: 32px;
     font-weight: 500;
   }
+  ::ng-deep .mat-form-field-wrapper{
+      background-color: transparent;
+  }
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+      background-color: white;
+      border-bottom: 1px solid #a868a5 !important;
+      margin-top:7px;
+  }
+  .ng-dirty.ng-invalid {
+    border-color: red;
+}
+.ng-touched.ng-invalid {
+    border-color: red !important;
+}

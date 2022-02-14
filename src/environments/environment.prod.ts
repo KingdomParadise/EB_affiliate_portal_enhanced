@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://api.brandfiliate.net/v1"
+  apiUrl: "https://api.brandaf.com/v1"
 };
