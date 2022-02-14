@@ -20,7 +20,6 @@ export class ExploreDealersComponent implements OnInit {
     }
   ]
   selectedFilter = this.filterType[0].value;
-  showCopyState: boolean = false;
   copyIndex: number;
   isScrolled:boolean =false;
   constructor(
@@ -80,17 +79,18 @@ export class ExploreDealersComponent implements OnInit {
       this.apiData = res.response;
     });
   }
-  copyLink(ev: any, link: string, index: number) {
-    this.clipboard.copy(link);
-    this.showCopyState = true;
-    this.copyIndex = index
-    setTimeout(() => { this.showCopyState = false; }, 1000)
+  copyLink(ev: any, campaign:any, index: number) {
+    this.clipboard.copy(campaign.shortUrlLink);
+    this.copyIndex = index;
+
+    campaign.toggle = !campaign.toggle;
+    setTimeout(() => { campaign.toggle = !campaign.toggle;}, 1500)
     ev.stopPropagation();
   }
   openCampaignShareModal(campaign: any) {
     let size = ['675px', '475px'];
     if (window.innerWidth > 786) {
-      size = ['595px', '500px'];
+      size = ['600px', '500px'];
     } else {
       size = ['350px', '600px'];
     }

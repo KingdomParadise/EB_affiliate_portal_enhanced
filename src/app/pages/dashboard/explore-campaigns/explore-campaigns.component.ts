@@ -68,11 +68,10 @@ export class ExploreCampaignsComponent implements OnInit {
     dialogRef1.afterClosed().subscribe(result => {
     });
   }
-  copyLink(ev: any, link: string, index: number) {
-    this.clipboard.copy(link);
-    this.showCopyState = true;
-    this.copyIndex = index
-    setTimeout(() => { this.showCopyState = false; }, 1000)
+  copyLink(ev: any, campaign: any, index: number) {
+    this.clipboard.copy(campaign.shortUrlLink);
+    campaign.toggle = !campaign.toggle;
+    setTimeout(() => { campaign.toggle = !campaign.toggle;}, 1500)
     ev.stopPropagation();
   }
 }

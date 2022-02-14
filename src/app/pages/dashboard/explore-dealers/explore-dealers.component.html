@@ -65,16 +65,17 @@
               <div class="perLead">
                 <span>${{campaign.leadPayout}} per lead</span>
               </div>
-              <div class="copyLink d-flex">
+              <div class="copyLink d-flex" *ngIf="!campaign.toggle">
                 <div class="px-2" style="word-break: break-word">
                   {{campaign.shortUrlLink}}
                 </div>
-                <div class="copyBtn" (click)="copyLink($event,campaign.shortUrlLink,j)">
+                <div class="copyBtn" (click)="copyLink($event,campaign,j)">
                  Copy
-                  
-
                 </div>
-                <span class="copied" *ngIf="showCopyState && (copyIndex == j)">Copied</span>
+              </div>
+              <div class="copyLink d-flex" *ngIf="campaign.toggle">
+                  <span class="copied">Copied!</span>
+                  <span class="share">Share</span>
               </div>
             </div>
             <div class="d-flex flex-column mt-2">

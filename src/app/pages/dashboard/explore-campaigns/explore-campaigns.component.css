@@ -87,14 +87,22 @@
   align-items: center;
 }
 .copyBtn{
-  background-color: #4d4d4d;
+  background-color: #3b3b3b;
   color:white;
   padding:4px 8px;
   cursor: pointer;
 }
 .copied{
   color:#588158;
-  padding:0px 6px;
+  padding:4px 22px;
+  text-transform: uppercase;
+}
+.share{
+  padding:4px 16px;
+  background-color: #3b3b3b;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 @media only screen and (min-device-width: 768px){
