@@ -259,8 +259,8 @@
               </div>
               <div>
                 <mat-checkbox class="example-margin" [(ngModel)]="agreed">
-                  <span class="font-weight-normal">I have agreed and read the <a href="/"
-                      class="main-color text-decoration-none" style="font-style: italic;" (click)="openTermsModal()">Terms and
+                  <span class="font-weight-normal">I have agreed and read the <a
+                      class="main-color text-decoration-none" style="font-style: italic;" (click)="openTermsModal($event)">Terms and
                       Conditions</a></span>
                 </mat-checkbox>
               </div>
@@ -275,7 +275,7 @@
               </div>
               <div class="d-flex mt-5 justify-content-between">
                 <button mat-button matStepperPrevious class="btn btn-outline-dark me-2">Back</button>
-                <button mat-button class="btn btn-app" (click)="submit()">Send</button>
+                <button mat-button class="btn btn-app" (click)="submit()" [disabled]="!agreed">Send</button>
 
               </div>
             </div>

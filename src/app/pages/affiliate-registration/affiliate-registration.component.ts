@@ -84,6 +84,9 @@ export class AffiliateRegistrationComponent
   ) {}
 
   ngOnInit(): void {
+    this.isCompleted1 = true;
+    this.isCompleted2 = true;
+    this.isCompleted3 = true;
     this.dataService.getCountries().subscribe((data) => {
       this.countries = data.response.countryList;
     });
@@ -349,7 +352,7 @@ export class AffiliateRegistrationComponent
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     return specialChars.test(str);
   }
-  openTermsModal(){
+  openTermsModal(ev:any){
     let size = ['675px', '475px'];
     if (window.innerWidth > 786) {
       size = ['600px', '500px'];
@@ -357,7 +360,7 @@ export class AffiliateRegistrationComponent
       size = ['350px', '600px'];
     }
     const dialogRef1 = this.dialog.open(TermsConditionComponent, {
-    
+
       height: 'auto',
       width: '100%',
       data: {},
@@ -367,6 +370,7 @@ export class AffiliateRegistrationComponent
       //this.getdashboardData();
       //this.initalCall();
     });
+    ev.stopPropagation();
   }
   
   ngOnDestroy(): void {
