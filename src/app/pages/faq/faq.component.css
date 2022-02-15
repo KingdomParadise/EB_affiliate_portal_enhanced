@@ -1,0 +1,60 @@
+.router-active{
+    color:white !important;
+  }
+  
+  .headerLink2{
+    text-decoration: none;
+    color: #DDB4D9;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .headerLink2:hover{
+    color:white;
+    text-decoration: none;
+  }
+  
+  .customPos{
+    position: relative;
+    z-index: 100;
+  }
+  .pad{
+    padding:12px 120px
+  }
+  .dealerBg{
+    background-image: url('/assets/image/ExploreDealers-BG1.png');
+    background-position: center;
+    background-size: cover;
+    padding:40px 0px;
+  }
+  .searchInput{
+    width: 100%;
+    padding:8px 8px;
+    position: relative;
+    bottom:20px;
+    border: 2px solid #d1d1d1;
+    box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.1);
+  }
+  .line{
+      width: 100%;
+      height: 1px;
+      background-color: #b4b4b4;
+      margin-top:20px;
+      margin-bottom:20px;
+  }
+  video{
+      width: 100%;
+  }
+  @media only screen and (min-device-width: 768px){
+    .customPos{
+      position: fixed;
+      z-index: 100;
+    }
+    .line{
+        width: 1px;
+        height: 100%;
+        background-color: #b4b4b4;
+    }
+    video{
+        width: 90%;
+    }
+  }

@@ -65,7 +65,8 @@ import { OtpSentComponent } from './pages/otp-sent/otp-sent.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { AccountDetailsComponent } from './pages/profile/wallet/account-details/account-details.component';
 import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
-
+import { FaqComponent } from './pages/faq/faq.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +94,8 @@ import { TermsConditionComponent } from './pages/terms-condition/terms-condition
     OtpSentComponent,
     ResetPasswordComponent,
     AccountDetailsComponent,
-    TermsConditionComponent
+    TermsConditionComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +114,7 @@ import { TermsConditionComponent } from './pages/terms-condition/terms-condition
     DefaultModule,
     MatTableModule,
     MatPaginatorModule,
+    MatExpansionModule,
     MatCheckboxModule,
     MatSelectModule,
     MatIconModule,

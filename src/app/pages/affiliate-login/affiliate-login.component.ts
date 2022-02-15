@@ -35,7 +35,7 @@ export class AffiliateLoginComponent implements OnInit, OnDestroy {
         [
           Validators.required,
           Validators.pattern(
-            '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+            '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'
           ),
         ],
       ],

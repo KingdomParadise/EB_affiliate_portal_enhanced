@@ -1,0 +1,201 @@
+<div class="container-fluid customPos">
+    <div class="row">
+      <div class="col-md-12 px-0 py-3 py-md-2" style="background-color: #7031A5;">
+        <div class="d-flex justify-content-start mx-4">
+          <a class="headerLink2 me-3 me-md-5" routerLinkActive="router-active" routerLink="/dashboard/explore-dealers">
+            <!-- <span class="d-none d-md-inline-block">Explore</span> Dealers -->
+            &nbsp;
+          </a>
+          <a class="headerLink2" routerLinkActive="router-active" routerLink="/dashboard/explore-campaigns">
+            <!-- <span class="d-none d-md-inline-block">Explore</span> Campaigns -->
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pt-0 pt-md-4">
+    <ngx-spinner bdColor = "rgba(0,0,0,0.9)" type="timer">Loading...</ngx-spinner>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" class="dealerBg">
+      <div class="container">
+        <h1 class="montserrat">
+            Frequently <br />
+          <span style="font-size: 28px;font-weight: 500;">Asked Questions</span>
+        </h1>
+        <p class="font-weight-normal">
+            Here you can find answers to frequently asked questions about <br />
+            affiliate marketing and the BrandAffiliate platform.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <input #typeVal type="text" placeholder="Search.." name="search" class="searchInput" (keydown)="filterData(typeVal.value)">
+      </div>
+      <div class="col-md-4">
+        <!-- <mat-select [(value)]="selectedFilter" name="date" class="mt-2" id="filter">
+          <mat-option *ngFor="let filter of filterType" [value]="filter.value">
+            {{filter.name}}
+          </mat-option>
+        </mat-select> -->
+      </div>
+    </div>
+    <div class="row mb-3 mt-4">
+        <div class="col-md-6 px-3 px-md-5">
+            <h2 class="main-color">Get Started With Us</h2>
+            <p>
+                Learn how to use the Affiliate portal with Alyssa and <br/>start earning by sharing our dealer’s campaigns!
+            </p>
+        </div>
+        <div class="col-md-6 px-3 px-md-5">
+            <div>
+                <video width="320" height="240" controls>
+                    <source src="assets/image/IMG_1114.mov" type="video/mp4">
+                    <source src="assets/image/IMG_1114.mov" type="video/ogg">
+                    Your browser does not support the video tag.
+                  </video>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mt-4">
+                <h2 class="main-color px-4">How it works</h2>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            What is an affiliate program?
+                        </mat-panel-title>
+                   
+                      </mat-expansion-panel-header>
+                      <p>
+                        An Affiliate Program allows a third party (an affiliate) to advertise a good 
+                        or service to the public and receive a percentage of every sale they make as commission.
+                      </p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            What is unique about the BrandAffiliate platform?
+                        </mat-panel-title>
+                        
+                      </mat-expansion-panel-header>
+                      <p>
+                        As an affiliate you will be provided with a variety of links, content, and custom URL codes that can be copied and pasted on to your website, email, social media or pay per click account.
+                         When a user clicks on your link and makes a purchase, you will receive a payment.
+                      </p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Can I still join your Affiliate Program if I don't have a website?
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <p>
+                        Of course! There are many different ways you can advertise through BrandAffiliate:<br/>
+                        1. Social Media: You can use any social media platforms, such as blogs, YouTube, Facebook, Instagram, Twitter, TikTok or LinkedIn to advertise your affiliate link.<br/>
+                        2. Emails: If you have email addresses for people who may be interested in our brands, you can send them an email describing the brand’s products and services.<br/>
+                        If you don't have a website and want to create one, check out Blogger, WordPress, or GoDaddy.
+*Note- We ask that you do not impersonate BrandAffiliate or any of its partners, bid on any BrandAffiliate branded keywords or use the trademarked name as your own.
+                      </p>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+            <div class="card mt-3">
+                <h2 class="main-color px-4">Payment</h2>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            How can I receive my payment?
+                        </mat-panel-title>
+                   
+                      </mat-expansion-panel-header>
+                      <p>
+                        Payments can be accessed by the affiliate under the “Wallet” tab. Fill out your banking details to link your bank account for withdraws. 
+                        Once you reach the $25 withdraw minimum you will be able to begin withdrawing. 
+                      </p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            What is the payment structure?
+                        </mat-panel-title>
+                        
+                      </mat-expansion-panel-header>
+                      <p>
+                        Each of BrandAffiliate’s partners have their own unique payment structures. 
+                        For details on your brand’s payment structure please visit the campaign details on the affiliate portal.
+                      </p>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+            <div class="card mt-3">
+                <h2 class="main-color px-4">Activity</h2>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            How are my sales tracked?
+                        </mat-panel-title>
+                   
+                      </mat-expansion-panel-header>
+                      <p>As an affiliate, you have a unique code that connects to each of your links. Through this code BrandAffiliate can track your sales and traffic. You can view this data anytime by accessing the "Outreach" tab in your account.</p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            What are the best ways to advertise a brand’s products?
+                        </mat-panel-title>
+                   
+                      </mat-expansion-panel-header>
+                      <p>The best way to advertise a brand’s products is by creating social posts targeted toward potential buyers in your friend list or following. For further information on best practices, please watch our tutorial videos in the training section.</p>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+        </div>
+    </div>
+    <div class="row px-3 px-md-5 pt-5">
+        <div class="col-md-12 d-flex flex-column flex-md-row justify-content-between">
+            <div>
+                <h2 style="color:#7031A5" class="montserrat">Still have questions?</h2>
+                <p>
+                    Let us know how we can help. We'd love to hear from you!
+                </p>
+                <div>
+                    <p class="mb-0">brandfiliate.com</p>
+                    <p class="mb-0">support.brandfiliate@info.com</p>
+                    <p class="mb-0">+1 777-777-7777</p>
+                </div>
+            </div>
+            <div>
+                <div class="line"></div>
+            </div>
+            <div>
+                <h2 style="color:#7031A5" class="montserrat">Or send us a message</h2>
+                <p>
+                    Let us know how we can help. We’d love to hear from you!
+                </p>
+                <div>
+                    <button class="btn btn-app">Contact</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  
+  
