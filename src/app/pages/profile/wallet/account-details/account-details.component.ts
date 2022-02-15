@@ -51,6 +51,9 @@ export class AccountDetailsComponent implements OnInit {
   selectTab(index: number): void {
     this.selectedIndex = index;
   }
+  closeModal(){
+    this.dialog.closeAll();
+  }
   submit() {
     this.spinner.show();
     let payload = {

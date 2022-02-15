@@ -1,5 +1,5 @@
 <div>
-  <div style="margin-left:100px" class="d-flex align-items-center">
+  <div class="d-flex align-items-center ml-social">
     <span style="font-weight: 500;font-size:18px">{{userData.referalCode}}</span>
     <a href="http://facebook.com/" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
         style="width: 24px;margin-right: 12px;margin-left:16px"></a>
@@ -25,7 +25,7 @@
       <mat-tab-group>
         <mat-tab label="All">
           <ng-template matTabContent>
-            <div style="height:500px;overflow-y: scroll;">
+            <div style="height:500px;overflow-y: scroll;overflow-x: hidden;">
               <div *ngFor="let industry of apiData?.companyAffiliation" class="px-2 pt-3">
                 <h2 class="ps-4 main-color">{{industry.industryName}}</h2>
                 <div class="d-flex flex-wrap justify-content-between">
@@ -47,7 +47,7 @@
         </mat-tab>
         <mat-tab [label]="industry.industryName" *ngFor="let industry of apiData?.companyAffiliation">
           <ng-template matTabContent>
-            <div class="px-2 pt-3" style="height:500px;overflow-y: scroll;">
+            <div class="px-md-2 pt-3" style="height:500px;overflow-y: scroll;overflow-x: hidden;">
               <h2 class="ps-4 main-color">{{industry.industryName}}</h2>
               <div class="d-flex flex-wrap justify-content-between">
                 <div *ngFor="let dealer of industry.dealerList" class="d-flex justify-content-center"
@@ -71,7 +71,7 @@
         <mat-tab label="All">
           <ng-template matTabContent>
             <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let link of apiData?.sharedLinks?.allLinks" class="px-5 pt-3">
+              <div *ngFor="let link of apiData?.sharedLinks?.allLinks" class="px-3 px-md-5 pt-3">
                 <h2 class="main-color">{{link.postDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
@@ -99,7 +99,7 @@
         <mat-tab label="Active">
           <ng-template matTabContent>
             <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let link of apiData?.sharedLinks?.activeLinks" class="px-5 pt-3">
+              <div *ngFor="let link of apiData?.sharedLinks?.activeLinks" class="px-3 px-md-5 pt-3">
                 <h2 class="main-color">{{link.postDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
@@ -127,7 +127,7 @@
         <mat-tab label="Inactive">
           <ng-template matTabContent>
             <div style="height:500px;overflow-y: scroll;">
-              <div *ngFor="let link of apiData?.sharedLinks?.inactiveLinks" class="px-5 pt-3">
+              <div *ngFor="let link of apiData?.sharedLinks?.inactiveLinks" class="px-3 px-md-5 pt-3">
                 <h2 class="main-color">{{link.postDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>

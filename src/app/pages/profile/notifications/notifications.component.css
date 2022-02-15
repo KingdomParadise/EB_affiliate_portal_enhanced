@@ -92,3 +92,17 @@
   border-radius: 20px !important;
   border: transparent !important;
 }
+.noData{
+  padding: 6px;
+  height:100px;
+  margin-bottom:250px;
+  
+}
+.ml-social{
+  margin-left:0px;
+}
+@media only screen and (min-device-width: 768px){
+  .ml-social{
+    margin-left:100px;
+  }
+}

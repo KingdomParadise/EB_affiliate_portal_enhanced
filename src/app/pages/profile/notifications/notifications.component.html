@@ -1,5 +1,5 @@
 <div>
-  <div style="margin-left:100px" class="d-flex align-items-center">
+  <div class="d-flex align-items-center ml-social">
     <span style="font-weight: 500;font-size:18px">{{userData.referalCode}}</span>
     <a href="http://facebook.com/" target="_blank"><img src="assets/image/SVG/facebook.png" alt=""
         style="width: 24px;margin-right: 12px;margin-left:16px"></a>
@@ -71,7 +71,7 @@
         <mat-tab label="All">
           <ng-template matTabContent>
             <div>
-              <div *ngFor="let notf of apiData?.allNotifications | paginate: { itemsPerPage: 2, currentPage: currentPage }" class="px-5 pt-3">
+              <div *ngFor="let notf of apiData?.allNotifications | paginate: { itemsPerPage: 2, currentPage: currentPage }" class="px-3 px-md-5 pt-3">
                 <h2 class="main-color">{{notf.notificationDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
@@ -93,7 +93,11 @@
                   </tbody>
                 </table>
               </div>
-             
+              <div *ngIf="apiData?.allNotifications.length == 0">
+                <div class="noData">
+                  No Data
+                </div>
+              </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
               <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>
@@ -104,7 +108,7 @@
         <mat-tab label="Urgent">
           <ng-template matTabContent>
             <div>
-              <div *ngFor="let notf of apiData?.urgentNotifications" class="px-5 pt-3">
+              <div *ngFor="let notf of apiData?.urgentNotifications" class="px-3 px-md-5 pt-3">
                 <h2 class="main-color">{{notf.notificationDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
@@ -125,6 +129,11 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>
+              <div *ngIf="apiData?.urgentNotifications.length == 0">
+                <div class="noData">
+                  No Data
+                </div>
               </div>
             </div>
           </ng-template>

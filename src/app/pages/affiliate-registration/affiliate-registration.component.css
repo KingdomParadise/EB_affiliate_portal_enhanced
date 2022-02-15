@@ -425,6 +425,15 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
 }
+@media screen and ( max-height: 870px ) {
+    #footer{
+        width: 100%;
+        padding:.5rem 5rem;
+        padding-right: 210px !important;
+        position: relative !important;
+    }
+
+}
 @media screen and (device-aspect-ratio: 40/71) {
     .header{
         padding:8px;
