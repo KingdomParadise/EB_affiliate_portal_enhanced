@@ -84,6 +84,9 @@ export class AffiliateRegistrationComponent
   ) {}
 
   ngOnInit(): void {
+    this.isCompleted1 = true;
+    this.isCompleted2 = true;
+    this.isCompleted3 = true;
     this.dataService.getCountries().subscribe((data) => {
       this.countries = data.response.countryList;
     });
@@ -195,7 +198,6 @@ export class AffiliateRegistrationComponent
               });
             }
           }
-
           this.alertMsg.type = 'success';
           this.alertMsg.message = res.successMsg;
         } else if (res.responseCode == -1) {

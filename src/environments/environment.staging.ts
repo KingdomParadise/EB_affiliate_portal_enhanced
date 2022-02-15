@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    apiUrl: "https://api.brandfiliate.net/v1"
+    apiUrl: "https://api.brandfiliate.net/v1",
+    stripeKey: 'pk_test_51KCAH4KvYzveXmtdY6ZVxJaeVC87kHUdQ3bb6cEqd07q7B61Ckcs2bKYPHaP5icnN8ppR7eUY2CyewSA72VxyUcu00ibgfLCmk'
   };
   
   /*

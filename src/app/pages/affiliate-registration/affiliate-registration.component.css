@@ -371,6 +371,9 @@ input[type=number]::-webkit-outer-spin-button {
       bottom:0;
       padding-right: 140px;
     } */
+    #profileBox{
+        height: 90vh
+      }
  }
 /* XXX-Large devices (larger desktops, 1800px and up) */
 @media (min-width: 1800px) {
