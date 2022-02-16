@@ -40,6 +40,11 @@
                     </div>
 
                   </div>
+                  <div *ngIf="industry?.dealerList.length == 0">
+                    <div class="noData ps-4">
+                      No Data
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,6 +62,11 @@
                     </div>
                     <span class='comapnyName d-flex justify-content-center'
                       style="word-wrap: break-word;">{{dealer.companyName}}</span>
+                  </div>
+                </div>
+                <div *ngIf="industry?.dealerList.length == 0">
+                  <div class="noData ps-4">
+                    No Data
                   </div>
                 </div>
               </div>
@@ -93,6 +103,11 @@
                   </tbody>
                 </table>
               </div>
+              <div *ngIf="apiData?.sharedLinks.allLinks.length == 0">
+                <div class="noData ps-3 mt-2">
+                  No Data
+                </div>
+              </div>
             </div>
           </ng-template>
         </mat-tab>
@@ -121,6 +136,11 @@
                   </tbody>
                 </table>
               </div>
+              <div *ngIf="apiData?.sharedLinks.activeLinks.length == 0">
+                <div class="noData ps-3 mt-2">
+                  No Data
+                </div>
+              </div>
             </div>
           </ng-template>
         </mat-tab>
@@ -148,6 +168,11 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>
+              <div *ngIf="apiData?.sharedLinks.inactiveLinks.length == 0">
+                <div class="noData ps-3 mt-2">
+                  No Data
+                </div>
               </div>
             </div>
 

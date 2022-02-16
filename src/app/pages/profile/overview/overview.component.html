@@ -66,7 +66,11 @@
                 </div>
                 <p class="text-center text-uppercase mt-2">{{company.companyName}}</p>
               </div>
-
+              <div *ngIf="apiData?.affiliatedCompanies.length == 0">
+                <div class="noData">
+                  No Data
+                </div>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -96,6 +100,11 @@
                     <button class="btn btn-light" (click)="copyUrl(links.shortUrlLink, i)">Copy</button>
                   </td>
                 </tr>
+                <div *ngIf="apiData?.activeUniqueLinks.length == 0">
+                  <div class="noData">
+                    No Data
+                  </div>
+                </div>
               </tbody>
             </table>
           </div>
@@ -181,6 +190,11 @@
                   </td>
                   <td scope="col" class="main-color" style="font-weight: 600;font-size: 16px;">+{{(point.pointsProvided).toFixed(2)}}</td>
                 </tr>
+                <div *ngIf="apiData?.pointsHistory.length == 0">
+                  <div class="noData">
+                    No Data
+                  </div>
+                </div>
               </tbody>
             </table>
           </div>

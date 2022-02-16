@@ -92,6 +92,11 @@
                   <td class="main-color" style="font-weight: 600;font-size: 16px;">
                     +{{(point.pointsProvided).toFixed(2)}}</td>
                 </tr>
+                <div *ngIf="apiData?.pointsHistory.length == 0">
+                  <div class="noData ps-3 mt-2">
+                    No Data
+                  </div>
+                </div>
               </tbody>
             </table>
             <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>

@@ -110,7 +110,7 @@ export class AffiliateRegistrationComponent
       this.interests = data.response.intrestList;
     });
     this.regForm1 = this._formBuilder.group({
-      email: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
       password: [
         '',
         [

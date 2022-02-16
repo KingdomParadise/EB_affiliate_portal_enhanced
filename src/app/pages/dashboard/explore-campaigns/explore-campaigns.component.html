@@ -78,6 +78,11 @@
           </div>
         </div>
       </div>
+      <div *ngIf="apiData?.campaignList.length == 0">
+        <div class="noData">
+          No Data
+        </div>
+      </div>
     </div>
 
   </div>

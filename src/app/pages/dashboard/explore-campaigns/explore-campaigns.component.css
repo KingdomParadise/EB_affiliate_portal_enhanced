@@ -104,7 +104,11 @@
   text-transform: uppercase;
   cursor: pointer;
 }
-
+.noData{
+  padding: 6px;
+  height:100px;
+  margin-bottom:250px;
+}
 @media only screen and (min-device-width: 768px){
   .card1{
     width: 360px;
