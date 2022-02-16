@@ -38,7 +38,7 @@ export class ShareModalComponent implements OnInit {
 
   share() {
     FB.ui({
-      app_id: "277274391071647",
+      app_id: "954658505028519",
       method: 'share',
       href: this.campaign.shortUrlLink
     }, (response: ShareDialogResponse) => {
