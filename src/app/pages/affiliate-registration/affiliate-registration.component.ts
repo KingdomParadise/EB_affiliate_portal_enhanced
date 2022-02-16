@@ -372,7 +372,8 @@ export class AffiliateRegistrationComponent
     });
   }
   containsSpecialChars(str: any) {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    //const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const specialChars = /[#?!@$%^&*-.]/;
     return specialChars.test(str);
   }
   openTermsModal(ev: any) {
