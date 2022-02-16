@@ -67,6 +67,7 @@ import { AccountDetailsComponent } from './pages/profile/wallet/account-details/
 import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { NgOtpInputModule } from 'ng-otp-input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,7 +123,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatProgressSpinnerModule,
     MatMenuModule,
     NgbAlertModule,
-    NgbDropdownModule,
+    NgbDropdownModule,NgOtpInputModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAhWahf8oOXf9UyFu8W_iCE8HChcbgOVbQ',
       libraries: ['places']

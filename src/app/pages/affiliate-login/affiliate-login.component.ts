@@ -103,7 +103,9 @@ export class AffiliateLoginComponent implements OnInit, OnDestroy {
         } else if (res.responseCode == 0) {
           if (res.response.phoneVerified == 0) {
             localStorage.setItem('affiliateId', res.response.affiliateId);
-            this.router.navigateByUrl('/verify');
+            console.log("navigate goes to varify");
+            //this.router.navigateByUrl('/verify');
+             this.router.navigateByUrl('/verify');
           } else {
             localStorage.setItem('token', res.response.token);
             localStorage.setItem('referalCode', res.response.referalCode);

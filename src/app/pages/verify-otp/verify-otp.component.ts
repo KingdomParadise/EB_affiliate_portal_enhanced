@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
@@ -11,43 +11,66 @@ import { Location } from '@angular/common'
 })
 export class VerifyOtpComponent implements OnInit {
   otpForm: FormGroup;
+  showOtpComponent = true;
+  @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
   alertMsg: any = {
     type: '',
     message: ''
   };
-  isLoading:boolean = false;
+  otp!: number;
+  isLoading: boolean = false;
+  config = {
+    allowNumbersOnly: false,
+    length: 4,
+    isPasswordInput: false,
+    disableAutoFocus: false,
+    placeholder: '',
+    inputStyles: {
+      'width': '50px',
+      'height': '50px'
+    }
+  };
   constructor(
     private _formBuilder: FormBuilder,
     private dataService: InitialDataService,
     private router: Router,
-    private location : Location
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     this.otpForm = this._formBuilder.group({
-      otpNumber: [1111, Validators.required]
+      affiliateId: ['', Validators.required],
+      otpNumber: ['', Validators.required]
     });
   }
   close() {
     this.alertMsg.message = ''
   }
-  resend(){
-    let payload ={
+  resend() {
+    let payload = {
       affiliateId: Number(localStorage.getItem('affiliateId'))
     }
-    this.dataService.resendOtp(payload).subscribe(res =>{
+    this.dataService.resendOtp(payload).subscribe(res => {
       if (res.responseCode == 0) {
         this.alertMsg.type = 'success';
         this.alertMsg.message = res.successMsg
       }
     })
   }
+  onOtpChange(otp: any) {
+    this.otp = otp;
+  }
   onSubmit() {
-
+    this.otpForm.patchValue({
+      otpNumber: this.otp,
+      affiliateId: localStorage.getItem('affiliateId')
+    })
     if (this.otpForm.valid) {
       this.isLoading = true;
-      this.otpForm.value.affiliateId = Number(localStorage.getItem('affiliateId'));
-      this.dataService.validateOtp(this.otpForm.value).subscribe(res => {
+      this.dataService.validateOtp({
+        otpNumber: this.otpForm.value.otpNumber,
+        affiliateId: this.otpForm.value.affiliateId
+      }).subscribe(res => {
         if (res.responseCode == 0) {
           localStorage.setItem('affiliateId', res.response.affiliateId);
           this.router.navigateByUrl('/dashboard/explore-dealers');
@@ -58,12 +81,12 @@ export class VerifyOtpComponent implements OnInit {
           this.alertMsg.type = 'danger';
           this.alertMsg.message = 'Server error'
         }
-        this.isLoading =false;
+        this.isLoading = false;
       });
     }
     //this.router.navigateByUrl('/review');
   }
-  back(){
+  back() {
     this.location.back();
   }
 }

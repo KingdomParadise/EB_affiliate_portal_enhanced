@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
   NgZone,
   OnDestroy,
   OnInit,
@@ -11,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatHorizontalStepper, MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { InitialDataService } from 'src/app/services/initial-data.service';
-import {} from 'googlemaps';
+import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import {
   FacebookLoginProvider,
@@ -21,18 +20,21 @@ import {
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsConditionComponent } from '../terms-condition/terms-condition.component';
+// import { stringify } from 'querystring';
 @Component({
   selector: 'app-affiliate-registration',
   templateUrl: './affiliate-registration.component.html',
   styleUrls: ['./affiliate-registration.component.css'],
 })
 export class AffiliateRegistrationComponent
-  implements OnInit, AfterViewInit, OnDestroy
-{
+  implements OnInit, AfterViewInit, OnDestroy {
+  showOtpComponent = true;
+  @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
   regForm1: FormGroup;
   regForm3: FormGroup;
   regForm2: FormGroup;
   regForm4: FormGroup;
+  otp!: number; 
   isCompleted1: boolean = false;
   isCompleted2: boolean = false;
   isCompleted3: boolean = true;
@@ -72,6 +74,17 @@ export class AffiliateRegistrationComponent
     isSpecial: false,
   };
   subscription1: Subscription;
+  config = {
+    allowNumbersOnly: false,
+    length: 4,
+    isPasswordInput: false,
+    disableAutoFocus: false,
+    placeholder: '',
+    inputStyles: {
+      'width': '50px',
+      'height': '50px'
+    }
+  };
   @ViewChild('stepper') stepper: MatStepper;
   constructor(
     private _formBuilder: FormBuilder,
@@ -81,7 +94,7 @@ export class AffiliateRegistrationComponent
     private ngZone: NgZone,
     private authService: SocialAuthService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.isCompleted1 = true;
@@ -131,7 +144,8 @@ export class AffiliateRegistrationComponent
       intrestAreaList: [''],
     });
     this.regForm4 = this._formBuilder.group({
-      otpNumber: [1111, Validators.required],
+      affiliateId: ['', Validators.required],
+      otpNumber: ['', Validators.required],
     });
     // if (history.state.affiliateId) {
     //   this.isLinear = false;
@@ -270,10 +284,20 @@ export class AffiliateRegistrationComponent
       });
     }
   }
+  onOtpChange(otp: any) {
+    this.otp = otp;
+  }
+
   verifyOtp() {
+    this.regForm4.patchValue({
+      otpNumber: this.otp,
+      affiliateId: localStorage.getItem('affiliateId')
+    })
     if (this.regForm4.valid) {
-      this.regForm4.value.affiliateId = localStorage.getItem('affiliateId');
-      this.dataService.validateOtp(this.regForm4.value).subscribe((res) => {
+      this.dataService.validateOtp({
+        otpNumber: this.regForm4.value.otpNumber,
+        affiliateId: this.regForm4.value.affiliateId
+      }).subscribe((res) => {
         if (res.responseCode == 0) {
           this.alertMsg.type = 'success';
           this.alertMsg.message = res.successMsg;
@@ -336,22 +360,22 @@ export class AffiliateRegistrationComponent
       this.passwordValidity.isSpecial = false;
     }
   }
-  resend(){
-    let payload ={
-      affiliateId: Number(localStorage.getItem('affiliateId'))
-    }
-    this.dataService.resendOtp(payload).subscribe(res =>{
+  resend() {
+    let payload = {
+      affiliateId: Number(localStorage.getItem('affiliateId')),
+    };
+    this.dataService.resendOtp(payload).subscribe((res) => {
       if (res.responseCode == 0) {
         this.alertMsg.type = 'success';
-        this.alertMsg.message = res.successMsg
+        this.alertMsg.message = res.successMsg;
       }
-    })
+    });
   }
   containsSpecialChars(str: any) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     return specialChars.test(str);
   }
-  openTermsModal(ev:any){
+  openTermsModal(ev: any) {
     let size = ['675px', '475px'];
     if (window.innerWidth > 786) {
       size = ['600px', '500px'];
@@ -359,22 +383,19 @@ export class AffiliateRegistrationComponent
       size = ['350px', '600px'];
     }
     const dialogRef1 = this.dialog.open(TermsConditionComponent, {
-
       height: 'auto',
       width: '100%',
       data: {},
-      disableClose: false
+      disableClose: false,
     });
-    dialogRef1.afterClosed().subscribe(result => {
+    dialogRef1.afterClosed().subscribe((result) => {
       //this.getdashboardData();
       //this.initalCall();
     });
     ev.stopPropagation();
   }
-  
+
   ngOnDestroy(): void {
     this.subscription1.unsubscribe();
   }
-
-
 }

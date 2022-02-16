@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://api.brandfiliate.net/v1"
+ //apiUrl: "https://api.brandfiliate.net/v1"
+       apiUrl: "https://api.brandaf.com/v1"
 };
 
 /*
