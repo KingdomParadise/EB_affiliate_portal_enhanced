@@ -20,6 +20,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SettingComponent } from './pages/profile/setting/setting.component';
 import { WalletComponent } from './pages/profile/wallet/wallet.component';
 import { ReferComponent } from './pages/refer/refer.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { TrainingComponent } from './pages/training/training.component';
 import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
 import { AuthGuard } from './services/auth.gaurds';
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'otp-sent',
     component: OtpSentComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
   },
   {
     path: '',
