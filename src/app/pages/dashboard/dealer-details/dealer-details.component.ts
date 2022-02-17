@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialDataService } from 'src/app/services/initial-data.service';
 import { ShareModalComponent } from '../share-modal/share-modal.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dealer-details',
@@ -27,6 +28,16 @@ export class DealerDetailsComponent implements OnInit {
   }
 
   openCampaignShareModal(campaign: any) {
+    if(new Date(campaign.campaignEndDate) < new Date()){
+      let html = "<div><h2 style='color:#8E38A3'>This Campaign is unavailable</h2><p style='font-size:14px'>Please visit brandAffiliate.com or e-mail BrandAffiliate at support@brandaf.com for more details.</p></div>"
+      Swal.fire({
+       
+        html: html,
+        icon: 'warning',
+       
+        
+      });
+    }else{
     let size = ['675px', '475px'];
     if (window.innerWidth > 786) {
       size = ['595px', '500px'];
@@ -45,6 +56,7 @@ export class DealerDetailsComponent implements OnInit {
       //this.getdashboardData();
       //this.initalCall();
     });
+  }
   }
   sendAffiliateRequest(dealerId:any){
     let req ={

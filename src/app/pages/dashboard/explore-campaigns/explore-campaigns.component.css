@@ -109,6 +109,10 @@
   height:100px;
   margin-bottom:250px;
 }
+::ng-deep .swal2-icon.swal2-warning{
+  border-color: #8E38A3;
+  color: #8E38A3;
+}
 @media only screen and (min-device-width: 768px){
   .card1{
     width: 360px;
