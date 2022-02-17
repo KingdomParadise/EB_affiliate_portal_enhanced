@@ -38,25 +38,6 @@ export class OverviewComponent implements OnInit {
     setTimeout(() => { this.showCopyState = false; }, 1000)
   }
 
-  // openWalletModal(){
-  //   let size = ['675px', '475px'];
-  //   if (window.innerWidth > 786) {
-  //     size = ['695px', '500px'];
-  //   } else {
-  //     size = ['350px', '600px'];
-  //   }
-  //   const dialogRef1 = this.dialog.open(AccountDetailsComponent, {
-  //     maxWidth: size[0],
-  //     height: 'auto',
-  //     width: '100%',
-  //     data: this.apiData?.cashBalance,
-  //     disableClose: false
-  //   });
-  //   dialogRef1.afterClosed().subscribe(result => {
-  //     //this.getdashboardData();
-  //     //this.initalCall();
-  //   });
-  // }
   goToWallet(){
     this.router.navigateByUrl('/profile/wallet')
   }

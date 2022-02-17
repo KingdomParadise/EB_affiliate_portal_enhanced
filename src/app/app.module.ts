@@ -41,7 +41,6 @@ import { FacebookModule } from 'ngx-facebook';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VerifyOtpComponent } from './pages/verify-otp/verify-otp.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
-import { TrainingComponent } from './pages/training/training.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ShareModalComponent } from './pages/dashboard/share-modal/share-modal.component';
 import { ReferComponent } from './pages/refer/refer.component';
@@ -75,7 +74,6 @@ import { NgOtpInputModule } from 'ng-otp-input';
     AffiliateLoginComponent,
     DashboardComponent,
     VerifyOtpComponent,
-    TrainingComponent,
     ShareModalComponent,
     ReferComponent,
     ChangePasswordModalComponent,

@@ -18,7 +18,6 @@
   <div>
     <hr />
   </div>
-
   <div class="row">
     <!-- <div class="col-md-5">
       <h2>Updates</h2>
@@ -71,14 +70,18 @@
         <mat-tab label="All">
           <ng-template matTabContent>
             <div>
-              <div *ngFor="let notf of apiData?.allNotifications | paginate: { itemsPerPage: 2, currentPage: currentPage }" class="px-3 px-md-5 pt-3">
+              <div
+                *ngFor="let notf of apiData?.allNotifications | paginate: { itemsPerPage: 2, currentPage: currentPage }"
+                class="px-3 px-md-5 pt-3">
                 <h2 class="main-color">{{notf.notificationDate}}</h2>
                 <table class="table table-borderless" id="pointsTable">
                   <tbody>
                     <tr *ngFor="let message of notf.messages" style="border-top: 1px solid gray;">
                       <td scope="col">
-                        <div class="pointImage me-2" [ngStyle]="{'background-image': 'url(' + message.fromUserImage + ')'}">
-                          <div *ngIf="message.readFlag == 0" style="min-width: 10px;margin-top:10px;position: absolute;right:0">
+                        <div class="pointImage me-2"
+                          [ngStyle]="{'background-image': 'url(' + message.fromUserImage + ')'}">
+                          <div *ngIf="message.readFlag == 0"
+                            style="min-width: 10px;margin-top:10px;position: absolute;right:0">
                             <div class="redDot"></div>
                           </div>
                         </div>
@@ -100,9 +103,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
-              <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel=""></pagination-controls>
+              <pagination-controls (pageChange)="currentPage = $event" previousLabel="" nextLabel="">
+              </pagination-controls>
             </div>
-            
+
           </ng-template>
         </mat-tab>
         <mat-tab label="Urgent">
@@ -114,8 +118,10 @@
                   <tbody>
                     <tr *ngFor="let message of notf.messages" style="border-top: 1px solid gray;">
                       <td scope="col">
-                        <div class="pointImage me-2" [ngStyle]="{'background-image': 'url(' + message.fromUserImage + ')'}">
-                          <div *ngIf="message.readFlag == 0" style="min-width: 10px;margin-top:10px;position: absolute;right:0">
+                        <div class="pointImage me-2"
+                          [ngStyle]="{'background-image': 'url(' + message.fromUserImage + ')'}">
+                          <div *ngIf="message.readFlag == 0"
+                            style="min-width: 10px;margin-top:10px;position: absolute;right:0">
                             <div class="redDot"></div>
                           </div>
                         </div>
